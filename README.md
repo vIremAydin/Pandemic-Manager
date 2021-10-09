@@ -15,9 +15,9 @@ If the instructor is in quarantine, all students will be notified.
 
 ## Group Members
 
-Vesile İrem Aydın
-Furkan Turunç 
-Cenk Duran 
-Arda Barış Örtlek
-Tuğberk Dikmen
-Bilgehan Yılmaz Sandıkçı
+-Vesile İrem Aydın
+-Furkan Turunç 
+-Cenk Duran 
+-Arda Barış Örtlek
+-Tuğberk Dikmen
+-Bilgehan Yılmaz Sandıkçı
