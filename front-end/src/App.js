@@ -3,13 +3,14 @@ import './App.css';
 import { makeStyles } from "@material-ui/core/styles";
 import logo from './images/logo.png';
 import userLogo from './images/userLogo.png';
+import {Header} from './components/Header'
 //import { useState } from 'react';
 
 const useStyles = makeStyles({
    MyCoursesPage: {
       backgroundColor: '#ffffff',
       boxSizing: 'border-box',
-      height: '100%' 
+      height: '100%'
    },
 
    header: {
@@ -103,79 +104,10 @@ const useStyles = makeStyles({
 function App() {
    const myCourses = ["CS-319", "CS-315", "CS-224", "CS-202"];
    //const instructors = ["Eray Tüzün", "Halil Altay Güvenir", "Özcan Öztürk", "Selim Aksoy"];
-   
+
    const classes = useStyles();
-
-   const handleButtons = (buttonName) => {
-      alert(buttonName);
-   }
-
-   function ButtonsInHeader () {
-      return (
-         <div className = {classes.headerRightPart}>
-            <button className = {classes.buttonsInHeader} style={{backgroundColor:"#969090"}} onClick={() => handleButtons("My Courses")}>My Courses</button>
-            <button className = {classes.buttonsInHeader} onClick={() => handleButtons("Attandance")}>Attandance</button>
-            <button className = {classes.buttonsInHeader} onClick={() => handleButtons("Participants")}>Participants</button>
-            <button className = {classes.buttonsInHeader} onClick={() => handleButtons("Seat Plan")}>Seat Plan</button>
-            <button className = {classes.buttonsInHeader} onClick={() => handleButtons("Course Info")}>Course Info</button>
-         </div>
-
-      );
-   }
-
-   function MyCourse ({courseName}) {
-      return (
-         <button className = {classes.course}>
-            <div>
-              <p>{courseName}</p>
-            </div>
-            <div>
-               <p>Fall 2021-22</p>
-            </div>
-            <div>
-               <p>Instructor: Eray Tüzün</p>
-            </div>
-         </button>
-      );
-   }
- 
-   function ButtonsInLeftPartOfContainer () {
-      return (
-         <div className = {classes.containerLeftPartButtons}>
-               <button className = {classes.buttonLeftPart} onClick={() => handleButtons("Covid19 Status")}>Covid19 Status</button>
-               <button className = {classes.buttonLeftPart} onClick={() => handleButtons("Test Schedule")}>Test Schedule</button>
-               <button className = {classes.buttonLeftPart} onClick={() => handleButtons("Edit Profile")}>Edit Profile</button>
-               <button className = {classes.buttonLeftPart} onClick={() => handleButtons("Help")}>Help</button>
-               <button className = {classes.buttonLeftPart} onClick={() => handleButtons("Logout")}>Logout</button>
-         </div>
-      );
-   }
-
-   return (
-      <div className={classes.MyCoursesPage}>
-         <header className = {classes.header}>
-            <img src={logo} alt=""/>
-            <ButtonsInHeader/>
-         </header>
-         <container className = {classes.container}>
-         
-         <div className = {classes.containerLeftPart}>
-            <div className = {classes.containerLeftTopPart}>
-               <img src={userLogo} alt=""/>
-               <p>Furkan Turunç</p>
-               <p>Student</p>
-            </div>
-            
-            <ButtonsInLeftPartOfContainer/>
-         </div>
-         <div className = {classes.containerRightPart}>
-            {myCourses.map((courseName) => {
-              return <MyCourse courseName = {courseName}></MyCourse>
-            }
-            )}
-         </div>
-         </container>
-      </div>
+return(
+  <Header/>
    );
 }
 
