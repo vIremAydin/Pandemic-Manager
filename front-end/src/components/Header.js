@@ -13,9 +13,8 @@ const useStyles = makeStyles({
     },
 
     header: {
-        position: 'absolute',
         width: '100%',
-        height: '20%',
+        height: '120px',
         background: '#023047',
         boxSizing: 'border-box',
         display: "flex",
