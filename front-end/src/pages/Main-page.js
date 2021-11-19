@@ -1,8 +1,7 @@
 
 import { makeStyles } from "@material-ui/core/styles";
-import logo from './images/logo.png';
-import userLogo from './images/userLogo.png';
-import Header from './components/Header'
+import logo from '../images/logo.png';
+import userLogo from '../images/userLogo.png';
 //import { useState } from 'react';
 
 const useStyles = makeStyles({

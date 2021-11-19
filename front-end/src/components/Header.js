@@ -1,5 +1,6 @@
 import {makeStyles} from "@material-ui/core/styles";
 import logo from "../images/logo.png";
+import notification from "../images/notification.png"
 
 const useStyles = makeStyles({
 
@@ -48,6 +49,12 @@ const useStyles = makeStyles({
         borderRadius: "10px",
        // borderColor: "#000000",
     },
+    notificationIcon:{
+        cursor:"pointer",
+        marginLeft:"20px",
+        width:"50px",
+        height:"50px",
+    }
 });
 
 export const Header = () => {
@@ -74,6 +81,8 @@ export const Header = () => {
                 </button>
                 <button className={classes.buttonsInHeader} onClick={() => handleButtons("Course Info")}>Course Info
                 </button>
+                <img className={classes.notificationIcon} src={notification} alt=""/>
+
             </div>
         </div>
     )

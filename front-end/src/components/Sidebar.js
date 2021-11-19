@@ -11,6 +11,7 @@ const useStyles = makeStyles({
         padding:"20px",
     },
     buttonLeftPart: {
+        cursor:"pointer",
         display: "flex",
         marginLeft: "10%",
         marginTop: "30px",

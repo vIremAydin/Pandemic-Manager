@@ -1,15 +1,13 @@
 import './App.css';
 import {makeStyles} from "@material-ui/core/styles";
-import logo from './images/logo.png';
-import userLogo from './images/userLogo.png';
 import {Header} from './components/Header'
+import Courses from './components/Courses'
+
 import Sidebar from './components/Sidebar'
 //import { useState } from 'react';
 
 const useStyles = makeStyles({
- container:{
-
- }
+    container: {}
 });
 
 function App() {
@@ -19,6 +17,7 @@ function App() {
         <div className={classes.container}>
             <Header/>
             <Sidebar/>
+            <Courses/>
         </div>
 
     );
