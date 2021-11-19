@@ -47,7 +47,7 @@ const useStyles = makeStyles({
         },
         boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
         borderRadius: "10px",
-        borderColor: "#000000",
+       // borderColor: "#000000",
     },
 });
 
