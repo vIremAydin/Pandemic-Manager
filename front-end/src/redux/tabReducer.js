@@ -1,4 +1,4 @@
-import {GET_ACTIVE_TAB } from "./types";
+import {GET_ACTIVE_TAB, CHANGE_ACTIVE_TAB } from "./types";
 
 const INITIAL_STATE = {
    activeTab : 1
@@ -12,6 +12,11 @@ const TabReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 activeTab:action.payload,
             };
+        case CHANGE_ACTIVE_TAB:
+            return {
+                ...state,
+                activeTab: action.payload,
+        }
 
         default: return {...state}
     }

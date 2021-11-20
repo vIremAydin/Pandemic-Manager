@@ -1,8 +1,11 @@
 import {makeStyles} from "@material-ui/core/styles";
-import {Header} from "../components/Header";
+import Header from "../components/Header";
 import {Grid} from "@material-ui/core";
 import Sidebar from "../components/Sidebar";
 import AttendanceStudent from "./Attendance-student";
+import {connect} from "react-redux";
+import Courses from "./Courses";
+import {useEffect, useState} from "react";
 
 const useStyles = makeStyles({
     MyCoursesPage: {
@@ -13,8 +16,11 @@ const useStyles = makeStyles({
 
 });
 
-function MainPage() {
-    const myCourses = ["CS-319", "CS-315", "CS-224", "CS-202"];
+const MainPage = ({activeTab}) => {
+    useEffect(() =>{
+        console.log(activeTab);
+
+    }, [activeTab]);
     const classes = useStyles();
     return (
         <div>
@@ -24,13 +30,15 @@ function MainPage() {
                     <Sidebar/>
                 </Grid>
                 <Grid item xs={8}>
-                    <AttendanceStudent/>
+                    {activeTab.activeTab === 1 ? <AttendanceStudent/>
+                    : <Courses/>}
                 </Grid>
 
             </Grid>
         </div>
-    )
-
+    );
 }
-
-export default MainPage;
+const mapStateToProps = (state) => {
+    return {activeTab: state.activeTab};
+}
+export default connect(mapStateToProps)(MainPage);
