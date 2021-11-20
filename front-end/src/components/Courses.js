@@ -1,5 +1,6 @@
 
 import { makeStyles } from "@material-ui/core/styles";
+import {Grid} from "@material-ui/core";
 
 const useStyles = makeStyles({
     course: {
@@ -17,16 +18,17 @@ const useStyles = makeStyles({
         borderRadius: "10px",
     },
 
-  
+
 });
 
 const Courses = ()=>{
     const classes = useStyles();
     const myCourses = ["CS-319", "CS-315", "CS-224", "CS-202"];
     return (
-        <div>
+        <Grid container>
             {
                 myCourses.map(courseName =>(
+                    <Grid xs={6}>
                     <button className = {classes.course}>
                         <div>
                             <p>{courseName}</p>
@@ -38,9 +40,10 @@ const Courses = ()=>{
                             <p>Instructor: Eray Tüzün</p>
                         </div>
                     </button>
+                    </Grid>
                 ))
             }
-        </div>
+        </Grid>
 
     );
 }

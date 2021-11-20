@@ -1,6 +1,9 @@
 import {makeStyles} from "@material-ui/core/styles";
 import logo from "../images/logo.png";
 import notification from "../images/notification.png"
+import {connect} from "react-redux";
+import {changeTab} from "../redux/tab-action";
+
 
 const useStyles = makeStyles({
 
@@ -10,7 +13,7 @@ const useStyles = makeStyles({
 
     },
     logoContainer: {
-        marginTop:"10px",
+        marginTop: "10px",
     },
 
     header: {
@@ -19,14 +22,14 @@ const useStyles = makeStyles({
         background: '#023047',
         boxSizing: 'border-box',
         display: "flex",
-      justifyContent:"space-around",
+        justifyContent: "space-around",
 
 
     },
-    buttons:{
-      display: "flex",
-      flexDirection:"col",
-      marginTop: "40px",
+    buttons: {
+        display: "flex",
+        flexDirection: "col",
+        marginTop: "40px",
     },
 
     headerRightPart: {
@@ -37,7 +40,7 @@ const useStyles = makeStyles({
     },
 
     buttonsInHeader: {
-        cursor:"pointer",
+        cursor: "pointer",
         marginLeft: "30px",
         width: "164px",
         height: "47px",
@@ -47,21 +50,22 @@ const useStyles = makeStyles({
         },
         boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
         borderRadius: "10px",
-       // borderColor: "#000000",
+        // borderColor: "#000000",
     },
-    notificationIcon:{
-        cursor:"pointer",
-        marginLeft:"20px",
-        width:"50px",
-        height:"50px",
+    notificationIcon: {
+        cursor: "pointer",
+        marginLeft: "20px",
+        width: "50px",
+        height: "50px",
     }
 });
 
-export const Header = () => {
+const Header = ({tab, changeTab}) => {
     const classes = useStyles();
 
-    function handleButtons(attandance) {
-        return undefined;
+    function handleButtons(tab) {
+        changeTab(tab);
+        console.log(tab);
     }
 
     return (
@@ -71,15 +75,15 @@ export const Header = () => {
             </div>
             <div className={classes.buttons}>
                 <button className={classes.buttonsInHeader} style={{backgroundColor: "#969090"}}
-                        onClick={() => handleButtons("My Courses")}>My Courses
+                        onClick={() => handleButtons(0)}>My Courses
                 </button>
-                <button className={classes.buttonsInHeader} onClick={() => handleButtons("Attandance")}>Attandance
+                <button className={classes.buttonsInHeader} onClick={() => handleButtons(1)}>Attendance
                 </button>
-                <button className={classes.buttonsInHeader} onClick={() => handleButtons("Participants")}>Participants
+                <button className={classes.buttonsInHeader} onClick={() => handleButtons(2)}>Participants
                 </button>
-                <button className={classes.buttonsInHeader} onClick={() => handleButtons("Seat Plan")}>Seat Plan
+                <button className={classes.buttonsInHeader} onClick={() => handleButtons(3)}>Seat Plan
                 </button>
-                <button className={classes.buttonsInHeader} onClick={() => handleButtons("Course Info")}>Course Info
+                <button className={classes.buttonsInHeader} onClick={() => handleButtons(4)}>Course Info
                 </button>
                 <img className={classes.notificationIcon} src={notification} alt=""/>
 
@@ -87,3 +91,9 @@ export const Header = () => {
         </div>
     )
 }
+
+const mapDispatchToProps = dispatch => ({
+    changeTab: tab => dispatch(changeTab(tab)),
+});
+export default connect(null, mapDispatchToProps)(Header);
+

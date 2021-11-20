@@ -1,6 +1,7 @@
-import GET_USER from "./types"
+import {GET_USER, GET_ACTIVE_TAB} from "./types"
 const initialState = {
     user:[],
+    activeTab:1,
 };
 
 export default function(state = initialState, action){
@@ -11,7 +12,7 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 user:action.payload,
-            }
+            };
 
         default: return {...state}
     }
