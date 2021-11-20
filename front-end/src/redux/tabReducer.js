@@ -1,7 +1,7 @@
 import {GET_ACTIVE_TAB, CHANGE_ACTIVE_TAB } from "./types";
 
 const INITIAL_STATE = {
-   activeTab : 1
+   activeTab : "MyCourses"
 };
 
 const TabReducer = (state = INITIAL_STATE, action) => {

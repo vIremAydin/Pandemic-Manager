@@ -31,7 +31,7 @@ const MainPage = ({activeTab}) => {
                     <Sidebar/>
                 </Grid>
                 <Grid item xs={8}>
-                    {activeTab.activeTab === 1 ? <AttendanceStudent/>
+                    {activeTab.activeTab === "Attendance" ? <AttendanceStudent/>
                     : <Courses/>}
                 </Grid>
 

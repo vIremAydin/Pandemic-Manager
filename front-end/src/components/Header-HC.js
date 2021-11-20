@@ -3,6 +3,7 @@ import logo from "../images/logo.png";
 import notification from "../images/notification.png"
 import {connect} from "react-redux";
 import {changeTab} from "../redux/tab-action";
+import MyButton from "./MyButton";
 
 
 const useStyles = makeStyles({
@@ -74,13 +75,10 @@ const HeaderHC = ({tab, changeTab}) => {
                 <img className={classes.logo} src={logo} alt=""/>
             </div>
             <div className={classes.buttons}>
-                <button className={classes.buttonsInHeader} style={{backgroundColor: "#969090"}}
-                        onClick={() => handleButtons(0)}>All Cases
-                </button>
-                <button className={classes.buttonsInHeader} onClick={() => handleButtons(1)}>Dorm
-                </button>
-                <button className={classes.buttonsInHeader} onClick={() => handleButtons(2)}>Schedule
-                </button>
+                <MyButton onClick={()=>handleButtons("AllCases")}  isActive={tab === "AllCases"} name={"All Cases"}/>
+                <MyButton onClick={()=>handleButtons("Dorm")}  isActive={tab === "Dorm"} name={"Dorm"}/>
+                <MyButton onClick={()=>handleButtons("Schedule")}  isActive={tab === "Schedule"} name={"Schedule"}/>
+
                 <img className={classes.notificationIcon} src={notification} alt=""/>
 
             </div>

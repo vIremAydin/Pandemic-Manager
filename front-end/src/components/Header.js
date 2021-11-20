@@ -3,6 +3,7 @@ import logo from "../images/logo.png";
 import notification from "../images/notification.png"
 import {connect} from "react-redux";
 import {changeTab} from "../redux/tab-action";
+import MyButton from "./MyButton";
 
 
 const useStyles = makeStyles({
@@ -74,17 +75,11 @@ const Header = ({tab, changeTab}) => {
                 <img className={classes.logo} src={logo} alt=""/>
             </div>
             <div className={classes.buttons}>
-                <button className={classes.buttonsInHeader} style={{backgroundColor: "#969090"}}
-                        onClick={() => handleButtons(0)}>My Courses
-                </button>
-                <button className={classes.buttonsInHeader} onClick={() => handleButtons(1)}>Attendance
-                </button>
-                <button className={classes.buttonsInHeader} onClick={() => handleButtons(2)}>Participants
-                </button>
-                <button className={classes.buttonsInHeader} onClick={() => handleButtons(3)}>Seat Plan
-                </button>
-                <button className={classes.buttonsInHeader} onClick={() => handleButtons(4)}>Course Info
-                </button>
+         <MyButton onClick={()=>handleButtons("MyCourses")}  isActive={tab === "MyCourses"} name={"My Courses"}/>
+         <MyButton onClick={()=>handleButtons("Attendance")}  isActive={tab === "Attendance"} name={"Attendance"}/>
+         <MyButton onClick={()=>handleButtons("Participants")} isActive={tab === "Participants"} name={"Participants"}/>
+         <MyButton onClick={()=>handleButtons("SeatPlan")} isActive={tab === "SeatPlan"} name={"Seat Plan"}/>
+         <MyButton onClick={()=>handleButtons("CourseInfo")} isActive={tab === "CourseInfo"} name={"Course Info"}/>
                 <img className={classes.notificationIcon} src={notification} alt=""/>
 
             </div>
