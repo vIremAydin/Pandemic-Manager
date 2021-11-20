@@ -5,7 +5,8 @@ import Sidebar from "../components/Sidebar";
 import AttendanceStudent from "./Attendance-student";
 import {connect} from "react-redux";
 import Courses from "./Courses";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
+import HeaderHC from "../components/Header-HC";
 
 const useStyles = makeStyles({
     MyCoursesPage: {
