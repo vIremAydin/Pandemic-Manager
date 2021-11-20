@@ -73,7 +73,7 @@ export const Header = () => {
                 <button className={classes.buttonsInHeader} style={{backgroundColor: "#969090"}}
                         onClick={() => handleButtons("My Courses")}>My Courses
                 </button>
-                <button className={classes.buttonsInHeader} onClick={() => handleButtons("Attandance")}>Attandance
+                <button className={classes.buttonsInHeader} onClick={() => handleButtons("Attendance")}>Attendance
                 </button>
                 <button className={classes.buttonsInHeader} onClick={() => handleButtons("Participants")}>Participants
                 </button>
