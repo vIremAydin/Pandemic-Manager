@@ -1,84 +1,58 @@
 import { makeStyles } from "@material-ui/core/styles";
 import userLogo from "../images/userLogo.png";
+import {Button, TextField, Link} from "@material-ui/core";
 
 
 const useStyles = makeStyles({
-    editProfile: {
-        display: "flex",
-        width: "800px",
-        height: "600px",
-        marginTop: "200px",
-        marginLeft: "300px",
-        flexDirection: "column",
+    editProfileContainer: {
+        width: "30%",
+        height: "80%",
+        marginTop: "15%",
+        marginLeft: "30%",
     },
 
     title: {
-        width: "344px",
-        height: "52px",
-        fontSize: "44px",
-        lineHeight: "52px",
         color: "#023047",
+        fontSize:"30px",
     },
 
     label: {
-        width: "250px",
-        height: "37px",
-        fontSize: "20px",
-        lineHeight: "23px",
-        color: "#000000",
-        float:"left",
-        marginRight:"50px",
-    },
-    textfield: {
-        width: "367px",
-        height: "42px",
-        fontSize: "20px",
-        background: "#FFFFFF",
-        border: "0.5px solid #C4C4C4",
-        boxSizing: "border-box",
-        borderRadius: "5px",
-        float:"left",
-        marginBottom: "10px",
+        width:"35%",
+        height: "20px",
+        color: "#023047"
     },
 
-    form: {
-        width: "700px"
+    textfield: {
+        width:"65%",
+        height: "20px",
+        float:"right",
+        marginTop:"-12px",
+    },
+
+    container: {
+        marginTop:"50px",
+    },
+
+    saveButton: {
+        marginTop:"10%",
+        width: "10%",
+        background:"#023047",
+        color:"#ffffff",
+        float:"right"
+    },
+
+    uploadButton: {
+        width:"60%",
+        float:"right",
+        marginTop:"30px",
+        color: "#023047",
     },
 
     link: {
-        display:"block",
-        width: "140px",
-        marginBottom:"40px",
-        marginLeft: "300px",
-        color: "rgba(80, 34, 209, 1)"
-    },
-    
-    saveButton: {
-        width: "120px",
-        height: "50px",
-        marginLeft: "550px",
-        borderRadius: "10px",
-        border: "1px solid  #C4C4C4",
-        backgroundColor: "rgba(2, 48, 71, 0.1)",
-        color: "#023047",
-        fontSize:"15px",
-    },
-    buttonUploadPhoto: {
-        width: "200px",
-        height: "50px",
-        marginLeft: "200px",
-        marginTop:"25px",
-        borderRadius: "10px",
-        border: "1px solid  #C4C4C4",
-        backgroundColor: "rgba(2, 48, 71, 0.1)",
-        color: "#023047",
-        fontSize:"15px",
-    },
-    ppPart: {
-        display:"flex",
-        flexDirection:"row",
-        marginBottom:"50px",
+        marginLeft:"35%",
     }
+    
+    
 });
 
 const EditProfile = ()=>{
@@ -89,34 +63,34 @@ const EditProfile = ()=>{
     } 
     
     return (
-        <div className={classes.editProfile}>
+        <div className={classes.editProfileContainer}>
             <p className={classes.title}>Edit Your Profile</p>
-            <div className={classes.ppPart}>
-                <img src={userLogo} alt=""/>
-                <button className={classes.buttonUploadPhoto} onClick={() => handleButton("saveButton")}>Upload New Profile Photo</button>
-            </div>
             <div>
-                <form className={classes.form}>
-                    
-                    <label className={classes.label} for="name">Name: </label>
-                    <input className={classes.textfield}  className={classes.textfield}  id="name" type="text"></input>
-                
-                    <label className={classes.label} for="newPassword">New Password: </label>
-                    <input className={classes.textfield}  className={classes.textfield}  id="newPassword" type="text"></input>
-                
-                    <label className={classes.label} for="confirmNewPassword">Confirm New Password: </label>
-                    <input className={classes.textfield}  className={classes.textfield}  id="confirmNewPassword" type="text"></input>
-                
-                    <label className={classes.label} for="existingPassword">Existing Password: </label>
-                    <input className={classes.textfield}  className={classes.textfield}  id="existingPassword" type="text"></input>
-                    
-                    <a href="#" className={classes.link}>Forgot Password?</a>
-                    <button className={classes.saveButton} onClick={() => handleButton("saveButton")}>Save</button>
-                    
-                </form>
-                
+                <img src={userLogo} alt=""/>
+                <Button variant="contained" className={classes.uploadButton}>Upload New Profile Photo</Button>
             </div>
-           
+            
+            <div className={classes.container}>
+                <label className={classes.label}>
+                    New Password: <TextField id="outlined-basic" variant="outlined" className={classes.textfield}/>
+                </label>
+            </div>
+            
+            <div className={classes.container}>
+                <label className={classes.label}>
+                    Confirm New Password: <TextField id="outlined-basic" variant="outlined" className={classes.textfield}/>
+                </label>
+            </div>
+            <div className={classes.container}>
+                <label className={classes.label}>
+                    Existing Password: <TextField id="outlined-basic" variant="outlined" className={classes.textfield}/>
+                </label>
+            </div>
+            <div style={{marginTop:"40px"}}>
+                <Link href="#" className={classes.link}>Forgot Password?</Link>
+                <Button variant="contained" className={classes.saveButton}>Save</Button>
+            </div>
+            
         </div>
 
     );
