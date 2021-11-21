@@ -1,6 +1,7 @@
 import './App.css';
 import {makeStyles} from "@material-ui/core/styles";
 import MainPage from "./pages/Main-page";
+import Welcome from "./pages/Welcome";
 //import { useState } from 'react';
 
 const useStyles = makeStyles({
@@ -11,7 +12,7 @@ function App() {
 
     return (
         <div>
-            <MainPage/>
+            <Welcome/>
         </div>
 
     );

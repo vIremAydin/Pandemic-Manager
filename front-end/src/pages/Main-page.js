@@ -2,12 +2,12 @@ import {makeStyles} from "@material-ui/core/styles";
 import Header from "../components/Header";
 import {Grid} from "@material-ui/core";
 import Sidebar from "../components/Sidebar";
-import AttendanceStudent from "./Attendance-student";
+import AttendanceStudent from "../tabs/Attendance-student";
 import {connect} from "react-redux";
 import Courses from "./Courses";
 import {useEffect} from "react";
 import HeaderHC from "../components/Header-HC";
-import Edit_Profile from "./Edit_Profile";
+import Edit_Profile from "../tabs/Edit_Profile";
 
 const useStyles = makeStyles({
     MyCoursesPage: {
