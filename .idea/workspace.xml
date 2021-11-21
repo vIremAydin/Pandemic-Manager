@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="HeaderHC.js">
-      <change afterPath="$PROJECT_DIR$/front-end/src/components/MyButton.js" afterDir="false" />
+    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="redux modified.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/Header-HC.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Header-HC.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/MyButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/MyButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Sidebar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/pages/Main-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Main-page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/redux/tabReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/redux/tabReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +101,7 @@
       <updated>1637310370111</updated>
       <workItem from="1637310371501" duration="4805000" />
       <workItem from="1637346333879" duration="7129000" />
+      <workItem from="1637527090114" duration="1786000" />
     </task>
     <task id="LOCAL-00001" summary="added.">
       <created>1637310740173</created>
@@ -124,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637420810857</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="redux modified.">
+      <created>1637425578449</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1637425578449</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,7 +165,8 @@
     <MESSAGE value="added." />
     <MESSAGE value="redux added." />
     <MESSAGE value="HeaderHC.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="HeaderHC.js" />
+    <MESSAGE value="redux modified." />
+    <option name="LAST_COMMIT_MESSAGE" value="redux modified." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

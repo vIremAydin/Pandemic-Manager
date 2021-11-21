@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import Courses from "./Courses";
 import {useEffect} from "react";
 import HeaderHC from "../components/Header-HC";
+import Edit_Profile from "./Edit_Profile";
 
 const useStyles = makeStyles({
     MyCoursesPage: {
@@ -31,8 +32,9 @@ const MainPage = ({activeTab}) => {
                     <Sidebar/>
                 </Grid>
                 <Grid item xs={8}>
-                    {activeTab.activeTab === "Attendance" ? <AttendanceStudent/>
-                    : <Courses/>}
+                    {activeTab.activeTab === "Attendance" ? <AttendanceStudent/> :
+                    activeTab.activeTab === "MyCourses" ? <Courses/> :
+                        <Edit_Profile/>}
                 </Grid>
 
             </Grid>

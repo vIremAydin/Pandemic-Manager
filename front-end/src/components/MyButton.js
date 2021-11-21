@@ -21,11 +21,11 @@ const MyButton = ({name, isActive, onClick}) =>{
     return(<div>
         {
             isActive ?
-                <button onClick={() =>onClick(name)} className={classes.buttonsInHeader} style={{backgroundColor: "#969090"}}
+                <button disabled={true} onClick={() =>onClick(name)} className={classes.buttonsInHeader} style={{backgroundColor: "#969090", cursor:"context-menu"}}
                        >{name}
                 </button>
                 :
-                <button onClick={() =>onClick(name)} className={classes.buttonsInHeader}
+                <button  onClick={() =>onClick(name)} className={classes.buttonsInHeader}
                       >{name}
                 </button>
         }

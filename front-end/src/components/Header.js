@@ -61,12 +61,12 @@ const useStyles = makeStyles({
     }
 });
 
-const Header = ({tab, changeTab}) => {
+const Header = ({tab, changeTab, activeTab}) => {
     const classes = useStyles();
 
-    function handleButtons(tab) {
-        changeTab(tab);
-        console.log(tab);
+    function handleButtons(tb) {
+        changeTab(tb);
+        console.log(tb);
     }
 
     return (
@@ -75,11 +75,11 @@ const Header = ({tab, changeTab}) => {
                 <img className={classes.logo} src={logo} alt=""/>
             </div>
             <div className={classes.buttons}>
-         <MyButton onClick={()=>handleButtons("MyCourses")}  isActive={tab === "MyCourses"} name={"My Courses"}/>
-         <MyButton onClick={()=>handleButtons("Attendance")}  isActive={tab === "Attendance"} name={"Attendance"}/>
-         <MyButton onClick={()=>handleButtons("Participants")} isActive={tab === "Participants"} name={"Participants"}/>
-         <MyButton onClick={()=>handleButtons("SeatPlan")} isActive={tab === "SeatPlan"} name={"Seat Plan"}/>
-         <MyButton onClick={()=>handleButtons("CourseInfo")} isActive={tab === "CourseInfo"} name={"Course Info"}/>
+         <MyButton onClick={()=>handleButtons("MyCourses")}  isActive={activeTab.activeTab=== "MyCourses"} name={"My Courses"}/>
+         <MyButton onClick={()=>handleButtons("Attendance")}  isActive={activeTab.activeTab === "Attendance"} name={"Attendance"}/>
+         <MyButton onClick={()=>handleButtons("Participants")} isActive={activeTab.activeTab === "Participants"} name={"Participants"}/>
+         <MyButton onClick={()=>handleButtons("SeatPlan")} isActive={activeTab.activeTab === "SeatPlan"} name={"Seat Plan"}/>
+         <MyButton onClick={()=>handleButtons("CourseInfo")} isActive={activeTab.activeTab === "CourseInfo"} name={"Course Info"}/>
                 <img className={classes.notificationIcon} src={notification} alt=""/>
 
             </div>
@@ -90,5 +90,8 @@ const Header = ({tab, changeTab}) => {
 const mapDispatchToProps = dispatch => ({
     changeTab: tab => dispatch(changeTab(tab)),
 });
-export default connect(null, mapDispatchToProps)(Header);
+const mapStateToProps = (state) => {
+    return {activeTab: state.activeTab};
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 

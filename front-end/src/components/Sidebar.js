@@ -1,5 +1,7 @@
 import {makeStyles} from "@material-ui/core/styles";
 import userLogo from "../images/userLogo.png";
+import {changeTab} from "../redux/tab-action";
+import {connect} from "react-redux";
 
 const useStyles = makeStyles({
     sidebar:{
@@ -37,11 +39,11 @@ const useStyles = makeStyles({
 
 });
 
-const Sidebar =() =>{
+const Sidebar =({changeTab}) =>{
     const classes = useStyles();
 
     function handleButtons(covid19Status) {
-        return undefined;
+        changeTab(covid19Status);
     }
 
     return(
@@ -52,12 +54,17 @@ const Sidebar =() =>{
         <div className={classes.userName}>
             <span>username</span>
         </div>
-        <button className = {classes.buttonLeftPart} onClick={() => handleButtons("Covid19 Status")}>Covid19 Status</button>
-        <button className = {classes.buttonLeftPart} onClick={() => handleButtons("Test Schedule")}>Test Schedule</button>
-        <button className = {classes.buttonLeftPart} onClick={() => handleButtons("Edit Profile")}>Edit Profile</button>
+        <button className = {classes.buttonLeftPart} onClick={() => handleButtons("Covid19Status")}>Covid19 Status</button>
+        <button className = {classes.buttonLeftPart} onClick={() => handleButtons("TestSchedule")}>Test Schedule</button>
+        <button className = {classes.buttonLeftPart} onClick={() => handleButtons("EditProfile")}>Edit Profile</button>
         <button className = {classes.buttonLeftPart} onClick={() => handleButtons("Help")}>Help</button>
         <button className = {classes.buttonLeftPart} onClick={() => handleButtons("Logout")}>Logout</button>
     </div>
 );
 }
-export default Sidebar;
+
+const mapDispatchToProps = dispatch => ({
+    changeTab: tab => dispatch(changeTab(tab)),
+});
+export default connect(null, mapDispatchToProps)(Sidebar);
+
