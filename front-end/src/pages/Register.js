@@ -47,7 +47,7 @@ const Register = ()=>{
             <img src={userLogo} alt=""/>
             <TextField id="outlined-basic" label="Email" variant="outlined" className={classes.textfield}/>
             <TextField id="outlined-basic" label="Password" variant="outlined" className={classes.textfield}/>
-            <Button variant="contained" className={classes.registerButton}>Create an account</Button>
+            <Link to={"/courses"}><Button variant="contained" className={classes.registerButton}>Create an account</Button></Link>
             <p>Already have an account? <Link to={"/login"}>Log in</Link></p>
         </div>
 

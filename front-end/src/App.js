@@ -5,7 +5,7 @@ import Welcome from "./pages/Welcome";
 import {Route, Routes} from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-
+import Courses from "./pages/Courses";
 
 
 const useStyles = makeStyles({
@@ -15,18 +15,14 @@ const useStyles = makeStyles({
 function App() {
     return (
         <div>
-        <Routes>
-            <Route path='/' element={<Welcome/>} />
-
-            <Route path='/welcome' element={<MainPage/>} />
-
-            <Route path='/login' element={<Login/>} />
-            <Route path='/register' element={<Register/>} />
-
-        </Routes>
-
+            <Routes>
+                <Route path='/' element={<Welcome/>}/>
+                <Route path='/main' element={<MainPage/>}/>
+                <Route path='/login' element={<Login/>}/>
+                <Route path='/courses' element={<Courses/>}/>
+                <Route path='/register' element={<Register/>}/>
+            </Routes>
         </div>
-
     );
 }
 

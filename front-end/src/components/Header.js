@@ -4,6 +4,7 @@ import notification from "../images/notification.png"
 import {connect} from "react-redux";
 import {changeTab} from "../redux/tab-action";
 import MyButton from "./MyButton";
+import {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -61,7 +62,7 @@ const useStyles = makeStyles({
     }
 });
 
-const Header = ({tab, changeTab, activeTab}) => {
+const Header = ({tab, changeTab, activeTab, course}) => {
     const classes = useStyles();
 
     function handleButtons(tb) {
@@ -74,8 +75,9 @@ const Header = ({tab, changeTab, activeTab}) => {
             <div className={classes.logoContainer}>
                 <img className={classes.logo} src={logo} alt=""/>
             </div>
+            <p style={{color:"white"}}>{course}</p>
             <div className={classes.buttons}>
-         <MyButton onClick={()=>handleButtons("Courses")}  isActive={activeTab.activeTab=== "Courses"} name={"Courses"}/>
+                <Link to={"/courses"}><MyButton onClick={() => {}} isActive={activeTab.activeTab=== "Courses"} name={"Courses"}/></Link>
          <MyButton onClick={()=>handleButtons("Attendance")}  isActive={activeTab.activeTab === "Attendance"} name={"Attendance"}/>
          <MyButton onClick={()=>handleButtons("Participants")} isActive={activeTab.activeTab === "Participants"} name={"Participants"}/>
          <MyButton onClick={()=>handleButtons("SeatPlan")} isActive={activeTab.activeTab === "SeatPlan"} name={"Seat Plan"}/>
@@ -91,7 +93,8 @@ const mapDispatchToProps = dispatch => ({
     changeTab: tab => dispatch(changeTab(tab)),
 });
 const mapStateToProps = (state) => {
-    return {activeTab: state.activeTab};
+    return {activeTab: state.activeTab,
+    course: state.activeTab.selectedCourse};
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
