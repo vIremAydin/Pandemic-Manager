@@ -4,6 +4,11 @@ import {Grid} from "@material-ui/core";
 import {Carousel} from "react-bootstrap";
 import slide1 from "../images/ası-bilkent.jpg";
 import slide2 from "../images/asi.jpg";
+import 'react-slideshow-image/dist/styles.css'
+import {Slide} from 'react-slideshow-image';
+import React from 'react';
+import {Link} from "react-router-dom";
+
 
 const useStyles = makeStyles({
     contain: {
@@ -46,6 +51,24 @@ const useStyles = makeStyles({
 });
 const Welcome = () => {
     const classes = useStyles();
+    const slideImages = [
+        {
+            url: slide2,
+            caption: 'Slide 1'
+        },
+        {
+            url: 'images/slide_3.jpg',
+            caption: 'Slide 2'
+        },
+        {
+            url: 'images/slide_4.jpg',
+            caption: 'Slide 3'
+        },
+    ];
+
+    function handleClick() {
+        return undefined;
+    }
 
     return (
         <div>
@@ -60,36 +83,22 @@ const Welcome = () => {
 
                     </Grid>
                     <Grid item xs={2}>
-                        <button className={classes.btn}>Login</button>
+                        <Link to={"/login"}>
+                            <button className={classes.btn}>Login</button>
+                        </Link>
                     </Grid>
                 </Grid>
             </div>
-            <div>
-                <Carousel variant={"dark"} className={"w-50 h-50"}>
-                    <Carousel.Item className="w-50 h-50">
-                        <img
-                            className={"d-block"}
-                            src={slide1}
-                            alt="First slide"
-                        />
-                        <Carousel.Caption>
-                            <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item className="w-50 h-50">
-                        <img
-                            className={"d-block"}
-                            src={slide2}
-                            alt="Third slide"
-                        />
-
-                        <Carousel.Caption>
-                            <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                </Carousel>
+            <div className="slide-container">
+                <Slide>
+                    {slideImages.map((slideImage, index) => (
+                        <div className="each-slide" key={index}>
+                            <div style={{'backgroundImage': `url(${slideImage.url})`}}>
+                                <span>{slideImage.caption}</span>
+                            </div>
+                        </div>
+                    ))}
+                </Slide>
 
             </div>
         </div>

@@ -75,7 +75,7 @@ const Header = ({tab, changeTab, activeTab}) => {
                 <img className={classes.logo} src={logo} alt=""/>
             </div>
             <div className={classes.buttons}>
-         <MyButton onClick={()=>handleButtons("MyCourses")}  isActive={activeTab.activeTab=== "MyCourses"} name={"My Courses"}/>
+         <MyButton onClick={()=>handleButtons("Courses")}  isActive={activeTab.activeTab=== "Courses"} name={"Courses"}/>
          <MyButton onClick={()=>handleButtons("Attendance")}  isActive={activeTab.activeTab === "Attendance"} name={"Attendance"}/>
          <MyButton onClick={()=>handleButtons("Participants")} isActive={activeTab.activeTab === "Participants"} name={"Participants"}/>
          <MyButton onClick={()=>handleButtons("SeatPlan")} isActive={activeTab.activeTab === "SeatPlan"} name={"Seat Plan"}/>

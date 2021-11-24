@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import userLogo from "../images/userLogo.png";
-import {Button, TextField, Link} from "@material-ui/core";
-
+import {Button, TextField} from "@material-ui/core";
+import {Link} from "react-router-dom"
 
 const useStyles = makeStyles({
     loginContainer: {
@@ -47,8 +47,8 @@ const Login = ()=>{
             <TextField id="outlined-basic" label="Email" variant="outlined" className={classes.textfield}/>
             <TextField id="outlined-basic" label="Password" variant="outlined" className={classes.textfield}/>
             <Button variant="contained" className={classes.loginButton}>Login</Button>
-            <Link href="#">Forgot Password?</Link>
-            <p>Don't have an account? <Link href="#">Register</Link></p>
+            <p>Forgot Password?</p>
+            <Link to={"/register"}>Don't have an account?</Link>
         </div>
 
     );
