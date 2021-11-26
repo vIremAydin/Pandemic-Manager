@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="default tab is changed.">
-      <change afterPath="$PROJECT_DIR$/front-end/src/tabs/CouseList.js" afterDir="false" />
+    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="many cool modifications.">
+      <change afterPath="$PROJECT_DIR$/front-end/src/components/LogoutDialog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Courses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Main-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Main-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/redux/tabReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/redux/tabReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +115,7 @@
       <workItem from="1637772438760" duration="1691000" />
       <workItem from="1637781032384" duration="2226000" />
       <workItem from="1637861841211" duration="312000" />
-      <workItem from="1637919010493" duration="1634000" />
+      <workItem from="1637919010493" duration="4986000" />
     </task>
     <task id="LOCAL-00001" summary="added.">
       <created>1637310740173</created>
@@ -180,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637785494126</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="many cool modifications.">
+      <created>1637920725368</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1637920725368</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,7 +227,8 @@
     <MESSAGE value="router added." />
     <MESSAGE value="courses.js and selectedCourse added." />
     <MESSAGE value="default tab is changed." />
-    <option name="LAST_COMMIT_MESSAGE" value="default tab is changed." />
+    <MESSAGE value="many cool modifications." />
+    <option name="LAST_COMMIT_MESSAGE" value="many cool modifications." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

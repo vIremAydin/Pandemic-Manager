@@ -1,7 +1,7 @@
 import {GET_ACTIVE_TAB, CHANGE_ACTIVE_TAB, GET_SELECTED_COURSE, CHANGE_SELECTED_COURSE} from "./types";
 
 const INITIAL_STATE = {
-   activeTab : "Attendance",
+   activeTab : "Courses",
    selectedCourse: null,
 };
 
