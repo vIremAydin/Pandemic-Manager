@@ -2,26 +2,17 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Grid} from "@material-ui/core";
 import logo from "../images/logo.png";
 import React from "react";
-import {Link} from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import AttendanceStudent from "../tabs/Attendance-student";
+import Edit_Profile from "../tabs/Edit_Profile";
 import {changeCourse, changeTab} from "../redux/tab-action";
 import {connect} from "react-redux";
+import CourseList from "../tabs/CouseList";
+import MyButton from "../components/MyButton";
+
 
 const useStyles = makeStyles({
-    course: {
-        width: "200px",
-        height: "250px",
-        marginLeft: "100px",
-        marginTop: "50px",
-        background: "#FFFFFF",
-        '&:hover': {
-            background: "rgba(45, 45, 45, 0.5)"
-        },
-        border: "2px solid #C4C4C4",
-        boxSizing: "border-box",
-        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25), -10px -10px 4px rgba(0, 0, 0, 0.25)",
-        borderRadius: "10px",
-    },
+
     logo: {
         width: "150px",
         height: "100px"
@@ -51,16 +42,20 @@ const useStyles = makeStyles({
         borderRadius: "10px",
 
     },
+    btn2:{
+        marginTop: "30px",
+        cursor: "pointer",
+    }
 
 
 });
 
-const Courses = ({changeCourse}) => {
+const Courses = ({activeTab, changeTab}) => {
     const classes = useStyles();
-    const myCourses = ["CS-319", "CS-315", "CS-224", "CS-202"];
 
-    function handler(name) {
-        changeCourse(name);
+
+    function goToCourse() {
+        changeTab("Courses");
     }
 
     return (
@@ -72,8 +67,11 @@ const Courses = ({changeCourse}) => {
                             <img className={classes.logo} src={logo} alt=""/>
                         </div>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={4}>
 
+                    </Grid>
+                    <Grid item xs={2} className={classes.btn2}>
+                        <MyButton name={"Courses"} isActive={"Courses" === activeTab} onClick={()=>goToCourse()} />
                     </Grid>
                     <Grid item xs={2}>
                         <button className={classes.btn}>Enroll in a Course</button>
@@ -85,34 +83,18 @@ const Courses = ({changeCourse}) => {
                     <Sidebar/>
                 </Grid>
                 <Grid item xs={8}>
-                    <Grid container>
-                        {
-                            myCourses.map(courseName => (
-                                <Grid xs={6}>
-                                    <Link to={"/main"}>
-                                        <button onClick={() => handler(courseName)} className={classes.course}>
-                                            <div>
-                                                <p>{courseName}</p>
-                                            </div>
-                                            <div>
-                                                <p>Fall 2021-22</p>
-                                            </div>
-                                            <div>
-                                                <p>Instructor: Eray Tüzün</p>
-                                            </div>
-                                        </button>
-                                    </Link>
-                                </Grid>
-                            ))
-                        }
-                    </Grid>
+                    {activeTab === "Courses" ? <CourseList/> :
+                            <Edit_Profile/>}
                 </Grid>
             </Grid>
         </div>
 
     );
 }
+const mapStateToProps = (state) => {
+    return {activeTab: state.activeTab.activeTab};
+}
 const mapDispatchToProps = dispatch => ({
-    changeCourse: course => dispatch(changeCourse(course)),
+    changeTab: tab => dispatch(changeTab(tab)),
 });
-export default connect(null, mapDispatchToProps)(Courses);
+export default connect(mapStateToProps, mapDispatchToProps)(Courses);

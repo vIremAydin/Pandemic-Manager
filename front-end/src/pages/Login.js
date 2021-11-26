@@ -46,7 +46,7 @@ const Login = ()=>{
             <img src={userLogo} alt=""/>
             <TextField id="outlined-basic" label="Email" variant="outlined" className={classes.textfield}/>
             <TextField id="outlined-basic" label="Password" variant="outlined" className={classes.textfield}/>
-            <Button variant="contained" className={classes.loginButton}>Login</Button>
+            <Link to={"/courses"}><Button variant="contained" className={classes.loginButton}>Login</Button></Link>
             <p>Forgot Password?</p>
             <Link to={"/register"}>Don't have an account?</Link>
         </div>

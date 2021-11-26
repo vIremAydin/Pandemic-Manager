@@ -75,9 +75,9 @@ const Header = ({tab, changeTab, activeTab, course}) => {
             <div className={classes.logoContainer}>
                 <img className={classes.logo} src={logo} alt=""/>
             </div>
-            <p style={{color:"white"}}>{course}</p>
+            <p style={{color:"white", marginTop:"50px"}}>{course}</p>
             <div className={classes.buttons}>
-                <Link to={"/courses"}><MyButton onClick={() => {}} isActive={activeTab.activeTab=== "Courses"} name={"Courses"}/></Link>
+                <Link to={"/courses"}><MyButton onClick={() => handleButtons("Courses")} isActive={activeTab.activeTab=== "Courses"} name={"Courses"}/></Link>
          <MyButton onClick={()=>handleButtons("Attendance")}  isActive={activeTab.activeTab === "Attendance"} name={"Attendance"}/>
          <MyButton onClick={()=>handleButtons("Participants")} isActive={activeTab.activeTab === "Participants"} name={"Participants"}/>
          <MyButton onClick={()=>handleButtons("SeatPlan")} isActive={activeTab.activeTab === "SeatPlan"} name={"Seat Plan"}/>
