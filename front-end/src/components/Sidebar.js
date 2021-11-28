@@ -2,7 +2,6 @@ import {makeStyles} from "@material-ui/core/styles";
 import userLogo from "../images/userLogo.png";
 import {changeTab} from "../redux/tab-action";
 import {connect} from "react-redux";
-import LogoutDialog from "./LogoutDialog";
 import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -46,9 +45,10 @@ const useStyles = makeStyles({
 
 });
 
-const Sidebar = ({changeTab}) => {
+const Sidebar = ({changeTab, user}) => {
     const classes = useStyles();
     const [isOpen, setOpen] = React.useState(false);
+    console.log(user);
 
 //    useEffect(() => {
   //  }, [isOpen, setOpen, changeTab]);
@@ -68,7 +68,7 @@ const Sidebar = ({changeTab}) => {
                 <img src={userLogo} alt={""}/>
             </div>
             <div className={classes.userName}>
-                <span>username</span>
+                <span>{user.user.userName}</span>
             </div>
             <button className={classes.buttonLeftPart} onClick={() => handleButtons("Covid19Status")}>Covid19 Status
             </button>
@@ -90,7 +90,7 @@ const Sidebar = ({changeTab}) => {
                     aria-describedby="alert-dialog-description"
                 >
                     <DialogTitle id="alert-dialog-title">
-                        {"Log out?"}
+                        {"Do you want to log out?"}
                     </DialogTitle>
                     <DialogActions>
                         <Link to={"/"}><Button>Yes</Button></Link>
@@ -109,5 +109,8 @@ const Sidebar = ({changeTab}) => {
 const mapDispatchToProps = dispatch => ({
     changeTab: tab => dispatch(changeTab(tab)),
 });
-export default connect(null, mapDispatchToProps)(Sidebar);
+const mapStateToProps = (state) => {
+    return {user: state.user};
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
 

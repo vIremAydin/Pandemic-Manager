@@ -9,6 +9,7 @@ import {changeCourse, changeTab} from "../redux/tab-action";
 import {connect} from "react-redux";
 import CourseList from "../tabs/CouseList";
 import MyButton from "../components/MyButton";
+import CovidStatus from "../tabs/CovidStatus";
 
 
 const useStyles = makeStyles({
@@ -84,6 +85,7 @@ const Courses = ({activeTab, changeTab}) => {
                 </Grid>
                 <Grid item xs={8}>
                     {activeTab === "Courses" ? <CourseList/> :
+                    activeTab === "Covid19Status" ? <CovidStatus/> :
                             <Edit_Profile/>}
                 </Grid>
             </Grid>

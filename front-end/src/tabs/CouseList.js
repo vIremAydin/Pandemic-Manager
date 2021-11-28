@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     course: {
         width: "200px",
         height: "250px",
-        marginLeft: "100px",
+        marginLeft: "30px",
         marginTop: "50px",
         background: "#FFFFFF",
         '&:hover': {
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
         },
         border: "2px solid #C4C4C4",
         boxSizing: "border-box",
-        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25), -10px -10px 4px rgba(0, 0, 0, 0.25)",
+        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25), -7px -7px 4px rgba(0, 0, 0, 0.25)",
         borderRadius: "10px",
     },
 });
