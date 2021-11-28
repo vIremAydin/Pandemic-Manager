@@ -1,10 +1,10 @@
-import {GET_USER, GET_ACTIVE_TAB} from "./types"
+import {GET_USER,  SAVE_USER} from "./types"
+
 const initialState = {
-    user:[],
-    activeTab:1,
+    user: {},
 };
 
-export default function(state = initialState, action){
+const UserReducer =(state = initialState, action) => {
 
     switch(action.type){
 
@@ -13,9 +13,15 @@ export default function(state = initialState, action){
                 ...state,
                 user:action.payload,
             };
+        case SAVE_USER:
+            return {
+                ...state,
+                user: action.payload
+            }
 
         default: return {...state}
     }
 
 }
 
+export default UserReducer;

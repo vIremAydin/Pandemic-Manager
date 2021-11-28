@@ -9,6 +9,7 @@ import {useEffect} from "react";
 import HeaderHC from "../components/Header-HC";
 import Edit_Profile from "../tabs/Edit_Profile";
 import CourseList from "../tabs/CouseList";
+import CovidStatus from "../tabs/CovidStatus";
 
 const useStyles = makeStyles({
     MyCoursesPage: {
@@ -35,6 +36,7 @@ const MainPage = ({activeTab}) => {
                 <Grid item xs={8}>
                     {activeTab.activeTab === "Attendance" ? <AttendanceStudent/> :
                     activeTab.activeTab === "Courses" ? <CourseList/> :
+                    activeTab.activeTab === "Covid19Status" ? <CovidStatus/> :
                         <Edit_Profile/>}
                 </Grid>
 

@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="many cool modifications.">
-      <change afterPath="$PROJECT_DIR$/front-end/src/components/LogoutDialog.js" afterDir="false" />
+    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="logout">
+      <change afterPath="$PROJECT_DIR$/front-end/src/images/asi_orani1_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/src/redux/user.action.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/src/tabs/CovidStatus.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/redux/tabReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/redux/tabReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Courses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Main-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Main-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Welcome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/redux/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/redux/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/redux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/redux/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/redux/userReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/redux/userReducers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/tabs/CouseList.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/tabs/CouseList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,8 +87,8 @@
       <recent name="C:\Users\virem\WebstormProjects\CS319-Segmentation-Fault-Group1J\front-end\src\redux" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\virem\WebstormProjects\CS319-Segmentation-Fault-Group1J\front-end\src\pages" />
       <recent name="C:\Users\virem\WebstormProjects\CS319-Segmentation-Fault-Group1J\front-end\src\images" />
+      <recent name="C:\Users\virem\WebstormProjects\CS319-Segmentation-Fault-Group1J\front-end\src\pages" />
       <recent name="C:\Users\virem\WebstormProjects\CS319-Segmentation-Fault-Group1J\front-end\src\tabs" />
     </key>
   </component>
@@ -115,7 +122,8 @@
       <workItem from="1637772438760" duration="1691000" />
       <workItem from="1637781032384" duration="2226000" />
       <workItem from="1637861841211" duration="312000" />
-      <workItem from="1637919010493" duration="4986000" />
+      <workItem from="1637919010493" duration="5122000" />
+      <workItem from="1638082794461" duration="10752000" />
     </task>
     <task id="LOCAL-00001" summary="added.">
       <created>1637310740173</created>
@@ -187,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637920725368</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="logout">
+      <created>1637924948836</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1637924948836</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +243,8 @@
     <MESSAGE value="courses.js and selectedCourse added." />
     <MESSAGE value="default tab is changed." />
     <MESSAGE value="many cool modifications." />
-    <option name="LAST_COMMIT_MESSAGE" value="many cool modifications." />
+    <MESSAGE value="logout" />
+    <option name="LAST_COMMIT_MESSAGE" value="logout" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

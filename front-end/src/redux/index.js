@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import userReducer from './userReducers'
+import UserReducer from './userReducers'
 import TabReducer from "./tabReducer";
 
 export default combineReducers({
-    user: userReducer,
+    user: UserReducer,
     activeTab:TabReducer,
 
 });

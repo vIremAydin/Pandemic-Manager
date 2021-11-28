@@ -2,7 +2,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import logo from "../images/logo.png";
 import {Grid} from "@material-ui/core";
 import {Carousel} from "react-bootstrap";
-import slide1 from "../images/ası-bilkent.jpg";
+import slide1 from "../images/asi_orani1_1.jpg";
 import slide2 from "../images/asi.jpg";
 import 'react-slideshow-image/dist/styles.css'
 import {Slide} from 'react-slideshow-image';
@@ -89,18 +89,43 @@ const Welcome = () => {
                     </Grid>
                 </Grid>
             </div>
-            <div className="slide-container">
-                <Slide>
-                    {slideImages.map((slideImage, index) => (
-                        <div className="each-slide" key={index}>
-                            <div style={{'backgroundImage': `url(${slideImage.url})`}}>
-                                <span>{slideImage.caption}</span>
-                            </div>
-                        </div>
-                    ))}
-                </Slide>
+            <Carousel>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src={slide2}
+                        alt="First slide"
+                    />
+                    <Carousel.Caption>
+                        <h3>Coronavirus Vaccines</h3>
+                        <p>Coronavirus vaccines</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src={slide1}
+                        alt="Second slide"
+                    />
 
-            </div>
+                    <Carousel.Caption>
+                        <h3>Second slide label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src={slide2}
+                        alt="Third slide"
+                    />
+
+                    <Carousel.Caption>
+                        <h3>Get Vaccinated</h3>
+                        <p>See the closest health center</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            </Carousel>
         </div>
     );
 }
