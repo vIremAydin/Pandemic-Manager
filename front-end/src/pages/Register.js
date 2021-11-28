@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import userLogo from "../images/userLogo.png";
-import {Button, TextField, Link} from "@material-ui/core";
+import {Button, TextField} from "@material-ui/core";
+import {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -46,8 +47,8 @@ const Register = ()=>{
             <img src={userLogo} alt=""/>
             <TextField id="outlined-basic" label="Email" variant="outlined" className={classes.textfield}/>
             <TextField id="outlined-basic" label="Password" variant="outlined" className={classes.textfield}/>
-            <Button variant="contained" className={classes.registerButton}>Create an account</Button>
-            <p>Already have an account? <Link href="#">Log in</Link></p>
+            <Link to={"/courses"}><Button variant="contained" className={classes.registerButton}>Create an account</Button></Link>
+            <p>Already have an account? <Link to={"/login"}>Log in</Link></p>
         </div>
 
     );

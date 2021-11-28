@@ -1,47 +1,100 @@
+import {makeStyles} from "@material-ui/core/styles";
+import {Grid} from "@material-ui/core";
+import logo from "../images/logo.png";
+import React from "react";
+import Sidebar from "../components/Sidebar";
+import AttendanceStudent from "../tabs/Attendance-student";
+import Edit_Profile from "../tabs/Edit_Profile";
+import {changeCourse, changeTab} from "../redux/tab-action";
+import {connect} from "react-redux";
+import CourseList from "../tabs/CouseList";
+import MyButton from "../components/MyButton";
 
-import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-    course: {
-        width: "200px",
-        height: "250px",
-        marginLeft: "100px",
-        marginTop: "50px",
-        background: "#FFFFFF",
-        '&:hover': {
-            background: "rgba(45, 45, 45, 0.5)"
-        },
-        border: "2px solid #C4C4C4",
-        boxSizing: "border-box",
-        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25), -10px -10px 4px rgba(0, 0, 0, 0.25)",
-        borderRadius: "10px",
+
+    logo: {
+        width: "150px",
+        height: "100px"
+
+    },
+    logoContainer: {
+        marginTop: "10px",
     },
 
-  
+    header: {
+        width: '100%',
+        height: '120px',
+        background: '#023047',
+        boxSizing: 'border-box',
+
+    },
+    btn: {
+        marginTop: "30px",
+        cursor: "pointer",
+        width: "164px",
+        height: "47px",
+        background: "#F1B24A",
+        '&:hover': {
+            background: "#969090",
+        },
+        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        borderRadius: "10px",
+
+    },
+    btn2:{
+        marginTop: "30px",
+        cursor: "pointer",
+    }
+
+
 });
 
-const Courses = ()=>{
+const Courses = ({activeTab, changeTab}) => {
     const classes = useStyles();
-    const myCourses = ["CS-319", "CS-315", "CS-224", "CS-202"];
+
+
+    function goToCourse() {
+        changeTab("Courses");
+    }
+
     return (
         <div>
-            {
-                myCourses.map(courseName =>(
-                    <button className = {classes.course}>
-                        <div>
-                            <p>{courseName}</p>
+            <div className={classes.header}>
+                <Grid container>
+                    <Grid item xs={4}>
+                        <div className={classes.logoContainer}>
+                            <img className={classes.logo} src={logo} alt=""/>
                         </div>
-                        <div>
-                            <p>Fall 2021-22</p>
-                        </div>
-                        <div>
-                            <p>Instructor: Eray Tüzün</p>
-                        </div>
-                    </button>
-                ))
-            }
+                    </Grid>
+                    <Grid item xs={4}>
+
+                    </Grid>
+                    <Grid item xs={2} className={classes.btn2}>
+                        <MyButton name={"Courses"} isActive={"Courses" === activeTab} onClick={()=>goToCourse()} />
+                    </Grid>
+                    <Grid item xs={2}>
+                        <button className={classes.btn}>Enroll in a Course</button>
+                    </Grid>
+                </Grid>
+            </div>
+            <Grid container>
+                <Grid item xs={4}>
+                    <Sidebar/>
+                </Grid>
+                <Grid item xs={8}>
+                    {activeTab === "Courses" ? <CourseList/> :
+                            <Edit_Profile/>}
+                </Grid>
+            </Grid>
         </div>
 
     );
 }
-export default Courses;
+const mapStateToProps = (state) => {
+    return {activeTab: state.activeTab.activeTab};
+}
+const mapDispatchToProps = dispatch => ({
+    changeTab: tab => dispatch(changeTab(tab)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Courses);

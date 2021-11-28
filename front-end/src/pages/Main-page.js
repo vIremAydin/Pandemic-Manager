@@ -2,10 +2,13 @@ import {makeStyles} from "@material-ui/core/styles";
 import Header from "../components/Header";
 import {Grid} from "@material-ui/core";
 import Sidebar from "../components/Sidebar";
-import AttendanceStudent from "./Attendance-student";
+import AttendanceStudent from "../tabs/Attendance-student";
 import {connect} from "react-redux";
 import Courses from "./Courses";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
+import HeaderHC from "../components/Header-HC";
+import Edit_Profile from "../tabs/Edit_Profile";
+import CourseList from "../tabs/CouseList";
 
 const useStyles = makeStyles({
     MyCoursesPage: {
@@ -30,8 +33,9 @@ const MainPage = ({activeTab}) => {
                     <Sidebar/>
                 </Grid>
                 <Grid item xs={8}>
-                    {activeTab.activeTab === 1 ? <AttendanceStudent/>
-                    : <Courses/>}
+                    {activeTab.activeTab === "Attendance" ? <AttendanceStudent/> :
+                    activeTab.activeTab === "Courses" ? <CourseList/> :
+                        <Edit_Profile/>}
                 </Grid>
 
             </Grid>

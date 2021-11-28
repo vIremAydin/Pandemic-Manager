@@ -4,7 +4,6 @@ import notification from "../images/notification.png"
 import {connect} from "react-redux";
 import {changeTab} from "../redux/tab-action";
 import MyButton from "./MyButton";
-import {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -62,12 +61,12 @@ const useStyles = makeStyles({
     }
 });
 
-const Header = ({tab, changeTab, activeTab, course}) => {
+const HeaderHC = ({tab, changeTab}) => {
     const classes = useStyles();
 
-    function handleButtons(tb) {
-        changeTab(tb);
-        console.log(tb);
+    function handleButtons(tab) {
+        changeTab(tab);
+        console.log(tab);
     }
 
     return (
@@ -75,13 +74,11 @@ const Header = ({tab, changeTab, activeTab, course}) => {
             <div className={classes.logoContainer}>
                 <img className={classes.logo} src={logo} alt=""/>
             </div>
-            <p style={{color:"white", marginTop:"50px"}}>{course}</p>
             <div className={classes.buttons}>
-                <Link to={"/courses"}><MyButton onClick={() => handleButtons("Courses")} isActive={activeTab.activeTab=== "Courses"} name={"Courses"}/></Link>
-         <MyButton onClick={()=>handleButtons("Attendance")}  isActive={activeTab.activeTab === "Attendance"} name={"Attendance"}/>
-         <MyButton onClick={()=>handleButtons("Participants")} isActive={activeTab.activeTab === "Participants"} name={"Participants"}/>
-         <MyButton onClick={()=>handleButtons("SeatPlan")} isActive={activeTab.activeTab === "SeatPlan"} name={"Seat Plan"}/>
-         <MyButton onClick={()=>handleButtons("CourseInfo")} isActive={activeTab.activeTab === "CourseInfo"} name={"Course Info"}/>
+                <MyButton onClick={()=>handleButtons("AllCases")}  isActive={tab === "AllCases"} name={"All Cases"}/>
+                <MyButton onClick={()=>handleButtons("Dorm")}  isActive={tab === "Dorm"} name={"Dorm"}/>
+                <MyButton onClick={()=>handleButtons("Schedule")}  isActive={tab === "Schedule"} name={"Schedule"}/>
+
                 <img className={classes.notificationIcon} src={notification} alt=""/>
 
             </div>
@@ -92,9 +89,5 @@ const Header = ({tab, changeTab, activeTab, course}) => {
 const mapDispatchToProps = dispatch => ({
     changeTab: tab => dispatch(changeTab(tab)),
 });
-const mapStateToProps = (state) => {
-    return {activeTab: state.activeTab,
-    course: state.activeTab.selectedCourse};
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(HeaderHC);
 
