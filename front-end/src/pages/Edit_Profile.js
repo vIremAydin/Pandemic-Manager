@@ -5,10 +5,10 @@ import {Button, TextField, Link} from "@material-ui/core";
 
 const useStyles = makeStyles({
     editProfileContainer: {
-        width: "50%",
+        width: "10%",
         height: "80%",
         marginTop: "10%",
-        marginLeft: "10%",
+        marginLeft: "40%",
     },
 
     title: {
@@ -26,7 +26,6 @@ const useStyles = makeStyles({
         width:"100%",
         height: "20px",
         float:"right",
-        paddingLeft:"100%",
         marginTop:"-12px",
     },
 

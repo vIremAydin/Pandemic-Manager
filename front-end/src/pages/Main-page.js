@@ -10,6 +10,8 @@ import HeaderHC from "../components/Header-HC";
 import Edit_Profile from "../tabs/Edit_Profile";
 import CourseList from "../tabs/CouseList";
 import CovidStatus from "../tabs/CovidStatus";
+import Help from "../tabs/Help"
+import TestSchedule from "../tabs/TestSchedule";
 
 const useStyles = makeStyles({
     MyCoursesPage: {
@@ -37,6 +39,8 @@ const MainPage = ({activeTab}) => {
                     {activeTab.activeTab === "Attendance" ? <AttendanceStudent/> :
                     activeTab.activeTab === "Courses" ? <CourseList/> :
                     activeTab.activeTab === "Covid19Status" ? <CovidStatus/> :
+                    activeTab.activeTab === "Help" ? <Help/>:
+                    activeTab.activeTab === "TestSchedule" ? <TestSchedule/> :
                         <Edit_Profile/>}
                 </Grid>
 
