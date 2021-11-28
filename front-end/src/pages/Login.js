@@ -5,9 +5,9 @@ import {Link} from "react-router-dom"
 
 const useStyles = makeStyles({
     loginContainer: {
-        width: "15%",
+        width: "20%",
         height: "40%",
-        marginLeft: "42.5%",
+        marginLeft: "40%",
         marginTop:"10%",
         display:"flex",
         flexDirection:"column",
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     },
 
     loginButton: {
-        marginTop: "20%",
+        marginTop: "70%",
         width: "100%",
         background:"#023047",
         color:"#ffffff",

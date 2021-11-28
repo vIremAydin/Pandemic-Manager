@@ -5,10 +5,10 @@ import {Button, TextField, Link} from "@material-ui/core";
 
 const useStyles = makeStyles({
     helpContainer: {
-        width: "50%",
+        width: "80%",
         height: "80%",
-        marginTop: "15%",
-        marginLeft: "30%",
+        marginTop: "5%",
+        marginLeft: "0%",
     },
 
     title: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     },
     box: {
         width: "100%",
-        height: "80%",
+        height: "70%",
         background: "#FFFFFF",
         border: "1px solid #C4C4C4",
         boxSizing: "border-box",
@@ -33,7 +33,6 @@ const useStyles = makeStyles({
         marginLeft: "10px",
         marginRight: "10px",
         marginTop:"-20px",
-        
     },
     
     p:{
