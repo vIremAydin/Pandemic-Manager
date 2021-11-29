@@ -58,7 +58,6 @@ const Sidebar = ({changeTab, user}) => {
     }
 
     function handleLogout(value) {
-        changeTab("Courses");
         setOpen(value);
     }
 
@@ -93,7 +92,8 @@ const Sidebar = ({changeTab, user}) => {
                         {"Do you want to log out?"}
                     </DialogTitle>
                     <DialogActions>
-                        <Link to={"/"}><Button>Yes</Button></Link>
+                        <Link to={"/"}><Button onClick={()=>changeTab("Courses")
+                        }>Yes</Button></Link>
                         <Button onClick={()=>handleLogout(false)} autoFocus>
                             No
                         </Button>

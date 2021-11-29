@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     },
 
     textfield: {
-        width:"100%",
+        width:"300px",
         height: "20px",
         float:"right",
         paddingLeft:"100%",
@@ -52,8 +52,8 @@ const useStyles = makeStyles({
     link: {
         marginLeft:"35%",
     }
-    
-    
+
+
 });
 
 const EditProfile = ()=>{
@@ -61,8 +61,8 @@ const EditProfile = ()=>{
 
     const handleButton = (buttonName) => {
         return undefined;
-    } 
-    
+    }
+
     return (
         <div className={classes.editProfileContainer}>
             <p className={classes.title}>Edit Your Profile</p>
@@ -70,13 +70,13 @@ const EditProfile = ()=>{
                 <img src={userLogo} alt=""/>
                 <Button variant="contained" className={classes.uploadButton}>Upload New Profile Photo</Button>
             </div>
-            
+
             <div className={classes.container}>
                 <label className={classes.label}>
                     New Password: <TextField id="outlined-basic" variant="outlined" className={classes.textfield}/>
                 </label>
             </div>
-            
+
             <div className={classes.container}>
                 <label className={classes.label}>
                     Confirm New Password: <TextField id="outlined-basic" variant="outlined" className={classes.textfield}/>
@@ -91,7 +91,7 @@ const EditProfile = ()=>{
                 <Link href="#" className={classes.link}>Forgot Password?</Link>
                 <Button variant="contained" className={classes.saveButton}>Save</Button>
             </div>
-            
+
         </div>
 
     );

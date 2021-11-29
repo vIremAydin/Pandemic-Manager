@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="user register">
+    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Edit_Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Edit_Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/tabs/Edit_Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/tabs/Edit_Profile.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="furkanturunc" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -111,8 +114,8 @@
       <workItem from="1637781032384" duration="2226000" />
       <workItem from="1637861841211" duration="312000" />
       <workItem from="1637919010493" duration="5122000" />
-      <workItem from="1638082794461" duration="12790000" />
-      <workItem from="1638121726232" duration="792000" />
+      <workItem from="1638082794461" duration="10752000" />
+      <workItem from="1638163260938" duration="307000" />
     </task>
     <task id="LOCAL-00001" summary="added.">
       <created>1637310740173</created>
@@ -191,14 +194,7 @@
       <option name="project" value="LOCAL" />
       <updated>1637924948836</updated>
     </task>
-    <task id="LOCAL-00012" summary="user register">
-      <created>1638106954139</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1638106954139</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,8 +236,7 @@
     <MESSAGE value="default tab is changed." />
     <MESSAGE value="many cool modifications." />
     <MESSAGE value="logout" />
-    <MESSAGE value="user register" />
-    <option name="LAST_COMMIT_MESSAGE" value="user register" />
+    <option name="LAST_COMMIT_MESSAGE" value="logout" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
