@@ -12,6 +12,7 @@ import CourseList from "../tabs/CouseList";
 import CovidStatus from "../tabs/CovidStatus";
 import Help from "../tabs/Help"
 import TestSchedule from "../tabs/TestSchedule";
+import SeatPlan from "../tabs/SeatPlan";
 
 const useStyles = makeStyles({
     MyCoursesPage: {
@@ -41,6 +42,7 @@ const MainPage = ({activeTab}) => {
                     activeTab.activeTab === "Covid19Status" ? <CovidStatus/> :
                     activeTab.activeTab === "Help" ? <Help/>:
                     activeTab.activeTab === "TestSchedule" ? <TestSchedule/> :
+                    activeTab.activeTab === "SeatPlan" ? <SeatPlan/> :
                         <Edit_Profile/>}
                 </Grid>
 

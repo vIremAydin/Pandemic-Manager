@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import userLogo from "../images/userLogo.png";
 import {Button, TextField, Link} from "@material-ui/core";
 
 
@@ -34,7 +33,7 @@ const useStyles = makeStyles({
         marginRight: "10px",
         marginTop:"-20px",
     },
-    
+
     p:{
         color: "#023047",
         fontWeight:"bold"
@@ -60,7 +59,7 @@ const Help = ()=>{
                                 {question: "Why can’t I view the seat plan?", answer:"Your instructor might not enter the seat plan details (i.e. number of rows and columns of the seat plan)."},
                                 {question: "Why don’t I get any email regarding test schedule remainder?", answer: "Click on Test Schedule button on main page, then please check the box (i.e. “Notify me when my test day arrives”). "},
                                 {question: "How to update my vaccination information?", answer: "Click on Covid19 Status button on main page, then click the button “Upload Vaccination Card” under “Vaccination Information” title."}];
-    
+
     const handleButtons = (buttonName) => {
         return undefined;
     }
@@ -77,7 +76,7 @@ const Help = ()=>{
                         </div>
                     ))
                 }
-                
+
             </div>
             <div className={classes.report}>
                 <TextField id="outlined-basic" label="Student Name and Surname" variant="outlined" size="small"/>
@@ -85,8 +84,8 @@ const Help = ()=>{
 
             </div>
             <Button variant="contained" style={{color:"#023047"}} onClick = {() => handleButtons("contactButton")}>Contact Health Center</Button>
-            
-            
+
+
         </div>
 
     );

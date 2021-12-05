@@ -1,5 +1,5 @@
 import {makeStyles} from "@material-ui/core/styles";
-import {Grid} from "@material-ui/core";
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, TextField} from "@material-ui/core";
 import logo from "../images/logo.png";
 import React from "react";
 import Sidebar from "../components/Sidebar";
@@ -12,6 +12,7 @@ import MyButton from "../components/MyButton";
 import CovidStatus from "../tabs/CovidStatus";
 import Help from "../tabs/Help";
 import TestSchedule from "../tabs/TestSchedule";
+import Button from "@mui/material/Button";
 
 
 const useStyles = makeStyles({
@@ -55,7 +56,15 @@ const useStyles = makeStyles({
 
 const Courses = ({activeTab, changeTab}) => {
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
 
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     function goToCourse() {
         changeTab("Courses");
@@ -77,7 +86,7 @@ const Courses = ({activeTab, changeTab}) => {
                         <MyButton name={"Courses"} isActive={"Courses" === activeTab} onClick={()=>goToCourse()} />
                     </Grid>
                     <Grid item xs={2}>
-                        <button className={classes.btn}>Enroll in a Course</button>
+                        <button onClick={handleClickOpen} className={classes.btn}>Enroll in a Course</button>
                     </Grid>
                 </Grid>
             </div>
@@ -93,6 +102,30 @@ const Courses = ({activeTab, changeTab}) => {
                             <Edit_Profile/>}
                 </Grid>
             </Grid>
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle>Enroll in a Course</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                       Enter the course code given by your instructor
+                    </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Course Code"
+                        type="text"
+                        fullWidth
+                        variant="standard"
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Enroll</Button>
+                    <Button onClick={handleClose}>Cancel</Button>
+                </DialogActions>
+            </Dialog>
+
+
+
         </div>
 
     );
