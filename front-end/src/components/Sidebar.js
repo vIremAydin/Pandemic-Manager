@@ -9,6 +9,8 @@ import DialogActions from "@mui/material/DialogActions";
 import {Link} from "react-router-dom";
 import Button from "@mui/material/Button";
 
+import SidebarButton from "./SidebarButton";
+
 const useStyles = makeStyles({
     sidebar: {
         display: "flex",
@@ -24,9 +26,7 @@ const useStyles = makeStyles({
         marginLeft: "10%",
         marginTop: "30px",
         background: "rgba(45, 45, 45, 0.24)",
-        '&:hover': {
-            background: "rgba(45, 45, 45, 0.75)",
-        },
+
         borderRadius: "20px",
         borderColor: "#000000",
         color: "#000000",
@@ -69,17 +69,17 @@ const Sidebar = ({changeTab, user}) => {
             <div className={classes.userName}>
                 <span>{user.user.userName}</span>
             </div>
-            <button className={classes.buttonLeftPart} onClick={() => handleButtons("Covid19Status")}>Covid19 Status
-            </button>
-            <button className={classes.buttonLeftPart} onClick={() => handleButtons("TestSchedule")}>Test Schedule
-            </button>
-            <button className={classes.buttonLeftPart} onClick={() => handleButtons("EditProfile")}>Edit Profile
-            </button>
-            <button className={classes.buttonLeftPart} onClick={() => handleButtons("Help")}>Help</button>
-            <button className={classes.buttonLeftPart} onClick={() =>
+
+            <SidebarButton name={"Covid19 Status"} className={classes.buttonLeftPart } onClick={() => handleButtons("Covid19Status")}/>
+
+            <SidebarButton className={classes.buttonLeftPart} name={"Test Schedule"} onClick={() => handleButtons("TestSchedule")}/>
+
+            <SidebarButton className={classes.buttonLeftPart} name={"Edit Profile"} onClick={() => handleButtons("EditProfile")}/>
+            <SidebarButton className={classes.buttonLeftPart} name={"Help"} onClick={() => handleButtons("Help")}/>
+            <SidebarButton className={classes.buttonLeftPart} onClick={() =>
                 setOpen(true)
-            }>Logout
-            </button>
+            } name={"Log out"}/>
+
 
             <div>
                 <Dialog

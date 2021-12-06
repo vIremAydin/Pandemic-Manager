@@ -7,6 +7,12 @@ import MyButton from "./MyButton";
 
 
 const useStyles = makeStyles({
+    container: {
+        padding: "40px",
+        background: '#023047',
+        height: '120px',
+        boxSizing: 'border-box',
+    },
 
     logo: {
         width: "150px",
@@ -14,23 +20,18 @@ const useStyles = makeStyles({
 
     },
     logoContainer: {
-        marginTop: "10px",
+        width: "%10",
+
+        position: "absolute",
+        top: "0px",
+        left: "10px",
     },
 
-    header: {
-        width: '100%',
-        height: '120px',
-        background: '#023047',
-        boxSizing: 'border-box',
-        display: "flex",
-        justifyContent: "space-around",
-
-
-    },
     buttons: {
+        marginLeft:"100px",
         display: "flex",
         flexDirection: "col",
-        marginTop: "40px",
+        justifyContent: "space-evenly"
     },
 
     headerRightPart: {
@@ -40,19 +41,7 @@ const useStyles = makeStyles({
         marginTop: "-50px"
     },
 
-    buttonsInHeader: {
-        cursor: "pointer",
-        marginLeft: "30px",
-        width: "164px",
-        height: "47px",
-        background: "#F1B24A",
-        '&:hover': {
-            background: "#969090",
-        },
-        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-        borderRadius: "10px",
-        // borderColor: "#000000",
-    },
+
     notificationIcon: {
         cursor: "pointer",
         marginLeft: "20px",
@@ -70,18 +59,19 @@ const HeaderHC = ({tab, changeTab}) => {
     }
 
     return (
-        <div className={classes.header}>
+        <div className={classes.container}>
             <div className={classes.logoContainer}>
                 <img className={classes.logo} src={logo} alt=""/>
             </div>
             <div className={classes.buttons}>
-                <MyButton onClick={()=>handleButtons("AllCases")}  isActive={tab === "AllCases"} name={"All Cases"}/>
-                <MyButton onClick={()=>handleButtons("Dorm")}  isActive={tab === "Dorm"} name={"Dorm"}/>
-                <MyButton onClick={()=>handleButtons("Schedule")}  isActive={tab === "Schedule"} name={"Schedule"}/>
+                <MyButton onClick={() => handleButtons("AllCases")} isActive={tab === "AllCases"} name={"All Cases"}/>
+                <MyButton onClick={() => handleButtons("Dorm")} isActive={tab === "Dorm"} name={"Dorm"}/>
+                <MyButton onClick={() => handleButtons("Schedule")} isActive={tab === "Schedule"} name={"Schedule"}/>
 
                 <img className={classes.notificationIcon} src={notification} alt=""/>
 
             </div>
+
         </div>
     )
 }

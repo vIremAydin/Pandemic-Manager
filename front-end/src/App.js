@@ -6,6 +6,7 @@ import {Route, Routes} from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Courses from "./pages/Courses";
+import HCMain from "./pages/HealthCenter/HCMain";
 
 
 const useStyles = makeStyles({
@@ -17,7 +18,7 @@ function App() {
         <div>
             <Routes>
                 <Route path='/' element={<Welcome/>}/>
-                <Route path='/main' element={<MainPage/>}/>
+                <Route path='/main' element={<HCMain/>}/>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/courses' element={<Courses/>}/>
                 <Route path='/register' element={<Register/>}/>
