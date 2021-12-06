@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="Edit_Profile.js">
-      <change afterPath="$PROJECT_DIR$/front-end/src/tabs/SeatPlan.js" afterDir="false" />
+    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="SeatPlan.js and enroll course dialog">
+      <change afterPath="$PROJECT_DIR$/front-end/src/components/TestCalendar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/src/components/button-style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Courses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/MyButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/MyButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/pages/Main-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Main-page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/tabs/Help.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/tabs/Help.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Welcome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/tabs/TestSchedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/tabs/TestSchedule.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +25,7 @@
       <list>
         <option value="package.json" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -64,6 +69,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/front-end/src/images" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -118,7 +124,9 @@
       <workItem from="1638082794461" duration="10752000" />
       <workItem from="1638163260938" duration="1627000" />
       <workItem from="1638217847208" duration="25000" />
-      <workItem from="1638722616815" duration="2419000" />
+      <workItem from="1638722616815" duration="3252000" />
+      <workItem from="1638780280375" duration="1427000" />
+      <workItem from="1638807393138" duration="1504000" />
     </task>
     <task id="LOCAL-00001" summary="added.">
       <created>1637310740173</created>
@@ -204,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638163690503</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="SeatPlan.js and enroll course dialog">
+      <created>1638725285825</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1638725285825</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,7 +262,8 @@
     <MESSAGE value="many cool modifications." />
     <MESSAGE value="logout" />
     <MESSAGE value="Edit_Profile.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit_Profile.js" />
+    <MESSAGE value="SeatPlan.js and enroll course dialog" />
+    <option name="LAST_COMMIT_MESSAGE" value="SeatPlan.js and enroll course dialog" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

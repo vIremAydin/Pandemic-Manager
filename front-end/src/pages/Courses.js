@@ -35,15 +35,7 @@ const useStyles = makeStyles({
     },
     btn: {
         marginTop: "30px",
-        cursor: "pointer",
-        width: "164px",
-        height: "47px",
-        background: "#F1B24A",
-        '&:hover': {
-            background: "#969090",
-        },
-        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-        borderRadius: "10px",
+
 
     },
     btn2:{
@@ -86,7 +78,9 @@ const Courses = ({activeTab, changeTab}) => {
                         <MyButton name={"Courses"} isActive={"Courses" === activeTab} onClick={()=>goToCourse()} />
                     </Grid>
                     <Grid item xs={2}>
-                        <button onClick={handleClickOpen} className={classes.btn}>Enroll in a Course</button>
+                        <div className={classes.btn}>
+                            <MyButton onClick={handleClickOpen} name={"Enroll"} isActive={false} />
+                        </div>
                     </Grid>
                 </Grid>
             </div>

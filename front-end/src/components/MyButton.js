@@ -1,5 +1,5 @@
 import {makeStyles} from "@material-ui/core/styles";
-
+import "./button-style.css"
 const useStyles = makeStyles({
 
     buttonsInHeader: {
@@ -21,11 +21,11 @@ const MyButton = ({name, isActive, onClick}) =>{
     return(<div>
         {
             isActive ?
-                <button disabled={true} onClick={() =>onClick(name)} className={classes.buttonsInHeader} style={{backgroundColor: "#969090", cursor:"context-menu"}}
+                <button className={"notActive"} disabled={true} onClick={() =>onClick(name)}
                        >{name}
                 </button>
                 :
-                <button  onClick={() =>onClick(name)} className={classes.buttonsInHeader}
+                <button  className={"Active"} onClick={() =>onClick(name)}
                       >{name}
                 </button>
         }

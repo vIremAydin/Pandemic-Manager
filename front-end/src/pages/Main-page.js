@@ -14,11 +14,12 @@ import Help from "../tabs/Help"
 import TestSchedule from "../tabs/TestSchedule";
 import SeatPlan from "../tabs/SeatPlan";
 
+
 const useStyles = makeStyles({
     MyCoursesPage: {
-        backgroundColor: '#ffffff',
+
         boxSizing: 'border-box',
-        height: '100%'
+        height: '100%',
     },
 
 });
@@ -30,7 +31,7 @@ const MainPage = ({activeTab}) => {
     }, [activeTab]);
     const classes = useStyles();
     return (
-        <div>
+        <div className={classes.MyCoursesPage}>
             <Header/>
             <Grid container>
                 <Grid item xs={4}>
@@ -38,7 +39,6 @@ const MainPage = ({activeTab}) => {
                 </Grid>
                 <Grid item xs={8}>
                     {activeTab.activeTab === "Attendance" ? <AttendanceStudent/> :
-                    activeTab.activeTab === "Courses" ? <CourseList/> :
                     activeTab.activeTab === "Covid19Status" ? <CovidStatus/> :
                     activeTab.activeTab === "Help" ? <Help/>:
                     activeTab.activeTab === "TestSchedule" ? <TestSchedule/> :

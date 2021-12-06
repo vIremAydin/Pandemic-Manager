@@ -8,6 +8,7 @@ import 'react-slideshow-image/dist/styles.css'
 import {Slide} from 'react-slideshow-image';
 import React from 'react';
 import {Link} from "react-router-dom";
+import MyButton from "../components/MyButton";
 
 
 const useStyles = makeStyles({
@@ -35,15 +36,7 @@ const useStyles = makeStyles({
 
     btn: {
         marginTop: "30px",
-        cursor: "pointer",
-        width: "164px",
-        height: "47px",
-        background: "#F1B24A",
-        '&:hover': {
-            background: "#969090",
-        },
-        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-        borderRadius: "10px",
+
 
     },
     caro: {}
@@ -83,9 +76,12 @@ const Welcome = () => {
 
                     </Grid>
                     <Grid item xs={2}>
-                        <Link to={"/login"}>
-                            <button className={classes.btn}>Login</button>
-                        </Link>
+                        <div className={classes.btn}>
+                            <Link to={"/login"}>
+                                <MyButton  isActive={false} name={"Login"} onClick={()=>{}}/>
+                            </Link>
+                        </div>
+
                     </Grid>
                 </Grid>
             </div>
