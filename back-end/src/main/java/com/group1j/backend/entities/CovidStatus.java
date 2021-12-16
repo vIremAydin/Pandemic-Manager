@@ -1,7 +1,6 @@
 package com.group1j.backend.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class CovidStatus {
@@ -14,6 +13,8 @@ public class CovidStatus {
     private boolean isAllowedToCampus;
     private String hesCode;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     private int covidStatusID;
 
     //Constructor

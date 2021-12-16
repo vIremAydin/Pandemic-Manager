@@ -33,6 +33,10 @@ public class User {
         this.testRecord = testRecord;
         this.schedule = schedule;
     }
+    //Default Constructor
+    public User() {
+
+    }
 
     public int getId() {
         return id;
