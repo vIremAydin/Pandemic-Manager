@@ -1,7 +1,9 @@
 package com.group1j.backend.entities;
 
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 @MappedSuperclass
 public class User {
@@ -11,11 +13,16 @@ public class User {
     private String name;
     private String email;
     private String password;
+    @OneToOne(fetch = FetchType.LAZY)
     private CovidStatus covidStaus;
+    @OneToOne(fetch = FetchType.LAZY)
     private VaccinationStatus vaccinationStatus;
+    @OneToOne(fetch = FetchType.LAZY)
     private TestRecord testRecord;
+    @OneToOne(fetch = FetchType.LAZY)
     private Schedule schedule;
 
+    //Constructor
     public User(int id, String name, String email, String password, CovidStatus covidStaus, VaccinationStatus vaccinationStatus, TestRecord testRecord, Schedule schedule) {
         this.id = id;
         this.name = name;
