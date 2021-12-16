@@ -20,8 +20,7 @@ public class Appointment {
     }
 
     //Constructor
-    public Appointment(int appointmentID, int patientID, String date) {
-        this.appointmentID = appointmentID;
+    public Appointment(int patientID, String date) {
         this.patientID = patientID;
         this.date = date;
     }
