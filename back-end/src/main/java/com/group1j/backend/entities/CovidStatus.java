@@ -18,7 +18,7 @@ public class CovidStatus {
     private int covidStatusID;
 
     //Constructor
-    public CovidStatus(boolean isInfected, boolean isContacted, boolean previouslyInfected, boolean isTestNeeded, String testDeadline, boolean isAllowedToCampus, String hesCode, int covidStatusID) {
+    public CovidStatus(boolean isInfected, boolean isContacted, boolean previouslyInfected, boolean isTestNeeded, String testDeadline, boolean isAllowedToCampus, String hesCode) {
         this.isInfected = isInfected;
         this.isContacted = isContacted;
         this.previouslyInfected = previouslyInfected;
@@ -26,7 +26,6 @@ public class CovidStatus {
         this.testDeadline = testDeadline;
         this.isAllowedToCampus = isAllowedToCampus;
         this.hesCode = hesCode;
-        this.covidStatusID = covidStatusID;
     }
     //Default Constructor
     public CovidStatus() {
