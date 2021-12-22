@@ -1,14 +1,22 @@
 package com.group1j.backend.services;
 
-import com.group1j.backend.entities.Student;
-import com.group1j.backend.repositories.StudentRepository;
+import com.group1j.backend.dto.CreateUserDTO;
+import com.group1j.backend.entities.*;
+import com.group1j.backend.repositories.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
     private StudentRepository studentRepository;
+    private CovidStatusRepository covidStatusRepository;
+    private VaccinationStatusRepository vaccinationStatusRepository;
+    private TestRecordRepository testRecordRepository;
+    private ScheduleRepository scheduleRepository;
+
 
     //Constructor
     public StudentService(StudentRepository studentRepository) {
@@ -21,6 +29,29 @@ public class StudentService {
      */
     public List<Student> getAllStudents(){
         return studentRepository.findAll();
+    }
+
+    public Student createStudent(CreateUserDTO createUserDTO){
+        Optional<Student> students = studentRepository.findById(createUserDTO.getId());
+        if(students.isPresent()){
+            throw new RuntimeException("Student already exists");
+        }
+
+        CovidStatus covidStatus = new CovidStatus(false,false,false,false,"",true,createUserDTO.getHesCode());
+        VaccinationStatus vaccinationStatus = new VaccinationStatus();
+        Schedule schedule = new Schedule();
+        TestRecord testRecord = new TestRecord();
+//        vaccinationStatusRepository.save(vaccinationStatus);
+//        scheduleRepository.save(schedule);
+//        testRecordRepository.save(testRecord);
+//        covidStatusRepository.save(covidStatus);
+        Student student = new Student(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>(),2020);
+        studentRepository.save(student);
+        return student;
+    }
+
+    public Optional<Student> findByStudentid(Integer id){
+        return studentRepository.findById(id);
     }
 
     public StudentRepository getStudentRepository() {

@@ -5,6 +5,10 @@ import javax.persistence.*;
 @Entity
 public class CovidStatus {
     //Fields
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
+    private int covidStatusID;
     private boolean isInfected;
     private boolean isContacted;
     private boolean previouslyInfected;
@@ -12,10 +16,7 @@ public class CovidStatus {
     private String testDeadline;
     private boolean isAllowedToCampus;
     private String hesCode;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false)
-    private int covidStatusID;
+
 
     //Constructor
     public CovidStatus(boolean isInfected, boolean isContacted, boolean previouslyInfected, boolean isTestNeeded, String testDeadline, boolean isAllowedToCampus, String hesCode) {
