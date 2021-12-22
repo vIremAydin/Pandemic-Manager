@@ -40,6 +40,11 @@ public class StudentController {
         return studentService.loginStudent(userLoginDTO);
     }
 
+    @PutMapping("/update/TestNeededStatus/{id}")
+    public Student updateTestNeededStatus(@PathVariable int id){
+        return studentService.updateTestNeededStatus(id);
+    }
+
     public StudentService getStudentService() {
         return studentService;
     }
