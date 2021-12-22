@@ -12,4 +12,68 @@ import java.util.Optional;
 
 @Service
 public class DoctorService {
+
+    private DoctorRepository doctorRepository;
+
+    //Constructor
+    public DoctorService(DoctorRepository doctorRepository) {
+        this.doctorRepository = doctorRepository;
+    }
+
+    /**
+     * Method for returning all of the students in the system
+     * @return
+     */
+    public List<Doctor> getAllDoctors(){
+        return doctorRepository.findAll();
+    }
+
+    //public Doctor createDoctor(CreateUserDTO createUserDTO){} //TODO
+
+    public Optional<Doctor> findByDoctorid(Integer id){
+        return doctorRepository.findById(id);
+    }
+
+    public DoctorRepository getDoctorRepository() {
+        return doctorRepository;
+    }
+
+    public void setDoctorRepository(DoctorRepository doctorRepository) {
+        this.doctorRepository = doctorRepository;
+    }
+
+    public boolean loginDoctor(UserLoginDTO userLoginDTO) {
+        //TODO
+        //Optional<Student> student = findByStudentid(userLoginDTO.getId());
+        //if (student.isPresent()){
+        //    Student s = student.get();
+        //    return s.getPassword().equals(userLoginDTO.getPassword());
+        //}
+        //return false;
+    }
+
+    public Doctor updateTestNeededStatus(int id) {
+        //TODO
+        //Optional<Student> student = findByStudentid(id);
+        //if (student.isPresent()){
+        //    Student s = student.get();
+        //    s.getCovidStaus().setTestNeeded(!s.getCovidStaus().isTestNeeded());
+        //    studentRepository.save(s);
+        //    return s;
+        //}
+        //return null;
+    }
+
+    public Doctor updateInfectedStatus(int id) {
+        //TODO
+        //Optional<Student> student = findByStudentid(id);
+        //if (student.isPresent()){
+        //    Student s = student.get();
+        //    s.getCovidStaus().setInfected(!s.getCovidStaus().isInfected());
+        //    studentRepository.save(s);
+        //    return s;
+        //}
+        //return null;
+    }
+
 }

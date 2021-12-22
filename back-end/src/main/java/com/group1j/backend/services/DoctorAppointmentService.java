@@ -12,4 +12,33 @@ import java.util.Optional;
 
 @Service
 public class DoctorAppointmentService {
+
+    private DoctorAppointmentRepository doctorAppointmentRepository;
+
+    //Constructor
+    public DoctorAppointmentService(DoctorAppointmentRepository doctorAppointmentRepository) {
+        this.doctorAppointmentRepository = doctorAppointmentRepository;
+    }
+
+    /**
+     * Method for returning all of the students in the system
+     * @return
+     */
+    public List<DoctorAppointment> getAllDoctorAppointments(){
+        return doctorAppointmentRepository.findAll();
+    }
+
+    //public Appointment createAppointment(CreateUserDTO createUserDTO){} //TODO
+
+    public Optional<DoctorAppointment> findByAppointmentid(Integer id){
+        return appointmentRepository.findByAppointmentID(id);
+    }
+
+    public DoctorAppointmentRepository getDoctorAppointmentRepository() {
+        return doctorAppointmentRepository;
+    }
+
+    public void setDoctorAppointmentRepository(DoctorAppointmentRepository doctorAppointmentRepository) {
+        this.doctorAppointmentRepository = doctorAppointmentRepository;
+    }
 }
