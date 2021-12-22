@@ -82,4 +82,15 @@ public class StudentService {
         }
         return null;
     }
+
+    public Student updateInfectedStatus(int id) {
+        Optional<Student> student = findByStudentid(id);
+        if (student.isPresent()){
+            Student s = student.get();
+            s.getCovidStaus().setInfected(!s.getCovidStaus().isInfected());
+            studentRepository.save(s);
+            return s;
+        }
+        return null;
+    }
 }

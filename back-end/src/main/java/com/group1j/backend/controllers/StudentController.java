@@ -45,6 +45,11 @@ public class StudentController {
         return studentService.updateTestNeededStatus(id);
     }
 
+    @PutMapping("/update/InfectedStatus/{id}")
+    public Student updateInfectedStatus(@PathVariable int id){
+        return studentService.updateInfectedStatus(id);
+    }
+
     public StudentService getStudentService() {
         return studentService;
     }
