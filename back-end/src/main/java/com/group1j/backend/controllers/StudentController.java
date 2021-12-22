@@ -1,6 +1,7 @@
 package com.group1j.backend.controllers;
 
 import com.group1j.backend.dto.CreateUserDTO;
+import com.group1j.backend.dto.UserLoginDTO;
 import com.group1j.backend.entities.*;
 import com.group1j.backend.services.StudentService;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,11 @@ public class StudentController {
     @PostMapping("/create")
     public Student createStudent(@RequestBody CreateUserDTO createUserDTO){
         return studentService.createStudent(createUserDTO);
+    }
+
+    @GetMapping("/login")
+    public boolean loginStudent(@RequestBody UserLoginDTO userLoginDTO){
+        return studentService.loginStudent(userLoginDTO);
     }
 
     public StudentService getStudentService() {

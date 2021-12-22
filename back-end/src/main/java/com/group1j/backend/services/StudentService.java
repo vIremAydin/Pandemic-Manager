@@ -1,6 +1,7 @@
 package com.group1j.backend.services;
 
 import com.group1j.backend.dto.CreateUserDTO;
+import com.group1j.backend.dto.UserLoginDTO;
 import com.group1j.backend.entities.*;
 import com.group1j.backend.repositories.*;
 import org.springframework.stereotype.Service;
@@ -60,5 +61,14 @@ public class StudentService {
 
     public void setStudentRepository(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
+    }
+
+    public boolean loginStudent(UserLoginDTO userLoginDTO) {
+        Optional<Student> student = findByStudentid(userLoginDTO.getId());
+        if (student.isPresent()){
+            Student s = student.get();
+            return s.getPassword().equals(userLoginDTO.getPassword());
+        }
+        return false;
     }
 }
