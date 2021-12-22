@@ -13,11 +13,6 @@ import java.util.Optional;
 @Service
 public class StudentService {
     private StudentRepository studentRepository;
-    private CovidStatusRepository covidStatusRepository;
-    private VaccinationStatusRepository vaccinationStatusRepository;
-    private TestRecordRepository testRecordRepository;
-    private ScheduleRepository scheduleRepository;
-
 
     //Constructor
     public StudentService(StudentRepository studentRepository) {
