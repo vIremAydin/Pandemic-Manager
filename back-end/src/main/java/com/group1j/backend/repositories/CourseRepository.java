@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface CourseRepository extends JpaRepository<Course,Integer> {
 
     //@Query("SELECT x FROM Course x WHERE x.courseID = ?1")
-    Optional<Course> findById(Integer courseID);
+    Optional<Course> findByCourseId(Integer courseID);
 }
