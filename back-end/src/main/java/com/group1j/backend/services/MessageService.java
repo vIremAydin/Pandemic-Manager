@@ -12,4 +12,32 @@ import java.util.Optional;
 
 @Service
 public class MessageService {
+    private MessageRepository messageRepository;
+
+    //Constructor
+    public MessageService(MessageRepository messageRepository) {
+        this.messageRepository = messageRepository;
+    }
+
+    /**
+     * Method for returning all of the students in the system
+     * @return
+     */
+    public List<Message> getAllMessages(){
+        return messageRepository.findAll();
+    }
+
+    //public Appointment createAppointment(CreateUserDTO createUserDTO){} //TODO
+
+    public Optional<Message> findByMessageid(Integer id){
+        return messageRepository.findByMessageId(id);
+    }
+
+    public MessageRepository getMessageRepository() {
+        return messageRepository;
+    }
+
+    public void setMessageRepository(MessageRepository MessageRepository) {
+        this.messageRepository = messageRepository;
+    }
 }
