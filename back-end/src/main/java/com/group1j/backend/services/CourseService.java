@@ -1,5 +1,6 @@
 package com.group1j.backend.services;
 
+import com.group1j.backend.dto.CreateCourseDTO;
 import com.group1j.backend.dto.CreateUserDTO;
 import com.group1j.backend.dto.UserLoginDTO;
 import com.group1j.backend.entities.*;
@@ -14,10 +15,29 @@ import java.util.Optional;
 public class CourseService {
 
     private CourseRepository courseRepository;
+    private StudentRepository studentRepository;
 
     //Constructor
-    public CourseService(CourseRepository courseRepository) {
+
+
+    public CourseService(CourseRepository courseRepository, StudentRepository studentRepository) {
         this.courseRepository = courseRepository;
+        this.studentRepository = studentRepository;
+    }
+
+    public Course addStudent(int courseID, int studentID) {
+        Optional<Student> student = studentRepository.findById(studentID);
+        Optional<Course> course = courseRepository.findByCourseID(courseID);
+        if (course.isPresent() && student.isPresent()){
+            Student s = student.get();
+            Course c = course.get();
+
+            c.getEnrolledStudents().add(s);
+
+            courseRepository.save(c);
+            return c;
+        }
+        return null;
     }
 
     /**
@@ -38,5 +58,20 @@ public class CourseService {
 
     public void setCourseRepository(CourseRepository courseRepository) {
         this.courseRepository = courseRepository;
+    }
+
+    public Course createCourse(CreateCourseDTO createCourseDTO) {
+        Optional<Course> course = courseRepository.findByCourseNameAndSection(createCourseDTO.getCourseName(),createCourseDTO.getSection());
+        if(course.isPresent()){
+            throw new RuntimeException("Course already exists");
+        }
+
+        else{
+            Course c = new Course();
+            c.setCourseName(createCourseDTO.getCourseName());
+            c.setSection(createCourseDTO.getSection());
+            courseRepository.save(c);
+            return c;
+        }
     }
 }
