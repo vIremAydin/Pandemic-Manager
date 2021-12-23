@@ -50,6 +50,11 @@ public class StudentController {
         return studentService.updateInfectedStatus(id);
     }
 
+    @PutMapping("/update/ContactedStatus/{id}")
+    public Student updateContactedStatus(@PathVariable int id){
+        return studentService.updateContactedStatus(id);
+    }
+
     public StudentService getStudentService() {
         return studentService;
     }

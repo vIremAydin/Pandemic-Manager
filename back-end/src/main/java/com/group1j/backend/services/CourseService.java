@@ -28,10 +28,8 @@ public class CourseService {
         return courseRepository.findAll();
     }
 
-    //public Course createCourse(CreateUserDTO createUserDTO){} //TODO
-
     public Optional<Course> findByCourseid(Integer id){
-        return courseRepository.findByCourseId(id);
+        return courseRepository.findByCourseID(id);
     }
 
     public CourseRepository getCourseRepository() {

@@ -28,7 +28,9 @@ public class DoctorService {
         return doctorRepository.findAll();
     }
 
-    //public Doctor createDoctor(CreateUserDTO createUserDTO){} //TODO
+    public Doctor createDoctor(CreateUserDTO createUserDTO){
+        return null;
+    } //TODO
 
     public Optional<Doctor> findByDoctorid(Integer id){
         return doctorRepository.findById(id);
@@ -49,31 +51,8 @@ public class DoctorService {
         //    Student s = student.get();
         //    return s.getPassword().equals(userLoginDTO.getPassword());
         //}
-        //return false;
+        return false;
     }
 
-    public Doctor updateTestNeededStatus(int id) {
-        //TODO
-        //Optional<Student> student = findByStudentid(id);
-        //if (student.isPresent()){
-        //    Student s = student.get();
-        //    s.getCovidStaus().setTestNeeded(!s.getCovidStaus().isTestNeeded());
-        //    studentRepository.save(s);
-        //    return s;
-        //}
-        //return null;
-    }
-
-    public Doctor updateInfectedStatus(int id) {
-        //TODO
-        //Optional<Student> student = findByStudentid(id);
-        //if (student.isPresent()){
-        //    Student s = student.get();
-        //    s.getCovidStaus().setInfected(!s.getCovidStaus().isInfected());
-        //    studentRepository.save(s);
-        //    return s;
-        //}
-        //return null;
-    }
 
 }

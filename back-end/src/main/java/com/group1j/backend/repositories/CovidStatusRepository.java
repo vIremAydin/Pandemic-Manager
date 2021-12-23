@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface CovidStatusRepository extends JpaRepository<CovidStatus,Integer> {
 
     //@Query("SELECT x FROM CovidStatus x WHERE x.covidStatusID = ?1")
-    Optional<CovidStatus> findById(Integer covidStatusID);
+    Optional<CovidStatus> findByCovidStatusID(Integer covidStatusID);
 }

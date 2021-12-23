@@ -27,7 +27,7 @@ public class NurseService {
         return nurseRepository.findAll();
     }
 
-    //public Doctor createDoctor(CreateUserDTO createUserDTO){} //TODO
+
 
     public Optional<Nurse> findByNurseid(Integer id){
         return nurseRepository.findById(id);
@@ -48,30 +48,11 @@ public class NurseService {
         //    Student s = student.get();
         //    return s.getPassword().equals(userLoginDTO.getPassword());
         //}
-        //return false;
+        return false;
     }
 
-    public Nurse updateTestNeededStatus(int id) {
-        //TODO
-        //Optional<Student> student = findByStudentid(id);
-        //if (student.isPresent()){
-        //    Student s = student.get();
-        //    s.getCovidStaus().setTestNeeded(!s.getCovidStaus().isTestNeeded());
-        //    studentRepository.save(s);
-        //    return s;
-        //}
-        //return null;
-    }
 
-    public Nurse updateInfectedStatus(int id) {
-        //TODO
-        //Optional<Student> student = findByStudentid(id);
-        //if (student.isPresent()){
-        //    Student s = student.get();
-        //    s.getCovidStaus().setInfected(!s.getCovidStaus().isInfected());
-        //    studentRepository.save(s);
-        //    return s;
-        //}
-        //return null;
+    public Nurse createNurse(CreateUserDTO createUserDTO) {
+        return null;
     }
 }

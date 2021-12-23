@@ -10,10 +10,10 @@ import java.util.Optional;
 public interface MessageRepository extends JpaRepository<Message,Integer> {
 
     //@Query("SELECT x FROM Message x WHERE x.messageID = ?1")
-    Optional<Message> findByMessageId(Integer messageID);
+    Optional<Message> findByMessageID(Integer messageID);
 
     //@Query("SELECT x FROM Message x WHERE x.senderID = ?1")
-    Optional<Message> findBySenderId(Integer senderID);
+    Optional<Message> findBySenderID(Integer senderID);
 
     //@Query("SELECT x FROM Message x WHERE x.?? = ?1")
     //Optional<Message> findByReceiverId(Integer? ?); //receiverID is list

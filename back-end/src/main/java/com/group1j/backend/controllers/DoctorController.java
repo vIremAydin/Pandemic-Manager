@@ -37,17 +37,7 @@ public class DoctorController {
 
     @GetMapping("/login")
     public boolean loginDoctor(@RequestBody UserLoginDTO userLoginDTO){
-        return DoctorService.loginDoctor(userLoginDTO);
-    }
-
-    @PutMapping("/update/TestNeededStatus/{id}")
-    public Doctor updateTestNeededStatus(@PathVariable int id){
-        return doctorService.updateTestNeededStatus(id);
-    }
-
-    @PutMapping("/update/InfectedStatus/{id}")
-    public Doctor updateInfectedStatus(@PathVariable int id){
-        return doctorService.updateInfectedStatus(id);
+        return doctorService.loginDoctor(userLoginDTO);
     }
 
     public DoctorService getDoctorService() {

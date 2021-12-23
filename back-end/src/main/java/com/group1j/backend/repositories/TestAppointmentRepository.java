@@ -10,9 +10,11 @@ import java.util.Optional;
 public interface TestAppointmentRepository extends JpaRepository<TestAppointment,Integer> {
 
     //@Query("SELECT x FROM TestAppointment x WHERE x.patientID = ?1")
-    Optional<TestAppointment> findByPatientId(Integer patientID);
+    Optional<TestAppointment> findByPatientID(Integer patientID);
 
     //inherited
     //@Query("SELECT x FROM TestAppointment x WHERE x.appointmentID = ?1")
     Optional<TestAppointment> findByAppointmentID(Integer appointmentID);
+
+
 }
