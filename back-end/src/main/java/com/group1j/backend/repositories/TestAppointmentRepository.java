@@ -14,5 +14,7 @@ public interface TestAppointmentRepository extends JpaRepository<TestAppointment
 
     //inherited
     //@Query("SELECT x FROM TestAppointment x WHERE x.appointmentID = ?1")
-    Optional<TestAppointment> findByAppointmentID(Integer appointmentID);
+    Optional<TestAppointment> findByAppointmentId(Integer appointmentID);
+
+
 }

@@ -31,7 +31,7 @@ public class DoctorAppointmentService {
     //public Appointment createAppointment(CreateUserDTO createUserDTO){} //TODO
 
     public Optional<DoctorAppointment> findByAppointmentid(Integer id){
-        return appointmentRepository.findByAppointmentID(id);
+        return doctorAppointmentRepository.findByAppointmentID(id);
     }
 
     public DoctorAppointmentRepository getDoctorAppointmentRepository() {

@@ -37,7 +37,7 @@ public class DoctorController {
 
     @GetMapping("/login")
     public boolean loginDoctor(@RequestBody UserLoginDTO userLoginDTO){
-        return DoctorService.loginDoctor(userLoginDTO);
+        return doctorService.loginDoctor(userLoginDTO);
     }
 
     @PutMapping("/update/TestNeededStatus/{id}")

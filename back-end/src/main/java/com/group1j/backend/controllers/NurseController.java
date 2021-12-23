@@ -37,18 +37,10 @@ public class NurseController {
 
     @GetMapping("/login")
     public boolean loginNurse(@RequestBody UserLoginDTO userLoginDTO){
-        return NurseService.loginNurse(userLoginDTO);
+        return nurseService.loginNurse(userLoginDTO);
     }
 
-    @PutMapping("/update/TestNeededStatus/{id}")
-    public Nurse updateTestNeededStatus(@PathVariable int id){
-        return nurseService.updateTestNeededStatus(id);
-    }
 
-    @PutMapping("/update/InfectedStatus/{id}")
-    public Nurse updateInfectedStatus(@PathVariable int id){
-        return nurseService.updateInfectedStatus(id);
-    }
 
     public NurseService getNurseService() {
         return nurseService;
