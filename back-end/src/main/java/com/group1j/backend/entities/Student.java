@@ -1,17 +1,12 @@
 package com.group1j.backend.entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Student extends User {
     //Fields
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+    @ManyToMany(mappedBy = "enrolledStudents")
     private List<Course> enrolledCourses;
 
     private int startYear;
@@ -26,5 +21,21 @@ public class Student extends User {
     //Default Constructor
     public Student() {
 
+    }
+
+    public List<Course> getEnrolledCourses() {
+        return enrolledCourses;
+    }
+
+    public void setEnrolledCourses(List<Course> enrolledCourses) {
+        this.enrolledCourses = enrolledCourses;
+    }
+
+    public int getStartYear() {
+        return startYear;
+    }
+
+    public void setStartYear(int startYear) {
+        this.startYear = startYear;
     }
 }

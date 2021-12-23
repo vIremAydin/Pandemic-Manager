@@ -37,10 +37,6 @@ public class StudentService {
         VaccinationStatus vaccinationStatus = new VaccinationStatus();
         Schedule schedule = new Schedule();
         TestRecord testRecord = new TestRecord();
-//        vaccinationStatusRepository.save(vaccinationStatus);
-//        scheduleRepository.save(schedule);
-//        testRecordRepository.save(testRecord);
-//        covidStatusRepository.save(covidStatus);
         Student student = new Student(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>(),2020);
         studentRepository.save(student);
         return student;
@@ -94,6 +90,73 @@ public class StudentService {
         if (student.isPresent()){
             Student s = student.get();
             s.getCovidStaus().setContacted(!s.getCovidStaus().isContacted());
+            studentRepository.save(s);
+            return s;
+        }
+        return null;
+    }
+
+    public Student updatePreviouslyInfectedStatus(int id) {
+        Optional<Student> student = findByStudentid(id);
+        if (student.isPresent()){
+            Student s = student.get();
+            s.getCovidStaus().setPreviouslyInfected(!s.getCovidStaus().isPreviouslyInfected());
+            studentRepository.save(s);
+            return s;
+        }
+        return null;
+    }
+
+    public Student updateAllowedStatus(int id) {
+        Optional<Student> student = findByStudentid(id);
+        if (student.isPresent()){
+            Student s = student.get();
+            s.getCovidStaus().setAllowedToCampus(!s.getCovidStaus().isAllowedToCampus());
+            studentRepository.save(s);
+            return s;
+        }
+        return null;
+    }
+
+    public Student updateTestDeadline(int id, String testDeadline) {
+        Optional<Student> student = findByStudentid(id);
+        if (student.isPresent()){
+            Student s = student.get();
+            s.getCovidStaus().setTestDeadline(testDeadline);
+            studentRepository.save(s);
+            return s;
+        }
+        return null;
+    }
+
+    public Student addSymptom(int id, String symptom) {
+        Optional<Student> student = findByStudentid(id);
+        if (student.isPresent()){
+            Student s = student.get();
+            s.getCovidStaus().getSymptoms().add(symptom);
+            studentRepository.save(s);
+            return s;
+        }
+        return null;
+    }
+
+    public Student addVaccinationName(int id, String vaccination) {
+        Optional<Student> student = findByStudentid(id);
+        if (student.isPresent()){
+            Student s = student.get();
+            s.getVaccinationStatus().getVaccinationNames().add(vaccination);
+            s.getVaccinationStatus().setNumOfDoses(s.getVaccinationStatus().getVaccinationNames().size());
+            studentRepository.save(s);
+            return s;
+        }
+        return null;
+    }
+
+    public Student addVaccinationDate(int id, String date) {
+        Optional<Student> student = findByStudentid(id);
+        if (student.isPresent()){
+            Student s = student.get();
+            s.getVaccinationStatus().getDatesOfDoses().add(date);
             studentRepository.save(s);
             return s;
         }

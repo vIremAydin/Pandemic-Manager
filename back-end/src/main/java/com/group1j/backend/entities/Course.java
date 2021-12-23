@@ -1,6 +1,7 @@
 package com.group1j.backend.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,10 +16,11 @@ public class Course {
     private String courseName;
     private int section;
 
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+    @ManyToMany
+    @JoinTable(
+            name = "course_student",
+            joinColumns = @JoinColumn(name = "courseID"),
+            inverseJoinColumns = @JoinColumn(name = "studentID"))
     private List<Student> enrolledStudents;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,12 +37,14 @@ public class Course {
 
     //Default Constructor
     public Course(){
-
+        enrolledStudents = new ArrayList<>();
+        attendanceRecord = new ArrayList<>();
     }
 
     //Constructor
-    public Course(String courseName, List<Student> enrolledStudents, Instructor instructor, List<Attendance> attendanceRecord, SeatingPlan seatingPlan) {
+    public Course(String courseName, int section, List<Student> enrolledStudents, Instructor instructor, List<Attendance> attendanceRecord, SeatingPlan seatingPlan) {
         this.courseName = courseName;
+        this.section = section;
         this.enrolledStudents = enrolledStudents;
         this.instructor = instructor;
         this.attendanceRecord = attendanceRecord;
@@ -93,5 +97,13 @@ public class Course {
 
     public void setSeatingPlan(SeatingPlan seatingPlan) {
         this.seatingPlan = seatingPlan;
+    }
+
+    public int getSection() {
+        return section;
+    }
+
+    public void setSection(int section) {
+        this.section = section;
     }
 }
