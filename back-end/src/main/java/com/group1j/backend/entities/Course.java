@@ -15,9 +15,8 @@ public class Course {
     private String courseName;
     private int section;
 
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+    @ManyToMany(
+            cascade = CascadeType.ALL
     )
     private List<Student> enrolledStudents;
 
