@@ -40,7 +40,10 @@ public class NurseController {
         return nurseService.loginNurse(userLoginDTO);
     }
 
-
+    @PutMapping("/approve/testAppointment/{nurseID}/{appointmentID}")
+    public TestAppointment approveTestAppointment(@PathVariable int nurseID, @PathVariable int appointmentID){
+        return nurseService.approveTestAppointment(nurseID,appointmentID);
+    }
 
     public NurseService getNurseService() {
         return nurseService;

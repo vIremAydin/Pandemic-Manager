@@ -12,6 +12,7 @@ public class Appointment {
 
     private int patientID;
     private String date;
+    private boolean isApproved;
 
 
     //Default Constructor
@@ -20,9 +21,10 @@ public class Appointment {
     }
 
     //Constructor
-    public Appointment(int patientID, String date) {
+    public Appointment(int patientID, String date, boolean isApproved) {
         this.patientID = patientID;
         this.date = date;
+        this.isApproved = isApproved;
     }
 
     public int getAppointmentID() {
@@ -47,5 +49,13 @@ public class Appointment {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public boolean isApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(boolean approved) {
+        isApproved = approved;
     }
 }

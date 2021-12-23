@@ -44,7 +44,7 @@ public class InstructorService {
 
         Instructor instructor = new Instructor(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>());
         instructorRepository.save(instructor);
-        return null;
+        return instructor;
     }
 
     public Optional<Instructor> findByInstructorid(Integer id){

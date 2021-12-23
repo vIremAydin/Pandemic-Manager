@@ -13,10 +13,16 @@ import java.util.Optional;
 @Service
 public class NurseService {
     private NurseRepository nurseRepository;
+    private TestAppointmentRepository testAppointmentRepository;
+    private StudentRepository studentRepository;
 
     //Constructor
-    public NurseService(NurseRepository nurseRepository) {
+
+
+    public NurseService(NurseRepository nurseRepository, TestAppointmentRepository testAppointmentRepository, StudentRepository studentRepository) {
         this.nurseRepository = nurseRepository;
+        this.testAppointmentRepository = testAppointmentRepository;
+        this.studentRepository = studentRepository;
     }
 
     /**
@@ -53,6 +59,43 @@ public class NurseService {
 
 
     public Nurse createNurse(CreateUserDTO createUserDTO) {
+        Optional<Nurse> nurses = nurseRepository.findById(createUserDTO.getId());
+        if(nurses.isPresent()){
+            throw new RuntimeException("Nurse already exists");
+        }
+
+        CovidStatus covidStatus = new CovidStatus(false,false,false,false,"",true,createUserDTO.getHesCode());
+        VaccinationStatus vaccinationStatus = new VaccinationStatus();
+        Schedule schedule = new Schedule();
+        TestRecord testRecord = new TestRecord();
+
+        Nurse nurse = new Nurse(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule);
+        nurseRepository.save(nurse);
+        return nurse;
+    }
+
+    public TestAppointment approveTestAppointment(int nurseID, int appointmentID) {
+        Optional<Nurse> nurse = nurseRepository.findById(nurseID);
+        Optional<TestAppointment> testAppointment = testAppointmentRepository.findByAppointmentID(appointmentID);
+
+        if(nurse.isPresent() && testAppointment.isPresent()){
+            Nurse n = nurse.get();
+            TestAppointment t = testAppointment.get();
+
+            t.setApproved(true);
+            t.setRelatedNurse(n);
+
+            Optional<Student> student = studentRepository.findById(t.getPatientID());
+            if(student.isPresent()){
+                Student s = student.get();
+                s.getSchedule().getTestAppointments().add(t);
+                studentRepository.save(s);
+            }
+
+            testAppointmentRepository.save(t);
+            return t;
+
+        }
         return null;
     }
 }
