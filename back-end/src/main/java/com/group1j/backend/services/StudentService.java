@@ -139,4 +139,27 @@ public class StudentService {
         }
         return null;
     }
+
+    public Student addVaccinationName(int id, String vaccination) {
+        Optional<Student> student = findByStudentid(id);
+        if (student.isPresent()){
+            Student s = student.get();
+            s.getVaccinationStatus().getVaccinationNames().add(vaccination);
+            s.getVaccinationStatus().setNumOfDoses(s.getVaccinationStatus().getVaccinationNames().size());
+            studentRepository.save(s);
+            return s;
+        }
+        return null;
+    }
+
+    public Student addVaccinationDate(int id, String date) {
+        Optional<Student> student = findByStudentid(id);
+        if (student.isPresent()){
+            Student s = student.get();
+            s.getVaccinationStatus().getDatesOfDoses().add(date);
+            studentRepository.save(s);
+            return s;
+        }
+        return null;
+    }
 }

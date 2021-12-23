@@ -70,9 +70,24 @@ public class StudentController {
         return studentService.updateTestDeadline(id,testDeadline);
     }
 
-    @PostMapping("add/symptom/{id}")
+    @PostMapping("/add/symptom/{id}")
     public Student addSymptom(@PathVariable int id, @RequestBody String symptom){
         return studentService.addSymptom(id,symptom);
+    }
+
+    @GetMapping("/get/{id}")
+    public Student getStudent(@PathVariable int id){
+        return studentService.findByStudentid(id).get();
+    }
+
+    @PostMapping("/add/vaccinationName/{id}")
+    public Student addVaccinationName(@PathVariable int id, @RequestBody String vaccination){
+        return studentService.addVaccinationName(id,vaccination);
+    }
+
+    @PostMapping("/add/vaccinationDate/{id}")
+    public Student addVaccinationDate(@PathVariable int id, @RequestBody String date){
+        return studentService.addVaccinationDate(id,date);
     }
 
     public StudentService getStudentService() {
