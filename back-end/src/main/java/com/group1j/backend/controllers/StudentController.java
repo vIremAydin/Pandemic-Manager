@@ -55,6 +55,26 @@ public class StudentController {
         return studentService.updateContactedStatus(id);
     }
 
+    @PutMapping("/update/PreviouslyInfectedStatus/{id}")
+    public Student updatePreviouslyInfectedStatus(@PathVariable int id){
+        return studentService.updatePreviouslyInfectedStatus(id);
+    }
+
+    @PutMapping("/update/AllowedStatus/{id}")
+    public Student updateAllowedStatus(@PathVariable int id){
+        return studentService.updateAllowedStatus(id);
+    }
+
+    @PutMapping("/update/TestDeadline/{id}")
+    public Student updateTestDeadline(@PathVariable int id, @RequestBody String testDeadline){
+        return studentService.updateTestDeadline(id,testDeadline);
+    }
+
+    @PostMapping("add/symptom/{id}")
+    public Student addSymptom(@PathVariable int id, @RequestBody String symptom){
+        return studentService.addSymptom(id,symptom);
+    }
+
     public StudentService getStudentService() {
         return studentService;
     }

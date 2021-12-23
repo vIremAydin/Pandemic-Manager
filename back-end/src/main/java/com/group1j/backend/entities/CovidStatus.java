@@ -1,6 +1,8 @@
 package com.group1j.backend.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class CovidStatus {
@@ -16,6 +18,10 @@ public class CovidStatus {
     private String testDeadline;
     private boolean isAllowedToCampus;
     private String hesCode;
+    @ElementCollection
+    @CollectionTable(name = "symptom_list", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "symptom_name")
+    private List<String> symptoms;
 
 
     //Constructor
@@ -27,10 +33,20 @@ public class CovidStatus {
         this.testDeadline = testDeadline;
         this.isAllowedToCampus = isAllowedToCampus;
         this.hesCode = hesCode;
+        this.symptoms = new ArrayList<String>();
     }
+
     //Default Constructor
     public CovidStatus() {
+        this.symptoms = new ArrayList<String>();
+    }
 
+    public List<String> getSymptoms() {
+        return symptoms;
+    }
+
+    public void setSymptoms(List<String> symptoms) {
+        this.symptoms = symptoms;
     }
 
     public boolean isInfected() {
