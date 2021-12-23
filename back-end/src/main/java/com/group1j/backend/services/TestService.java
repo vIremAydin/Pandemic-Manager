@@ -31,7 +31,7 @@ public class TestService {
     //public Appointment createAppointment(CreateUserDTO createUserDTO){} //TODO
 
     public Optional<Test> findByTestid(Integer id){
-        return testRepository.findByTestId(id);
+        return testRepository.findByTestID(id);
     }
 
     public TestRepository getTestRepository() {

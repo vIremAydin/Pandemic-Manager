@@ -40,16 +40,6 @@ public class DoctorController {
         return doctorService.loginDoctor(userLoginDTO);
     }
 
-    @PutMapping("/update/TestNeededStatus/{id}")
-    public Doctor updateTestNeededStatus(@PathVariable int id){
-        return doctorService.updateTestNeededStatus(id);
-    }
-
-    @PutMapping("/update/InfectedStatus/{id}")
-    public Doctor updateInfectedStatus(@PathVariable int id){
-        return doctorService.updateInfectedStatus(id);
-    }
-
     public DoctorService getDoctorService() {
         return doctorService;
     }

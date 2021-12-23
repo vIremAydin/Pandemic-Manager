@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface TestRepository extends JpaRepository<Test,Integer> {
 
     //@Query("SELECT x FROM Test x WHERE x.testID = ?1")
-    Optional<Test> findByTestId(Integer testID);
+    Optional<Test> findByTestID(Integer testID);
 
     //@Query("SELECT x FROM Test x WHERE x.patientID = ?1")
     Optional<Test> findByPatientID(Integer patientID);

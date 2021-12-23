@@ -11,7 +11,7 @@ public interface DoctorAppointmentRepository extends JpaRepository<DoctorAppoint
 
     //inherited patientID
     //@Query("SELECT x FROM DoctorAppointment x WHERE x.patientID = ?1")
-    Optional<DoctorAppointment> findByPatientId(Integer patientID);
+    Optional<DoctorAppointment> findByPatientID(Integer patientID);
 
     //
     //@Query("SELECT x FROM DoctorAppointment x WHERE x.appointmentID = ?1")

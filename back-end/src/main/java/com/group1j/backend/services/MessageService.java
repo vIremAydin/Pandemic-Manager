@@ -30,7 +30,7 @@ public class MessageService {
     //public Appointment createAppointment(CreateUserDTO createUserDTO){} //TODO
 
     public Optional<Message> findByMessageid(Integer id){
-        return messageRepository.findByMessageId(id);
+        return messageRepository.findByMessageID(id);
     }
 
     public MessageRepository getMessageRepository() {

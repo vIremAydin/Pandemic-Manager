@@ -54,28 +54,5 @@ public class DoctorService {
         return false;
     }
 
-    public Doctor updateTestNeededStatus(int id) {
-        //TODO
-        //Optional<Student> student = findByStudentid(id);
-        //if (student.isPresent()){
-        //    Student s = student.get();
-        //    s.getCovidStaus().setTestNeeded(!s.getCovidStaus().isTestNeeded());
-        //    studentRepository.save(s);
-        //    return s;
-        //}
-        return null;
-    }
-
-    public Doctor updateInfectedStatus(int id) {
-        //TODO
-        //Optional<Student> student = findByStudentid(id);
-        //if (student.isPresent()){
-        //    Student s = student.get();
-        //    s.getCovidStaus().setInfected(!s.getCovidStaus().isInfected());
-        //    studentRepository.save(s);
-        //    return s;
-        //}
-        return null;
-    }
 
 }
