@@ -2,6 +2,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import userLogo from "../images/userLogo.png";
 import {Button, TextField} from "@material-ui/core";
 import {Link} from "react-router-dom"
+import axios from "axios";
+import * as React from "react";
 
 const useStyles = makeStyles({
     loginContainer: {
@@ -40,13 +42,42 @@ const useStyles = makeStyles({
 const Login = ()=>{
     const classes = useStyles();
 
+    const [id, setId] = React.useState(0);
+    const [password, setPassword] = React.useState('');
+    const [isSuccessful, setSuccessful] = React.useState(false);
+
+    async function handleClick() {
+        
+        /*axios.get("http://localhost:8080/api/student/login", {
+            id: React.state.id, 
+            password: React.state.password
+        }).then(function(response) {
+            console.log(response.status);
+        }).catch(function(error) {
+            console.log(error)
+        })*/
+        
+        setSuccessful(axios.get("http://localhost:8080/api/student/login", {
+            data: {
+                "id": id,
+                "password": password
+            }
+        }).then((response) => {
+            console.log(response.data);
+        }));
+        
+        
+    }
+
+    
+
     return (
         <div className={classes.loginContainer}>
             <p className={classes.title}>Welcome to Visual Pandemic</p>
             <img src={userLogo} alt=""/>
-            <TextField id="outlined-basic" label="Email" variant="outlined" className={classes.textfield}/>
-            <TextField id="outlined-basic" label="Password" variant="outlined" className={classes.textfield}/>
-            <Link to={"/courses"}><Button variant="contained" className={classes.loginButton}>Login</Button></Link>
+            <TextField id="outlined-basic" label="Email" variant="outlined" className={classes.textfield} onChange={(event) => setId(event.target.value)}/>
+            <TextField id="outlined-basic" label="Password" variant="outlined" className={classes.textfield} onChange={(event) => setPassword(event.target.value)}/>
+            <Link to={"/courses"}><Button variant="contained" className={classes.loginButton } onClick={() => handleClick()}>Login</Button></Link>
             <p>Forgot Password?</p>
             <Link to={"/register"}>Don't have an account?</Link>
         </div>
