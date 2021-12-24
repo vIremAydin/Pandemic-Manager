@@ -8,10 +8,7 @@ import java.util.List;
 @Entity
 public class Instructor extends User{
     //Fields
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+    @OneToMany(mappedBy="instructor")
     private List<Course> courses;
 
     //Constructor

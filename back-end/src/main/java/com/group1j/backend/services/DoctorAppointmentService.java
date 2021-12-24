@@ -1,5 +1,6 @@
 package com.group1j.backend.services;
 
+import com.group1j.backend.dto.CreateAppointmentDTO;
 import com.group1j.backend.dto.CreateUserDTO;
 import com.group1j.backend.dto.UserLoginDTO;
 import com.group1j.backend.entities.*;
@@ -40,5 +41,13 @@ public class DoctorAppointmentService {
 
     public void setDoctorAppointmentRepository(DoctorAppointmentRepository doctorAppointmentRepository) {
         this.doctorAppointmentRepository = doctorAppointmentRepository;
+    }
+
+    public DoctorAppointment createDoctorAppointment(CreateAppointmentDTO createAppointmentDTO) {
+        DoctorAppointment doctorAppointment = new DoctorAppointment();
+        doctorAppointment.setPatientID(createAppointmentDTO.getPatientID());
+        doctorAppointment.setDate(createAppointmentDTO.getDate());
+        doctorAppointmentRepository.save(doctorAppointment);
+        return doctorAppointment;
     }
 }

@@ -13,10 +13,14 @@ import java.util.Optional;
 @Service
 public class InstructorService {
     private InstructorRepository instructorRepository;
+    private CourseRepository courseRepository;
 
     //Constructor
-    public InstructorService(InstructorRepository InstructorRepository) {
-        this.instructorRepository = InstructorRepository;
+
+
+    public InstructorService(InstructorRepository instructorRepository, CourseRepository courseRepository) {
+        this.instructorRepository = instructorRepository;
+        this.courseRepository = courseRepository;
     }
 
     /**
@@ -37,13 +41,10 @@ public class InstructorService {
         VaccinationStatus vaccinationStatus = new VaccinationStatus();
         Schedule schedule = new Schedule();
         TestRecord testRecord = new TestRecord();
-//        VaccinationStatusRepository.save(vaccinationStatus);
-//        ScheduleRepository.save(schedule);
-//        TestRecordRepository.save(testRecord);
-//        CovidStatusRepository.save(covidStatus);
-        //Instructor instructor = new Instructor(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>(),2020);
-        //instructorRepository.save(instructor);
-        return null;
+
+        Instructor instructor = new Instructor(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>());
+        instructorRepository.save(instructor);
+        return instructor;
     }
 
     public Optional<Instructor> findByInstructorid(Integer id){
@@ -67,25 +68,20 @@ public class InstructorService {
         return false;
     }
 
-    public Instructor updateTestNeededStatus(int id) {
-//        Optional<Instructor> instructor = findByInstructorid(id);
-//        if (instructor.isPresent()){
-//            Instructor instructor1 = instructor.get();
-//            instructor1.getCovidStatus().setTestNeeded(!instructor1.getCovidStaus().isTestNeeded());
-//            instructorRepository.save(instructor1);
-//            return instructor1;
-//        }
-        return null;
-    }
 
-    public Instructor updateInfectedStatus(int id) {
-//        Optional<Instructor> instructor = findByInstructorid(id);
-//        if (instructor.isPresent()){
-//            Instructor instructor1 = instructor.get();
-//            instructor1.getCovidStatus().setInfected(!instructor1.getCovidStaus().isInfected());
-//            instructorRepository.save(instructor1);
-//            return instructor1;
-//        }
+    public Instructor addCourse(int instructorID, int courseID) {
+        Optional<Instructor> instructor = instructorRepository.findById(instructorID);
+        Optional<Course> course = courseRepository.findByCourseID(courseID);
+
+        if(instructor.isPresent() && course.isPresent()){
+            Instructor i = instructor.get();
+            Course c = course.get();
+
+            c.setInstructor(i);
+            courseRepository.save(c);
+            return i;
+        }
+
         return null;
     }
 }

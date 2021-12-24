@@ -1,6 +1,7 @@
 package com.group1j.backend.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,7 +22,7 @@ public class Attendance {
 
     //Default Constructor
     public Attendance(){
-
+        activeStudents = new ArrayList<>();
     }
 
     //Constructor

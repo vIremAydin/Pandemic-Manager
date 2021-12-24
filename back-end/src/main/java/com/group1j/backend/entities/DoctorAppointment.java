@@ -11,8 +11,10 @@ public class DoctorAppointment extends Appointment {
     private Doctor relatedDoctor;
 
     //Constructor
-    public DoctorAppointment(int patientID, String date, Doctor relatedDoctor) {
-        super(patientID, date);
+
+
+    public DoctorAppointment(int patientID, String date, boolean isApproved, Doctor relatedDoctor) {
+        super(patientID, date, isApproved);
         this.relatedDoctor = relatedDoctor;
     }
 

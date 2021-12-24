@@ -1,5 +1,7 @@
 package com.group1j.backend.entities;
 
+import org.springframework.web.bind.annotation.PostMapping;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
@@ -16,8 +18,8 @@ public class TestAppointment extends Appointment {
     }
 
     //Constructor
-    public TestAppointment(int patientID, String date, Nurse relatedNurse) {
-        super(patientID, date);
+    public TestAppointment(int patientID, String date, boolean isApproved, Nurse relatedNurse) {
+        super(patientID, date, isApproved);
         this.relatedNurse = relatedNurse;
     }
 

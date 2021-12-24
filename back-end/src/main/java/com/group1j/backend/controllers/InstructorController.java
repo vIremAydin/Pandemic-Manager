@@ -40,14 +40,9 @@ public class InstructorController {
         return instructorService.loginInstructor(userLoginDTO);
     }
 
-    @PutMapping("/update/TestNeededStatus/{id}")
-    public Instructor updateTestNeededStatus(@PathVariable int id){
-        return instructorService.updateTestNeededStatus(id);
-    }
-
-    @PutMapping("/update/InfectedStatus/{id}")
-    public Instructor updateInfectedStatus(@PathVariable int id){
-        return instructorService.updateInfectedStatus(id);
+    @PostMapping("/add/course/{instructorID}/{courseID}")
+    public Instructor addCourse(@PathVariable int instructorID, @PathVariable int courseID){
+        return instructorService.addCourse(instructorID,courseID);
     }
 
     public InstructorService getInstructorService() {

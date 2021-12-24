@@ -30,6 +30,11 @@ public class DoctorController {
         return doctorService.getAllDoctors();
     }
 
+    @PutMapping("/update/Schedule{doctorID}/{scheduleID}")
+    public Doctor updateSchedule(@PathVariable int doctorID, @PathVariable int scheduleID){
+        return doctorService.updateSchedule(doctorID, scheduleID);
+    }
+
     @PostMapping("/create")
     public Doctor createDoctor(@RequestBody CreateUserDTO createUserDTO){
         return doctorService.createDoctor(createUserDTO);
