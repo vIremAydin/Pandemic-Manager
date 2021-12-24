@@ -42,16 +42,7 @@ public class CourseService {
         return null;
     }
 
-    public Course updateSeatingPlan(int seatingPlanID, int courseID) {
-        Optional<Course> course = courseRepository.findByCourseID(courseID);
-        if (course.isPresent()){
-            Course c = course.get();
-            c.getSeatingPlan().setSeatingPlanID(seatingPlanID);
-            courseRepository.save(c);
-            return c;
-        }
-        return null;
-    }
+
 
     /**
      * Method for returning all of the students in the system
