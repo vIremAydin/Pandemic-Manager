@@ -54,11 +54,11 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public boolean loginStudent(UserLoginDTO userLoginDTO) {
-        Optional<Student> student = findByStudentid(userLoginDTO.getId());
+    public boolean loginStudent(int id, String password) {
+        Optional<Student> student = studentRepository.findById(id);
         if (student.isPresent()){
             Student s = student.get();
-            return s.getPassword().equals(userLoginDTO.getPassword());
+            return s.getPassword().equals(password);
         }
         return false;
     }
