@@ -118,4 +118,55 @@ public class CourseService {
 
         return elPlan;
     }
+
+    public List<List<Integer>> convertPlanToList(String elPlan){
+        int index = 0;
+        int indexComma = 0; //Initial
+        int indexColumn = 0; //Initial
+        int row = 0;
+
+        List<List<Integer>> seatingPlan = new ArrayList<>();
+        seatingPlan.add(new ArrayList<>()); //First row has been added
+
+        while(index < elPlan.length()-1 || indexComma != -1 || indexColumn != -1){
+            indexComma = elPlan.indexOf(",",index);
+            indexColumn = elPlan.indexOf(";",index);
+
+            if(indexComma != -1 && indexComma < indexColumn){
+                int number = Integer.parseInt(elPlan.substring(index,indexComma));
+                seatingPlan.get(row).add(number);
+                index = indexComma + 1;
+            }
+
+            else if(indexColumn < indexComma){
+                int number = Integer.parseInt(elPlan.substring(index,indexColumn));
+                seatingPlan.get(row).add(number);
+                seatingPlan.add(new ArrayList<>()); //New row will start
+                row = row + 1;
+                index = indexColumn + 1;
+            }
+
+            else if(indexComma == -1 && indexColumn != -1 ){
+                int number = Integer.parseInt(elPlan.substring(index,indexColumn));
+                seatingPlan.get(row).add(number);
+                index = indexColumn + 1;
+            }
+
+            else{
+                break;
+            }
+        }
+
+        return seatingPlan;
+    }
+
+    public List<List<Integer>> getSeatingPlan(int courseID) {
+        Optional<Course> course = courseRepository.findByCourseID(courseID);
+        if(course.isPresent()){
+            Course c = course.get();
+            return convertPlanToList(c.getSeatingPlan().getPlan());
+        }
+
+        return null;
+    }
 }

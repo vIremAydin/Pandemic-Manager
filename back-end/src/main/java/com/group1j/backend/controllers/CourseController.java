@@ -46,6 +46,11 @@ public class CourseController {
         return courseService.createCourse(createCourseDTO);
     }
 
+    @GetMapping("/get/seatingPlan/{courseID}")
+    public List<List<Integer>> getSeatingPlan(@PathVariable int courseID){
+        return courseService.getSeatingPlan(courseID);
+    }
+
     @PostMapping("/create/attendance/{courseID}")
     public Course createAttendance(@PathVariable int courseID){
         return courseService.createAttendance(courseID);
