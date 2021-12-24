@@ -6,6 +6,7 @@ import * as React from "react";
 import {changeTab} from "../redux/tab-action";
 import {saveUser} from "../redux/user.action";
 import {connect} from "react-redux";
+import axios from "axios";
 
 const useStyles = makeStyles({
     loginContainer: {
@@ -53,21 +54,39 @@ const Register = ({saveUser}) => {
     const [userName, setUserName] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [hes, setHes] = React.useState('');
+    const [id, setId] = React.useState(0);
+    const [email, setEmail] = React.useState("furkan");
 
     const handleChange = (event) => {
         setUserType(event.target.value);
     };
 
-    function handleClick() {
+    async function handleClick() {
+        
         const user = {
-            userName: userName,
+            name: userName,
             password: password,
-            type: userType,
+            //type: userType,
+            email: email,
+            id: id,
             hesCode: hes
         };
-    console.log(user);
-    saveUser(user);
+        saveUser(user);
 
+        
+        axios.post("http://localhost:8080/api/student/create", {
+            name: userName, 
+            password: password,
+            email: email,
+            id: id,
+            hesCode: hes
+        }).then(function(response) {
+            console.log(response.status);
+        }).catch(function(error) {
+            console.log(error)
+        })
+      
+    
 }
 
 return (
@@ -75,7 +94,7 @@ return (
         <p className={classes.title}>Welcome to Visual Pandemic</p>
         <img src={userLogo} alt=""/>
         <div className={classes.textContainer}>
-            <TextField onChange={(event) => setUserName(event.target.value)}
+            <TextField onChange={(event) => setEmail(event.target.value)}
                        id="outlined-basic" required label="Email" variant="outlined" className={classes.textfield}/>
             <TextField onChange={(event) => setPassword(event.target.value)}
                        id="outlined-basic" required label="Password" variant="outlined"
