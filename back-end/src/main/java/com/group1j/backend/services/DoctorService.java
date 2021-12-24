@@ -12,11 +12,14 @@ import java.util.*;
 public class DoctorService {
     private DoctorRepository doctorRepository;
     private DoctorAppointmentRepository doctorAppointmentRepository;
-    private ScheduleRepository scheduleRepository;
+    private StudentRepository studentRepository;
+
 
     //Constructor
-    public DoctorService(DoctorRepository doctorRepository) {
+    public DoctorService(DoctorRepository doctorRepository, DoctorAppointmentRepository doctorAppointmentRepository, StudentRepository studentRepository) {
         this.doctorRepository = doctorRepository;
+        this.doctorAppointmentRepository = doctorAppointmentRepository;
+        this.studentRepository = studentRepository;
     }
 
     /**
@@ -52,21 +55,33 @@ public class DoctorService {
         return false;
     }
 
-    public Doctor updateSchedule(int doctorID, int scheduleID) {
+
+    public DoctorAppointment approveDoctorAppointment(int doctorID, int appointmentID) {
         Optional<Doctor> doctor = doctorRepository.findById(doctorID);
-        if(doctor.isPresent()){
-            Doctor d = doctor.get();
-            Schedule schedule = new Schedule();
-            schedule.setScheduleID(scheduleID);
+        Optional<DoctorAppointment> doctorAppointment = doctorAppointmentRepository.findByAppointmentID(appointmentID);
 
-            d.setSchedule(schedule);
+        if(doctor.isPresent() && doctorAppointment.isPresent()){
+            Doctor doc = doctor.get();
+            DoctorAppointment appo = doctorAppointment.get();
 
-            doctorRepository.save(d);
-            return d;
+            appo.setApproved(true);
+            appo.setRelatedDoctor(doc);
+            doc.getSchedule().getDoctorAppointments().add(appo);
+
+            Optional<Student> student = studentRepository.findById(appo.getPatientID());
+            if(student.isPresent()){
+                Student s = student.get();
+                s.getSchedule().getDoctorAppointments().add(appo);
+                studentRepository.save(s);
+            }
+
+            doctorRepository.save(doc);
+            doctorAppointmentRepository.save(appo);
+
+            return appo;
+
         }
+
         return null;
-
     }
-
-
 }

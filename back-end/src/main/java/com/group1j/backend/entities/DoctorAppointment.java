@@ -22,4 +22,12 @@ public class DoctorAppointment extends Appointment {
     public DoctorAppointment() {
 
     }
+
+    public Doctor getRelatedDoctor() {
+        return relatedDoctor;
+    }
+
+    public void setRelatedDoctor(Doctor relatedDoctor) {
+        this.relatedDoctor = relatedDoctor;
+    }
 }

@@ -1,5 +1,6 @@
 package com.group1j.backend.services;
 
+import com.group1j.backend.dto.CreateMessageDTO;
 import com.group1j.backend.dto.CreateUserDTO;
 import com.group1j.backend.dto.UserLoginDTO;
 import com.group1j.backend.entities.*;
@@ -39,5 +40,14 @@ public class MessageService {
 
     public void setMessageRepository(MessageRepository MessageRepository) {
         this.messageRepository = messageRepository;
+    }
+
+    public Message createMessage(CreateMessageDTO createMessageDTO) {
+        Message m = new Message();
+        m.setDate(createMessageDTO.getDate());
+        m.setReceiverID(createMessageDTO.getReceiverID());
+        m.setText(createMessageDTO.getText());
+        messageRepository.save(m);
+        return m;
     }
 }

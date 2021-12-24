@@ -30,9 +30,9 @@ public class DoctorController {
         return doctorService.getAllDoctors();
     }
 
-    @PutMapping("/update/Schedule{doctorID}/{scheduleID}")
-    public Doctor updateSchedule(@PathVariable int doctorID, @PathVariable int scheduleID){
-        return doctorService.updateSchedule(doctorID, scheduleID);
+    @PutMapping("/approve/doctorAppointment/{doctorID}/{appointmentID}")
+    public DoctorAppointment approveDoctorAppointment(@PathVariable int doctorID, @PathVariable int appointmentID){
+        return doctorService.approveDoctorAppointment(doctorID, appointmentID);
     }
 
     @PostMapping("/create")

@@ -35,9 +35,9 @@ public class StudentController {
         return studentService.createStudent(createUserDTO);
     }
 
-    @GetMapping("/login")
-    public boolean loginStudent(@RequestBody UserLoginDTO userLoginDTO){
-        return studentService.loginStudent(userLoginDTO);
+    @GetMapping("/login/{id}/{password}")
+    public boolean loginStudent(@PathVariable int id, @PathVariable String password){
+        return studentService.loginStudent(id,password);
     }
 
     @PutMapping("/update/TestNeededStatus/{id}")

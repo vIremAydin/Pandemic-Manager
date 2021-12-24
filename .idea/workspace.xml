@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="new button styles">
-      <change afterPath="$PROJECT_DIR$/front-end/src/components/SidebarButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/src/components/sidebarButton.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/src/pages/HealthCenter/HCMain.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/src/tabs/HealthCenterTabs/AllCases.js" afterDir="false" />
+    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="App.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/Header-HC.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Header-HC.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/MyButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/MyButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/TestCalendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/TestCalendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Main-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Main-page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +42,7 @@
     <option name="defaultAccountId" value="21100a47-faa1-4812-8420-6308fcbf97eb" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/front-end/src/components/Header.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/front-end/src/pages/Main-page.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/front-end/src/redux/index.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/front-end/src/redux/store.js" root0="FORCE_HIGHLIGHTING" />
@@ -130,6 +121,7 @@
       <workItem from="1638780280375" duration="1427000" />
       <workItem from="1638807393138" duration="2819000" />
       <workItem from="1638819945910" duration="4999000" />
+      <workItem from="1640359168437" duration="2083000" />
     </task>
     <task id="LOCAL-00001" summary="added.">
       <created>1637310740173</created>
@@ -229,7 +221,28 @@
       <option name="project" value="LOCAL" />
       <updated>1638809859667</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="CovidStatus.js">
+      <created>1640363498464</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1640363498464</updated>
+    </task>
+    <task id="LOCAL-00016" summary="CovidStatus.js">
+      <created>1640363598723</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1640363598723</updated>
+    </task>
+    <task id="LOCAL-00017" summary="App.js">
+      <created>1640369293964</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1640369293964</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +287,9 @@
     <MESSAGE value="Edit_Profile.js" />
     <MESSAGE value="SeatPlan.js and enroll course dialog" />
     <MESSAGE value="new button styles" />
-    <option name="LAST_COMMIT_MESSAGE" value="new button styles" />
+    <MESSAGE value="CovidStatus.js" />
+    <MESSAGE value="App.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="App.js" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
