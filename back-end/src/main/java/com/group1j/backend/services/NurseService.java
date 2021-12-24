@@ -47,11 +47,11 @@ public class NurseService {
         this.nurseRepository = nurseRepository;
     }
 
-    public boolean loginNurse(UserLoginDTO userLoginDTO) {
-        Optional<Nurse> nurse = findByNurseid(userLoginDTO.getId());
+    public boolean loginNurse(int id, String password) {
+        Optional<Nurse> nurse = nurseRepository.findById(id);
         if (nurse.isPresent()){
             Nurse n = nurse.get();
-            return n.getPassword().equals(userLoginDTO.getPassword());
+            return n.getPassword().equals(password);
         }
         return false;
     }

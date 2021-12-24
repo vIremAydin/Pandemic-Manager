@@ -46,11 +46,11 @@ public class DoctorService {
         this.doctorRepository = doctorRepository;
     }
 
-    public boolean loginDoctor(UserLoginDTO userLoginDTO) {
-        Optional<Doctor> doctor = findByDoctorid(userLoginDTO.getId());
-        if (doctor.isPresent()) {
+    public boolean loginDoctor(int id, String password) {
+        Optional<Doctor> doctor = doctorRepository.findById(id);
+        if (doctor.isPresent()){
             Doctor d = doctor.get();
-            return d.getPassword().equals(userLoginDTO.getPassword());
+            return d.getPassword().equals(password);
         }
         return false;
     }

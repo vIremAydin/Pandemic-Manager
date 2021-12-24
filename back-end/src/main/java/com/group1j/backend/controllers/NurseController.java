@@ -35,11 +35,10 @@ public class NurseController {
         return nurseService.createNurse(createUserDTO);
     }
 
-    @GetMapping("/login")
-    public boolean loginNurse(@RequestBody UserLoginDTO userLoginDTO){
-        return nurseService.loginNurse(userLoginDTO);
+    @GetMapping("/login/{id}/{password}")
+    public boolean loginNurse(@PathVariable int id, @PathVariable String password){
+        return nurseService.loginNurse(id,password);
     }
-
     @PutMapping("/approve/testAppointment/{nurseID}/{appointmentID}")
     public TestAppointment approveTestAppointment(@PathVariable int nurseID, @PathVariable int appointmentID){
         return nurseService.approveTestAppointment(nurseID,appointmentID);

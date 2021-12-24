@@ -40,10 +40,11 @@ public class DoctorController {
         return doctorService.createDoctor(createUserDTO);
     }
 
-    @GetMapping("/login")
-    public boolean loginDoctor(@RequestBody UserLoginDTO userLoginDTO){
-        return doctorService.loginDoctor(userLoginDTO);
+    @GetMapping("/login/{id}/{password}")
+    public boolean loginDoctor(@PathVariable int id, @PathVariable String password){
+        return doctorService.loginDoctor(id,password);
     }
+
 
     public DoctorService getDoctorService() {
         return doctorService;

@@ -35,9 +35,9 @@ public class InstructorController {
         return instructorService.createInstructor(createUserDTO);
     }
 
-    @GetMapping("/login")
-    public boolean loginInstructor(@RequestBody UserLoginDTO userLoginDTO){
-        return instructorService.loginInstructor(userLoginDTO);
+    @GetMapping("/login/{id}/{password}")
+    public boolean loginInstructor(@PathVariable int id, @PathVariable String password){
+        return instructorService.loginInstructor(id,password);
     }
 
     @PostMapping("/add/course/{instructorID}/{courseID}")

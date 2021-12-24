@@ -59,11 +59,11 @@ public class InstructorService {
         this.instructorRepository = instructorRepository;
     }
 
-    public boolean loginInstructor(UserLoginDTO userLoginDTO) {
-        Optional<Instructor> instructor = findByInstructorid(userLoginDTO.getId());
+    public boolean loginInstructor(int id, String password) {
+        Optional<Instructor> instructor = instructorRepository.findById(id);
         if (instructor.isPresent()){
-            Instructor instructor1 = instructor.get();
-            return instructor1.getPassword().equals(userLoginDTO.getPassword());
+            Instructor i = instructor.get();
+            return i.getPassword().equals(password);
         }
         return false;
     }
