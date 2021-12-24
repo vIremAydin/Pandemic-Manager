@@ -30,6 +30,16 @@ public class TestController {
         return testService.getAllTests();
     }
 
+    @PostMapping("/create/{patientID}")
+    public Test createTest(@PathVariable int patientID){
+        return testService.createTest(patientID);
+    }
+
+    @PutMapping("/announceResult/{testID}")
+    public Test announceResult(@PathVariable int testID, @RequestParam boolean result){
+        return testService.announceResult(testID,result);
+    }
+
     //
     //
     //
