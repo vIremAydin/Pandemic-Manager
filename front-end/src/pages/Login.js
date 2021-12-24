@@ -57,13 +57,10 @@ const Login = ()=>{
             console.log(error)
         })*/
         
-        setSuccessful(axios.get("http://localhost:8080/api/student/login", {
-            data: {
-                "id": id,
-                "password": password
-            }
-        }).then((response) => {
-            console.log(response.data);
+        setSuccessful(axios.get("http://localhost:8080/api/student/login/" + id + "/" + password).then((response) => {
+            console.log(response.status);
+        }).catch((error) => {
+            console.log(error);
         }));
         
         
