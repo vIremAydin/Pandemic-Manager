@@ -6,15 +6,13 @@ import com.group1j.backend.entities.*;
 import com.group1j.backend.repositories.*;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
+import java.text.SimpleDateFormat;
+import java.util.*;
 @Service
 public class DoctorService {
     private DoctorRepository doctorRepository;
     private DoctorAppointmentRepository doctorAppointmentRepository;
-    private StudentRepository studentRepository;
+    private ScheduleRepository scheduleRepository;
 
     //Constructor
     public DoctorService(DoctorRepository doctorRepository) {
@@ -52,6 +50,22 @@ public class DoctorService {
             return d.getPassword().equals(userLoginDTO.getPassword());
         }
         return false;
+    }
+
+    public Doctor updateSchedule(int doctorID, int scheduleID) {
+        Optional<Doctor> doctor = doctorRepository.findById(doctorID);
+        if(doctor.isPresent()){
+            Doctor d = doctor.get();
+            Schedule schedule = new Schedule();
+            schedule.setScheduleID(scheduleID);
+
+            d.setSchedule(schedule);
+
+            doctorRepository.save(d);
+            return d;
+        }
+        return null;
+
     }
 
 
