@@ -1,6 +1,7 @@
 package com.group1j.backend.services;
 
 import com.group1j.backend.dto.CreateAppointmentDTO;
+import com.group1j.backend.dto.CreateCourseDTO;
 import com.group1j.backend.dto.CreateUserDTO;
 import com.group1j.backend.dto.UserLoginDTO;
 import com.group1j.backend.entities.*;
@@ -28,8 +29,6 @@ public class DoctorAppointmentService {
     public List<DoctorAppointment> getAllDoctorAppointments(){
         return doctorAppointmentRepository.findAll();
     }
-
-    //public Appointment createAppointment(CreateUserDTO createUserDTO){} //TODO
 
     public Optional<DoctorAppointment> findByAppointmentid(Integer id){
         return doctorAppointmentRepository.findByAppointmentID(id);
