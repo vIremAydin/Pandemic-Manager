@@ -41,11 +41,9 @@ const HCMainPage = ({activeTab}) => {
                         activeTab.activeTab === "Covid19Status" ? <CovidStatus/> :
                             activeTab.activeTab === "Help" ? <Help/> :
                                 activeTab.activeTab === "TestSchedule" ? <TestSchedule/> :
-                                    activeTab.activeTab === "AllCases" ? <AllCases/> :
-
-                                        <Edit_Profile/>}
+                                    activeTab.activeTab === "EditProfile" ? <Edit_Profile/> :
+                                        <AllCases/>}
                 </Grid>
-
             </Grid>
         </div>
     );
