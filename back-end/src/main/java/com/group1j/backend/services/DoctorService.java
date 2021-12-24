@@ -46,12 +46,11 @@ public class DoctorService {
     }
 
     public boolean loginDoctor(UserLoginDTO userLoginDTO) {
-        //TODO
-        //Optional<Student> student = findByStudentid(userLoginDTO.getId());
-        //if (student.isPresent()){
-        //    Student s = student.get();
-        //    return s.getPassword().equals(userLoginDTO.getPassword());
-        //}
+        Optional<Doctor> doctor = findByDoctorid(userLoginDTO.getId());
+        if (doctor.isPresent()) {
+            Doctor d = doctor.get();
+            return d.getPassword().equals(userLoginDTO.getPassword());
+        }
         return false;
     }
 
