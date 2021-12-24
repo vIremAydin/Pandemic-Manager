@@ -36,9 +36,14 @@ public class CourseController {
         return courseService.addStudent(courseID,studentID);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/create/course")
     public Course createCourse(@RequestBody CreateCourseDTO createCourseDTO){
         return courseService.createCourse(createCourseDTO);
+    }
+
+    @PostMapping("/create/attendance/{courseID}")
+    public Course createAttendance(@PathVariable int courseID){
+        return courseService.createAttendance(courseID);
     }
 
     public CourseService getCourseService() {

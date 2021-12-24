@@ -57,7 +57,6 @@ public class NurseService {
         return false;
     }
 
-
     public Nurse createNurse(CreateUserDTO createUserDTO) {
         Optional<Nurse> nurses = nurseRepository.findById(createUserDTO.getId());
         if(nurses.isPresent()){
@@ -84,6 +83,7 @@ public class NurseService {
 
             t.setApproved(true);
             t.setRelatedNurse(n);
+            n.getSchedule().getTestAppointments().add(t);
 
             Optional<Student> student = studentRepository.findById(t.getPatientID());
             if(student.isPresent()){
@@ -92,6 +92,7 @@ public class NurseService {
                 studentRepository.save(s);
             }
 
+            nurseRepository.save(n);
             testAppointmentRepository.save(t);
             return t;
 

@@ -12,8 +12,9 @@ import java.util.Optional;
 
 @Service
 public class DoctorService {
-
     private DoctorRepository doctorRepository;
+    private DoctorAppointmentRepository doctorAppointmentRepository;
+    private StudentRepository studentRepository;
 
     //Constructor
     public DoctorService(DoctorRepository doctorRepository) {
