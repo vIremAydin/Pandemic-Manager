@@ -6,6 +6,7 @@ import * as React from "react";
 import {changeTab} from "../redux/tab-action";
 import {saveUser} from "../redux/user.action";
 import {connect} from "react-redux";
+import axios from "axios";
 
 const useStyles = makeStyles({
     loginContainer: {
@@ -53,20 +54,45 @@ const Register = ({saveUser}) => {
     const [userName, setUserName] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [hes, setHes] = React.useState('');
+    const [id, setId] = React.useState(0);
+    const [email, setEmail] = React.useState("furkan");
 
     const handleChange = (event) => {
         setUserType(event.target.value);
     };
 
-    function handleClick() {
+    async function handleClick() {
+
         const user = {
-            userName: userName,
+            name: userName,
             password: password,
             type: userType,
+            email: email,
+            id: id,
             hesCode: hes
         };
-    console.log(user);
-    saveUser(user);
+        saveUser(user);
+
+
+        axios.post("http://localhost:8080/api/" + userType + "/create", {
+            name: userName,
+            password: password,
+            email: email,
+            id: id,
+            hesCode: hes
+        }).then(function(response) {
+            console.log(response.status);
+            setUserName("");
+            setEmail("");
+            setPassword(0);
+            setHes("");
+            setId(0);
+        }).catch(function(error) {
+            console.log(error)
+        })
+
+
+
 
 }
 
@@ -75,8 +101,10 @@ return (
         <p className={classes.title}>Welcome to Visual Pandemic</p>
         <img src={userLogo} alt=""/>
         <div className={classes.textContainer}>
-            <TextField onChange={(event) => setUserName(event.target.value)}
+            <TextField onChange={(event) => setEmail(event.target.value)}
                        id="outlined-basic" required label="Email" variant="outlined" className={classes.textfield}/>
+            <TextField onChange={(event) => setId(event.target.value)}
+                       id="outlined-basic" required label="Bilkent ID" variant="outlined" className={classes.textfield}/>
             <TextField onChange={(event) => setPassword(event.target.value)}
                        id="outlined-basic" required label="Password" variant="outlined"
                        className={classes.textfield}/>
@@ -98,10 +126,16 @@ return (
                     </MenuItem>
                 ))}
             </TextField>
-        </div>
-        <Link to={"/courses"}><Button onClick={() => handleClick()} variant="contained"
-                                      className={classes.registerButton}>Create an
-            account</Button></Link>
+        </div>{
+        userType === "student" || userType === "instructor" ? (<Link to={"/courses"}><Button onClick={() => handleClick()} variant="contained"
+                                                               className={classes.registerButton}>Create an
+            account</Button></Link>)
+            :
+            <Link to={"/hcmain"}><Button onClick={() => handleClick()} variant="contained"
+                                          className={classes.registerButton}>Create an
+                account</Button></Link>
+    }
+
         <p>Already have an account? <Link to={"/login"}>Log in</Link></p>
     </div>
 
@@ -111,3 +145,4 @@ const mapDispatchToProps = dispatch => ({
     saveUser: user => dispatch(saveUser(user)),
 });
 export default connect(null, mapDispatchToProps)(Register);
+

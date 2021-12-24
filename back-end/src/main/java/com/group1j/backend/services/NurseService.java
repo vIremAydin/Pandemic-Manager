@@ -48,12 +48,11 @@ public class NurseService {
     }
 
     public boolean loginNurse(UserLoginDTO userLoginDTO) {
-        //TODO
-        //Optional<Student> student = findByStudentid(userLoginDTO.getId());
-        //if (student.isPresent()){
-        //    Student s = student.get();
-        //    return s.getPassword().equals(userLoginDTO.getPassword());
-        //}
+        Optional<Nurse> nurse = findByNurseid(userLoginDTO.getId());
+        if (nurse.isPresent()){
+            Nurse n = nurse.get();
+            return n.getPassword().equals(userLoginDTO.getPassword());
+        }
         return false;
     }
 

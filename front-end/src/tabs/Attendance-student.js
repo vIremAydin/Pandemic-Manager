@@ -1,5 +1,7 @@
 import {makeStyles} from "@material-ui/core/styles";
 import {Button, Grid, TextField} from "@material-ui/core";
+import axios from "axios";
+import * as React from "react";
 
 const useStyles = makeStyles({
     textField: {
@@ -27,6 +29,19 @@ const useStyles = makeStyles({
 
 const AttendanceStudent = () => {
     const classes = useStyles();
+
+    //const [studentId, setStudentId] = React.useState(0);
+    //const [attendanceCode, setAttendanceCode] = React.state.id;
+
+   // console.log(React.state.id);
+
+    axios.post("http://localhost:8080/api/attendance/add/student/{}{}", {
+
+        }).then(function(response) {
+            console.log(response.status);
+        }).catch(function(error) {
+            console.log(error)
+        })
     return (
         <Grid container>
             <div className={classes.container}>

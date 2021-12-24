@@ -1,14 +1,28 @@
 import { makeStyles } from "@material-ui/core/styles";
 import userLogo from "../images/userLogo.png";
-import {Button, TextField, Link} from "@material-ui/core";
+import {Button, TextField, Link, Grid} from "@material-ui/core";
 
 
 const useStyles = makeStyles({
-    editProfileContainer: {
-        width: "50%",
-        height: "80%",
-        marginTop: "10%",
-        marginLeft: "10%",
+    
+    container: {
+        marginTop:"10%"
+    },
+
+    inputContainer:{
+        marginTop:"2%",
+    },
+
+    textfield: {
+        marginTop: "10px"
+    },
+
+    label: {
+        marginBottom: "40px"
+    },
+
+    labelContainer:{
+        paddingTop:"30px",
     },
 
     title: {
@@ -16,44 +30,16 @@ const useStyles = makeStyles({
         fontSize:"30px",
     },
 
-    label: {
-        width:"35%",
-        height: "20px",
-        color: "#023047"
-    },
-
-    textfield: {
-        width:"300px",
-        height: "20px",
-        float:"right",
-        paddingLeft:"100%",
-        marginTop:"-12px",
-    },
-
-    container: {
-        marginTop:"50px",
-    },
-
-    saveButton: {
+    uploadButton: {
         marginTop:"10%",
-        width: "10%",
+        width:"100%"
+    },
+
+    saveButton:{
+        float:"right",
         background:"#023047",
         color:"#ffffff",
-        float:"right"
-    },
-
-    uploadButton: {
-        width:"60%",
-        float:"right",
-        marginTop:"30px",
-        color: "#023047",
-    },
-
-    link: {
-        marginLeft:"35%",
     }
-
-
 });
 
 const EditProfile = ()=>{
@@ -64,36 +50,39 @@ const EditProfile = ()=>{
     }
 
     return (
-        <div className={classes.editProfileContainer}>
+        <div className={classes.container}>
             <p className={classes.title}>Edit Your Profile</p>
-            <div>
-                <img src={userLogo} alt=""/>
-                <Button variant="contained" className={classes.uploadButton}>Upload New Profile Photo</Button>
-            </div>
-
-            <div className={classes.container}>
-                <label className={classes.label}>
-                    New Password: <TextField id="outlined-basic" variant="outlined" className={classes.textfield}/>
-                </label>
-            </div>
-
-            <div className={classes.container}>
-                <label className={classes.label}>
-                    Confirm New Password: <TextField id="outlined-basic" variant="outlined" className={classes.textfield}/>
-                </label>
-            </div>
-            <div className={classes.container}>
-                <label className={classes.label}>
-                    Existing Password: <TextField id="outlined-basic" variant="outlined" className={classes.textfield}/>
-                </label>
-            </div>
-            <div style={{marginTop:"40px"}}>
-                <Link href="#" className={classes.link}>Forgot Password?</Link>
-                <Button variant="contained" className={classes.saveButton}>Save</Button>
-            </div>
-
+            <Grid container>
+                <Grid item xs={3}>
+                    <img src={userLogo} alt=""/>
+                </Grid>
+                <Grid item xs={3}>
+                     <Button variant="contained" className={classes.uploadButton}>Upload New Profile Photo</Button>
+                </Grid>
+            </Grid>
+            <Grid container className={classes.inputContainer}>
+                <Grid item xs={3} container direction="column" className={classes.labelContainer}>
+                    <label className={classes.label} for="newPassword">New Password: </label>
+                    <label className={classes.label} for="confirmPassword">Confirm New Password: </label>
+                    <label className={classes.label} for="existingPassword">Existing Password: </label>
+                </Grid>
+                <Grid item xs={3} container direction="column" justifyContent="center">
+                    <TextField variant="outlined" className={classes.textfield} id="newPassword"/>
+                    <TextField variant="outlined" className={classes.textfield} id="confirmPassword"/>
+                    <TextField variant="outlined" className={classes.textfield} id="existingPassword"/>
+                </Grid>
+            </Grid>
+            <Grid container>
+                <Grid item xs={3}></Grid>
+                <Grid item xs={3}><Link href="#" className={classes.link}>Forgot Password?</Link></Grid>
+            </Grid>
+            <Grid container>
+                <Grid item xs={3}></Grid>
+                <Grid item xs={3}>
+                    <Button variant="contained" className={classes.saveButton}>Save</Button>
+                </Grid>
+            </Grid>
         </div>
-
     );
 }
 export default EditProfile;
