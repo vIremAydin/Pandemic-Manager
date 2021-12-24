@@ -40,7 +40,6 @@ public class Course {
     public Course(){
         enrolledStudents = new ArrayList<>();
         attendanceRecord = new ArrayList<>();
-        seatingPlan = new SeatingPlan();
     }
 
     //Constructor
