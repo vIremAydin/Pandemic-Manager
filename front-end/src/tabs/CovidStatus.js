@@ -31,8 +31,8 @@ const CovidStatus = ({user}) => {
     const classes = useStyles();
     const [allowed, setAllowed] = useState(true);
 
-    //const user = axios.get("http://localhost:8080/api/" + userType + "/get/" + id);
-    
+    const user1 = axios.get("http://localhost:8080/api/" + user.type + "/get/" + user.id);
+
 
     console.log(user);
     return (
@@ -81,8 +81,6 @@ const CovidStatus = ({user}) => {
     )
 }
 const mapStateToProps = (state) => {
-    return {
-        user: state.user.user
-    }
+    return {user: state.user.user};
 }
 export default connect(mapStateToProps)(CovidStatus);
