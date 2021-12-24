@@ -2,6 +2,7 @@ import {Grid} from "@material-ui/core";
 import {useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import axios from "axios";
+import {connect} from "react-redux";
 
 const useStyles = makeStyles({
     box: {
