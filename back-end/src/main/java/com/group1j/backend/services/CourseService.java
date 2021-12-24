@@ -6,6 +6,8 @@ import com.group1j.backend.dto.UserLoginDTO;
 import com.group1j.backend.entities.*;
 import com.group1j.backend.repositories.*;
 import org.springframework.stereotype.Service;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,5 +86,21 @@ public class CourseService {
             courseRepository.save(c);
             return c;
         }
+    }
+    public Course createAttendance(int courseID) {
+        Optional<Course> course = courseRepository.findByCourseID(courseID);
+        if(course.isPresent()){
+            Course c = course.get();
+            Attendance attendance = new Attendance();
+            Date date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            attendance.setDate(formatter.format(date));
+            attendance.setAttendanceCode(UUID.randomUUID().toString());
+            c.getAttendanceRecord().add(attendance);
+            courseRepository.save(c);
+            return c;
+        }
+        return null;
+
     }
 }
