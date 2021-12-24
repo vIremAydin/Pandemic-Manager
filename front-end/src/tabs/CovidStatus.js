@@ -1,6 +1,7 @@
 import {Grid} from "@material-ui/core";
 import {useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
+import axios from "axios";
 
 const useStyles = makeStyles({
     box: {
@@ -28,6 +29,10 @@ const useStyles = makeStyles({
 const CovidStatus = () => {
     const classes = useStyles();
     const [allowed, setAllowed] = useState(true);
+
+    //const user = axios.get("http://localhost:8080/api/" + userType + "/get/" + id);
+    
+
     return (
         <Grid container>
             <Grid item xs={6}>

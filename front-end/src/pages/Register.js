@@ -66,7 +66,7 @@ const Register = ({saveUser}) => {
         const user = {
             name: userName,
             password: password,
-            //type: userType,
+            type: userType,
             email: email,
             id: id,
             hesCode: hes
@@ -74,7 +74,7 @@ const Register = ({saveUser}) => {
         saveUser(user);
 
         
-        axios.post("http://localhost:8080/api/student/create", {
+        axios.post("http://localhost:8080/api/" + userType + "/create", {
             name: userName, 
             password: password,
             email: email,
@@ -82,9 +82,16 @@ const Register = ({saveUser}) => {
             hesCode: hes
         }).then(function(response) {
             console.log(response.status);
+            setUserName("");
+            setEmail("");
+            setPassword(0);
+            setHes("");
+            setId(0);
         }).catch(function(error) {
             console.log(error)
         })
+        
+        
       
     
 }
@@ -96,6 +103,8 @@ return (
         <div className={classes.textContainer}>
             <TextField onChange={(event) => setEmail(event.target.value)}
                        id="outlined-basic" required label="Email" variant="outlined" className={classes.textfield}/>
+            <TextField onChange={(event) => setId(event.target.value)}
+                       id="outlined-basic" required label="Bilkent ID" variant="outlined" className={classes.textfield}/>
             <TextField onChange={(event) => setPassword(event.target.value)}
                        id="outlined-basic" required label="Password" variant="outlined"
                        className={classes.textfield}/>
@@ -130,3 +139,4 @@ const mapDispatchToProps = dispatch => ({
     saveUser: user => dispatch(saveUser(user)),
 });
 export default connect(null, mapDispatchToProps)(Register);
+
