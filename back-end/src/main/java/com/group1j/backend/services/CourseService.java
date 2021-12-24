@@ -122,34 +122,34 @@ public class CourseService {
     public List<List<Integer>> convertPlanToList(String elPlan){
         int index = 0;
         int indexComma = 0; //Initial
-        int indexColumn = 0; //Initial
+        int indexSemicolon = 0; //Initial
         int row = 0;
 
         List<List<Integer>> seatingPlan = new ArrayList<>();
         seatingPlan.add(new ArrayList<>()); //First row has been added
 
-        while(index < elPlan.length()-1 || indexComma != -1 || indexColumn != -1){
+        while(index < elPlan.length()-1 || indexComma != -1 || indexSemicolon != -1){
             indexComma = elPlan.indexOf(",",index);
-            indexColumn = elPlan.indexOf(";",index);
+            indexSemicolon = elPlan.indexOf(";",index);
 
-            if(indexComma != -1 && indexComma < indexColumn){
+            if(indexComma != -1 && indexComma < indexSemicolon){
                 int number = Integer.parseInt(elPlan.substring(index,indexComma));
                 seatingPlan.get(row).add(number);
                 index = indexComma + 1;
             }
 
-            else if(indexColumn < indexComma){
-                int number = Integer.parseInt(elPlan.substring(index,indexColumn));
+            else if(indexSemicolon < indexComma){
+                int number = Integer.parseInt(elPlan.substring(index,indexSemicolon));
                 seatingPlan.get(row).add(number);
                 seatingPlan.add(new ArrayList<>()); //New row will start
                 row = row + 1;
-                index = indexColumn + 1;
+                index = indexSemicolon + 1;
             }
 
-            else if(indexComma == -1 && indexColumn != -1 ){
-                int number = Integer.parseInt(elPlan.substring(index,indexColumn));
+            else if(indexComma == -1 && indexSemicolon != -1 ){
+                int number = Integer.parseInt(elPlan.substring(index,indexSemicolon));
                 seatingPlan.get(row).add(number);
-                index = indexColumn + 1;
+                index = indexSemicolon + 1;
             }
 
             else{
