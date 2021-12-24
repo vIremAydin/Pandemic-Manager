@@ -6,7 +6,9 @@ import com.group1j.backend.entities.*;
 import com.group1j.backend.repositories.*;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,10 +16,12 @@ import java.util.Optional;
 public class TestService {
 
     private TestRepository testRepository;
+    private StudentRepository studentRepository;
 
     //Constructor
-    public TestService(TestRepository testRepository) {
+    public TestService(TestRepository testRepository, StudentRepository studentRepository) {
         this.testRepository = testRepository;
+        this.studentRepository = studentRepository;
     }
 
     /**
@@ -42,4 +46,35 @@ public class TestService {
         this.testRepository = testRepository;
     }
 
+    public Test createTest(int patientID) {
+        Optional<Student> student = studentRepository.findById(patientID);
+        if(student.isPresent()){
+            Test test = new Test();
+            test.setPatientID(patientID);
+            Date date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            test.setDate(formatter.format(date));
+            testRepository.save(test);
+
+            Student s = student.get();
+            s.getTestRecord().getPreviousTests().add(test);
+            studentRepository.save(s);
+
+            return test;
+        }
+
+        return null;
+    }
+
+    public Test announceResult(int testID, boolean result) {
+        Optional<Test> test = testRepository.findByTestID(testID);
+        if(test.isPresent()){
+            Test t = test.get();
+            t.setResultAnnounced(true);
+            t.setPositive(result);
+            testRepository.save(t);
+            return t;
+        }
+        return null;
+    }
 }

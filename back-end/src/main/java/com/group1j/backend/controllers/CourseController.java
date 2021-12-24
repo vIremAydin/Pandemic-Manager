@@ -35,12 +35,20 @@ public class CourseController {
     public Course addStudent(@PathVariable int courseID, @PathVariable int studentID){
         return courseService.addStudent(courseID,studentID);
     }
+    @PutMapping("/update/SeatingPlan/{seatingPlanID}/{courseID}")
+    public Course updateSeatingPlan(@PathVariable int seatingPlanID, @PathVariable int courseID){
+        return courseService.updateSeatingPlan(seatingPlanID, courseID);
+    }
 
-    @PostMapping("/create")
+    @PostMapping("/create/course")
     public Course createCourse(@RequestBody CreateCourseDTO createCourseDTO){
         return courseService.createCourse(createCourseDTO);
     }
 
+    @PostMapping("/create/attendance/{courseID}")
+    public Course createAttendance(@PathVariable int courseID){
+        return courseService.createAttendance(courseID);
+    }
     public CourseService getCourseService() {
         return courseService;
     }

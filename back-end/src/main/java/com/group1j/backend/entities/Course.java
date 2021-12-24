@@ -23,7 +23,8 @@ public class Course {
             inverseJoinColumns = @JoinColumn(name = "studentID"))
     private List<Student> enrolledStudents;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name="instructor_id")
     private Instructor instructor;
 
     @OneToMany(
