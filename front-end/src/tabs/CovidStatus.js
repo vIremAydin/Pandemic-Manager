@@ -3,6 +3,7 @@ import {useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import axios from "axios";
 import {connect} from "react-redux";
+import * as React from "react";
 
 const useStyles = makeStyles({
     box: {
@@ -31,8 +32,26 @@ const CovidStatus = ({user}) => {
     const classes = useStyles();
     const [allowed, setAllowed] = useState(true);
 
-    const user1 = axios.get("http://localhost:8080/api/" + user.type + "/get/" + user.id);
+    async function handle() {
+        const user1 = axios.get("http://localhost:8080/api/" + user.type + "/get/" + user.bilkentId).then((response) => {
+        console.log("User is fetched");
+        console.log(user1);
+        return <p>user1.email</p>;
+    });
 
+        
+
+        const email = user1.email;
+        console.log(email);
+        return user1.email;
+    }
+
+    React.useEffect(() => {
+        console.log(handle());
+    });
+        
+    
+    
 
     return (
         <Grid container>
@@ -46,7 +65,7 @@ const CovidStatus = ({user}) => {
                         }</div>
                         <div className={classes.box}>
                             <p>HES CODE:</p>
-                            <p>ABC-123-ABCD</p>
+                            <handle/>
                         </div>
                     </div>
                     <div className={classes.colItem}>

@@ -2,6 +2,8 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Button, Grid, TextField} from "@material-ui/core";
 import axios from "axios";
 import * as React from "react";
+import {connect} from "react-redux";
+
 
 const useStyles = makeStyles({
     textField: {
@@ -27,26 +29,27 @@ const useStyles = makeStyles({
 
 });
 
-const AttendanceStudent = () => {
+const AttendanceStudent = ({user}) => {
     const classes = useStyles();
 
-    //const [studentId, setStudentId] = React.useState(0);
-    //const [attendanceCode, setAttendanceCode] = React.state.id;
+    const [attendanceCode, setAttendanceCode] = React.useState(0);
 
-   // console.log(React.state.id);
-
-    axios.post("http://localhost:8080/api/attendance/add/student/{}{}", {
-
+    async function handleClick() {
+        axios.post("http://localhost:8080/api/attendance/add/student/" + attendanceCode + "/" + user.bilkentId, {
+        
         }).then(function(response) {
             console.log(response.status);
         }).catch(function(error) {
             console.log(error)
         })
+    }
+
+    
     return (
         <Grid container>
             <div className={classes.container}>
-                <TextField className={classes.textField} id="outlined-basic" label="Code" variant="outlined"/>
-                <Button className={classes.btn} variant="contained">Enter</Button>
+                <TextField onChange={(event) => setAttendanceCode(event.target.value)} className={classes.textField} id="outlined-basic" label="Code" variant="outlined"/>
+                <Button className={classes.btn} variant="contained" onClick={() => handleClick()}>Enter</Button>
             </div>
 
             <div className={classes.container}>
@@ -57,4 +60,9 @@ const AttendanceStudent = () => {
 
     )
 }
-export default AttendanceStudent;
+const mapStateToProps = (state) => {
+    return {
+        user: state.user.user
+    }
+}
+export default connect(mapStateToProps)(AttendanceStudent);

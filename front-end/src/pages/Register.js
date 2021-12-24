@@ -68,7 +68,7 @@ const Register = ({saveUser}) => {
             password: password,
             type: userType,
             email: email,
-            id: id,
+            bilkentId: id,
             hesCode: hes
         };
         saveUser(user);
@@ -86,7 +86,7 @@ const Register = ({saveUser}) => {
             setEmail("");
             setPassword(0);
             setHes("");
-            setId(0);
+            //setId(0);
         }).catch(function(error) {
             console.log(error)
         })
