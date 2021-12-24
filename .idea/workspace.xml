@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="health center pages + SidebarButton.js + TestCalendar.js">
+    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="CovidStatus.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -224,7 +222,21 @@
       <option name="project" value="LOCAL" />
       <updated>1638809859667</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="CovidStatus.js">
+      <created>1640363498464</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1640363498464</updated>
+    </task>
+    <task id="LOCAL-00016" summary="CovidStatus.js">
+      <created>1640363598723</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1640363598723</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,7 +281,8 @@
     <MESSAGE value="Edit_Profile.js" />
     <MESSAGE value="SeatPlan.js and enroll course dialog" />
     <MESSAGE value="new button styles" />
-    <option name="LAST_COMMIT_MESSAGE" value="new button styles" />
+    <MESSAGE value="CovidStatus.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="CovidStatus.js" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

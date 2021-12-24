@@ -33,10 +33,10 @@ const AttendanceStudent = () => {
     //const [studentId, setStudentId] = React.useState(0);
     //const [attendanceCode, setAttendanceCode] = React.state.id;
 
-    console.log(React.state.id);
+   // console.log(React.state.id);
 
     axios.post("http://localhost:8080/api/attendance/add/student/{}{}", {
-            
+
         }).then(function(response) {
             console.log(response.status);
         }).catch(function(error) {

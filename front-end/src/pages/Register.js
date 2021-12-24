@@ -62,7 +62,7 @@ const Register = ({saveUser}) => {
     };
 
     async function handleClick() {
-        
+
         const user = {
             name: userName,
             password: password,
@@ -73,9 +73,9 @@ const Register = ({saveUser}) => {
         };
         saveUser(user);
 
-        
+
         axios.post("http://localhost:8080/api/" + userType + "/create", {
-            name: userName, 
+            name: userName,
             password: password,
             email: email,
             id: id,
@@ -90,10 +90,10 @@ const Register = ({saveUser}) => {
         }).catch(function(error) {
             console.log(error)
         })
-        
-        
-      
-    
+
+
+
+
 }
 
 return (
@@ -126,10 +126,16 @@ return (
                     </MenuItem>
                 ))}
             </TextField>
-        </div>
-        <Link to={"/courses"}><Button onClick={() => handleClick()} variant="contained"
-                                      className={classes.registerButton}>Create an
-            account</Button></Link>
+        </div>{
+        userType === "student" || userType === "instructor" ? (<Link to={"/courses"}><Button onClick={() => handleClick()} variant="contained"
+                                                               className={classes.registerButton}>Create an
+            account</Button></Link>)
+            :
+            <Link to={"/hcmain"}><Button onClick={() => handleClick()} variant="contained"
+                                          className={classes.registerButton}>Create an
+                account</Button></Link>
+    }
+
         <p>Already have an account? <Link to={"/login"}>Log in</Link></p>
     </div>
 
