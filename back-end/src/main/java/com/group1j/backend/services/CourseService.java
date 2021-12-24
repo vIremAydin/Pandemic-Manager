@@ -1,15 +1,12 @@
 package com.group1j.backend.services;
 
 import com.group1j.backend.dto.CreateCourseDTO;
-import com.group1j.backend.dto.CreateUserDTO;
-import com.group1j.backend.dto.UserLoginDTO;
 import com.group1j.backend.entities.*;
 import com.group1j.backend.repositories.*;
 import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,8 +38,6 @@ public class CourseService {
         }
         return null;
     }
-
-
 
     /**
      * Method for returning all of the students in the system
@@ -93,5 +88,34 @@ public class CourseService {
         }
         return null;
 
+    }
+
+    public Course addSeatingPlan(int courseID, List<List<Integer>> seatingPlan) {
+        Optional<Course> course = courseRepository.findByCourseID(courseID);
+        if(course.isPresent()){
+            String elPlan = convertPlanToString(seatingPlan);
+            Course c = course.get();
+            SeatingPlan plan = new SeatingPlan(elPlan);
+            c.setSeatingPlan(plan);
+            courseRepository.save(c);
+            return c;
+        }
+
+        return null;
+    }
+
+    public String convertPlanToString(List<List<Integer>> seatingPlan){
+        String elPlan = "";
+
+        for(int i = 0; i < seatingPlan.size(); i++){
+            for(int j = 0; j < seatingPlan.get(i).size(); j++){
+                elPlan = elPlan + seatingPlan.get(i).get(j);
+                if(j != seatingPlan.get(i).size() - 1)
+                    elPlan = elPlan + ",";
+            }
+            elPlan = elPlan + ";";
+        }
+
+        return elPlan;
     }
 }

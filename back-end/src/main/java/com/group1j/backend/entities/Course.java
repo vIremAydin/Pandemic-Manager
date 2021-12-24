@@ -33,13 +33,14 @@ public class Course {
     )
     private List<Attendance> attendanceRecord;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private SeatingPlan seatingPlan;
 
     //Default Constructor
     public Course(){
         enrolledStudents = new ArrayList<>();
         attendanceRecord = new ArrayList<>();
+        seatingPlan = new SeatingPlan();
     }
 
     //Constructor
