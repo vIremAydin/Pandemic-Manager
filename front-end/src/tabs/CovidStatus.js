@@ -2,6 +2,7 @@ import {Grid} from "@material-ui/core";
 import {useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {connect} from "react-redux";
+import axios from "axios";
 
 const useStyles = makeStyles({
     box: {
@@ -30,6 +31,10 @@ const CovidStatus = ({user}) => {
     const classes = useStyles();
     const [allowed, setAllowed] = useState(true);
     console.log(user);
+
+    //const user = axios.get("http://localhost:8080/api/" + userType + "/get/" + id);
+    
+
     return (
         <Grid container>
             <Grid item xs={6}>
