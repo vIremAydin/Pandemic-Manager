@@ -28,8 +28,6 @@ public class MessageService {
         return messageRepository.findAll();
     }
 
-    //public Appointment createAppointment(CreateUserDTO createUserDTO){} //TODO
-
     public Optional<Message> findByMessageid(Integer id){
         return messageRepository.findByMessageID(id);
     }

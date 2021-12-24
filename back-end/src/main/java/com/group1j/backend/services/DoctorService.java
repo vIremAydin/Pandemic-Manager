@@ -32,7 +32,7 @@ public class DoctorService {
 
     public Doctor createDoctor(CreateUserDTO createUserDTO){
         return null;
-    } //TODO
+    } 
 
     public Optional<Doctor> findByDoctorid(Integer id){
         return doctorRepository.findById(id);
