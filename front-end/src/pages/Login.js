@@ -48,11 +48,12 @@ const Login = ()=>{
 
     async function handleClick() {
         
-        setSuccessful(axios.get("http://localhost:8080/api/student/login/" + id + "/" + password).then((response) => {
-            console.log(response.status);
+        axios.get("http://localhost:8080/api/student/login/" + id + "/" + password).then((response) => {
+            console.log(response.data);
+            setSuccessful(response.data);
         }).catch((error) => {
             console.log(error);
-        }));
+        })
         
         
     }

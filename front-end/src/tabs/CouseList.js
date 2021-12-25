@@ -28,6 +28,7 @@ const CourseList =({changeCourse, changeTab, user}) =>{
     const [courses, setCourses] = React.useState([]);
     async function handle() {
         axios.get("http://localhost:8080/api/" + user.type + "/get/" + user.bilkentId).then((response) => {
+            console.log(response.data);
             setCourses(response.data.enrolledCourses);
         });
     }

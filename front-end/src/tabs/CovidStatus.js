@@ -4,6 +4,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import axios from "axios";
 import {connect} from "react-redux";
 import * as React from "react";
+import {Button, TextField, Link} from "@material-ui/core";
 
 const useStyles = makeStyles({
     box: {
@@ -16,7 +17,6 @@ const useStyles = makeStyles({
         borderRadius: "10px",
         display: "flex",
         justifyContent: "space-between"
-
     },
     col: {
         display: "flex",
@@ -47,13 +47,31 @@ const CovidStatus = ({user}) => {
         
     }
 
+    
     React.useEffect(() => {
         handle();
     }, []);
 
-    
+    const [selectedFile, setSelectedFile] = React.useState(null);
+
+    const fileSelectedHandler = event => {
+        setSelectedFile(event.target.files[0]);
+        console.log(event.target.files[0]);
+        setDatesOfDoses([event.target.files[0].lastModifiedDate.toString().substr(0, 15), ...datesOfDoses]);
         
-    
+    }
+
+    const handleClick = () => {
+       console.log(selectedFile);
+       datesOfDoses.map((object) => {
+            axios.post("http://localhost:8080/api/" + user.type + "/add/vaccinationDate/" + user.bilkentId, {
+                object
+            }).then((response) => {
+                console.log("successful");
+            })
+        })
+    }
+
     
 
     return (
@@ -88,15 +106,20 @@ const CovidStatus = ({user}) => {
                         <h3>Vaccination Info</h3>
                     </div>
                     </div>
-                <div className={classes.colItem}>
-                    <div className={classes.box}>
-                        <p>28.11.2021</p>
-                        <p>BioNTech</p>
-                    </div>
-                    <div className={classes.box} style={{marginTop:"20px"}}>
-                        <p>18.01.2021</p>
-                        <p>BioNTech</p>
-                    </div>
+                    <div className={classes.colItem}>
+                        {nbOfDoses ? datesOfDoses.map((object, index) => {
+                            <div className={classes.box}>
+                                {<p>{object}</p>}
+                                <p>{vaccinationNames[index]}</p>
+                            </div>
+                        }):
+                        <div>
+                         <input type="file" onChange={fileSelectedHandler} name="Upload Vaccination Card"/>
+                        <Button variant="contained" style={{color:"#023047"}} onClick = {() => handleClick()}>Upload Vaccination Card</Button>
+                        </div>
+                        }
+               
+                    
                 </div>
             </Grid>
         </Grid>
