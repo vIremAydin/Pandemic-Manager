@@ -70,14 +70,15 @@ const Courses = ({activeTab, changeTab, user, saveUser}) => {
     }
 
     async function enrollCourse() {
-        axios.post("http://localhost:8080/api/course/add/student/" + courseCode + "/" + user.id).then((response) => {
+        axios.post("http://localhost:8080/api/course/add/student/" + courseCode + "/" + user.user.id).then((response) => {
             console.log("enrolled to course");
         }).catch((error) => {
             console.log(user);
             console.log(error);
         });
-        user.enrolledCourses.push(courseCode);
-        saveUser(user);
+        const newUser ={user: user.user,
+        enrolledCourses: user.enrolledCourses.push(courseCode) } ;
+        saveUser(newUser);
         console.log(user);
     }
 
@@ -147,7 +148,7 @@ const Courses = ({activeTab, changeTab, user, saveUser}) => {
 }
 const mapStateToProps = (state) => {
     return {activeTab: state.activeTab.activeTab,
-    user:state.user.user};
+    user:state.user};
 }
 const mapDispatchToProps = dispatch => ({
     changeTab: tab => dispatch(changeTab(tab)),

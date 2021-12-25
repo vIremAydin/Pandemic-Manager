@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 const CourseList =({changeCourse, changeTab, user, state}) =>{
     const [courses, setCourses] = React.useState(user.enrolledCourses);
     async function handle() {
-        axios.get("http://localhost:8080/api/" + user.type + "/get/" + user.bilkentId).then((response) => {
+        axios.get("http://localhost:8080/api/" + user.user.type + "/get/" + user.user.bilkentId).then((response) => {
             console.log(response.data);
             setCourses(response.data.enrolledCourses);
         });
@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = (state) => {
-    return {user: state.user.user,
+    return {user: state.user,
     state:state};
 }
 
