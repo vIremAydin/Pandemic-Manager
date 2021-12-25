@@ -35,6 +35,18 @@ public class DoctorService extends UserService implements CreateTemplate {
     public List<Doctor> getAllDoctors(){
         return doctorRepository.findAll();
     }
+
+    /**
+     * Method to create doctor account
+     * @param createUserDTO
+     * @return
+     * @throws InvalidAlgorithmParameterException
+     * @throws NoSuchPaddingException
+     * @throws IllegalBlockSizeException
+     * @throws NoSuchAlgorithmException
+     * @throws BadPaddingException
+     * @throws InvalidKeyException
+     */
     @Override
     public Doctor create(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Doctor> doctors = doctorRepository.findById(createUserDTO.getId());
@@ -65,6 +77,18 @@ public class DoctorService extends UserService implements CreateTemplate {
         this.doctorRepository = doctorRepository;
     }
 
+    /**
+     * Method for login purposes
+     * @param id
+     * @param password
+     * @return
+     * @throws InvalidAlgorithmParameterException
+     * @throws NoSuchPaddingException
+     * @throws IllegalBlockSizeException
+     * @throws NoSuchAlgorithmException
+     * @throws BadPaddingException
+     * @throws InvalidKeyException
+     */
     public boolean loginDoctor(int id, String password) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Doctor> doctor = doctorRepository.findById(id);
         if (doctor.isPresent()){
@@ -74,7 +98,12 @@ public class DoctorService extends UserService implements CreateTemplate {
         return false;
     }
 
-
+    /**
+     * Method for approving doctor appointments
+     * @param doctorID
+     * @param appointmentID
+     * @return
+     */
     public DoctorAppointment approveDoctorAppointment(int doctorID, int appointmentID) {
         Optional<Doctor> doctor = doctorRepository.findById(doctorID);
         Optional<DoctorAppointment> doctorAppointment = doctorAppointmentRepository.findByAppointmentID(appointmentID);

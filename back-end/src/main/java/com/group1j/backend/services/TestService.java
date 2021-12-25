@@ -32,7 +32,11 @@ public class TestService {
         return testRepository.findAll();
     }
 
-
+    /**
+     * Method to find test according to id
+     * @param id
+     * @return
+     */
     public Optional<Test> findByTestid(Integer id){
         return testRepository.findByTestID(id);
     }
@@ -45,6 +49,11 @@ public class TestService {
         this.testRepository = testRepository;
     }
 
+    /**
+     * Method to create test
+     * @param patientID
+     * @return
+     */
     public Test createTest(int patientID) {
         Optional<Student> student = studentRepository.findById(patientID);
         if(student.isPresent()){
@@ -65,6 +74,12 @@ public class TestService {
         return null;
     }
 
+    /**
+     * Method to update test results
+     * @param testID
+     * @param result
+     * @return
+     */
     public Test announceResult(int testID, boolean result) {
         Optional<Test> test = testRepository.findByTestID(testID);
         if(test.isPresent()){

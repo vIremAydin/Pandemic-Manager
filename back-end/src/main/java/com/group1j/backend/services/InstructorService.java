@@ -41,6 +41,17 @@ public class InstructorService extends UserService implements CreateTemplate{
         return instructorRepository.findAll();
     }
 
+    /**
+     * Method to create instructor account
+     * @param createUserDTO
+     * @return
+     * @throws InvalidAlgorithmParameterException
+     * @throws NoSuchPaddingException
+     * @throws IllegalBlockSizeException
+     * @throws NoSuchAlgorithmException
+     * @throws BadPaddingException
+     * @throws InvalidKeyException
+     */
     @Override
     public Instructor create(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Instructor> instructors = instructorRepository.findById(createUserDTO.getId());
@@ -73,6 +84,18 @@ public class InstructorService extends UserService implements CreateTemplate{
         this.instructorRepository = instructorRepository;
     }
 
+    /**
+     * Method for login purposes
+     * @param id
+     * @param password
+     * @return
+     * @throws InvalidAlgorithmParameterException
+     * @throws NoSuchPaddingException
+     * @throws IllegalBlockSizeException
+     * @throws NoSuchAlgorithmException
+     * @throws BadPaddingException
+     * @throws InvalidKeyException
+     */
     public boolean loginInstructor(int id, String password) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Instructor> instructor = instructorRepository.findById(id);
         if (instructor.isPresent()){
@@ -82,7 +105,12 @@ public class InstructorService extends UserService implements CreateTemplate{
         return false;
     }
 
-
+    /**
+     * Method to add course for instructors
+     * @param instructorID
+     * @param courseID
+     * @return
+     */
     public Instructor addCourse(int instructorID, int courseID) {
         Optional<Instructor> instructor = instructorRepository.findById(instructorID);
         Optional<Course> course = courseRepository.findByCourseID(courseID);

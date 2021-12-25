@@ -23,8 +23,6 @@ public class NurseService extends UserService implements CreateTemplate{
     private StudentRepository studentRepository;
 
     //Constructor
-
-
     public NurseService(NurseRepository nurseRepository, TestAppointmentRepository testAppointmentRepository, StudentRepository studentRepository) {
         this.nurseRepository = nurseRepository;
         this.testAppointmentRepository = testAppointmentRepository;
@@ -53,6 +51,18 @@ public class NurseService extends UserService implements CreateTemplate{
         this.nurseRepository = nurseRepository;
     }
 
+    /**
+     * Method for login purpose
+     * @param id
+     * @param password
+     * @return
+     * @throws InvalidAlgorithmParameterException
+     * @throws NoSuchPaddingException
+     * @throws IllegalBlockSizeException
+     * @throws NoSuchAlgorithmException
+     * @throws BadPaddingException
+     * @throws InvalidKeyException
+     */
     public boolean loginNurse(int id, String password) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Nurse> nurse = nurseRepository.findById(id);
         if (nurse.isPresent()){
@@ -62,6 +72,17 @@ public class NurseService extends UserService implements CreateTemplate{
         return false;
     }
 
+    /**
+     * Method to create nurse account
+     * @param createUserDTO
+     * @return
+     * @throws InvalidAlgorithmParameterException
+     * @throws NoSuchPaddingException
+     * @throws IllegalBlockSizeException
+     * @throws NoSuchAlgorithmException
+     * @throws BadPaddingException
+     * @throws InvalidKeyException
+     */
     @Override
     public Nurse create(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Nurse> nurses = nurseRepository.findById(createUserDTO.getId());
@@ -80,6 +101,12 @@ public class NurseService extends UserService implements CreateTemplate{
         return nurse;
     }
 
+    /**
+     * Method for approving test appointments
+     * @param nurseID
+     * @param appointmentID
+     * @return
+     */
     public TestAppointment approveTestAppointment(int nurseID, int appointmentID) {
         Optional<Nurse> nurse = nurseRepository.findById(nurseID);
         Optional<TestAppointment> testAppointment = testAppointmentRepository.findByAppointmentID(appointmentID);

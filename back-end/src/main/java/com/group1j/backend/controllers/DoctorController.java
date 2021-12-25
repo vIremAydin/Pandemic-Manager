@@ -27,10 +27,6 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    /**
-     *
-     * @return
-     */
     @GetMapping("/getAll")
     public List<Doctor> getAllDoctors(){
         return doctorService.getAllDoctors();

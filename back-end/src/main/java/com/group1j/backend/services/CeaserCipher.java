@@ -13,6 +13,19 @@ public class CeaserCipher implements PasswordEncoder{
     //Fields
     private static final int ckey = 8;
 
+    /**
+     * Method to encode password
+     * @param password
+     * @param key
+     * @param iv
+     * @return
+     * @throws NoSuchPaddingException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidAlgorithmParameterException
+     * @throws InvalidKeyException
+     * @throws BadPaddingException
+     * @throws IllegalBlockSizeException
+     */
     @Override
     public String encode(String password, SecretKey key, IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException,
@@ -47,6 +60,19 @@ public class CeaserCipher implements PasswordEncoder{
         return encrypted;
     }
 
+    /**
+     * Method to decode password
+     * @param password
+     * @param key
+     * @param iv
+     * @return
+     * @throws NoSuchPaddingException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidAlgorithmParameterException
+     * @throws InvalidKeyException
+     * @throws BadPaddingException
+     * @throws IllegalBlockSizeException
+     */
     @Override
     public String decode(String password,SecretKey key,IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException,

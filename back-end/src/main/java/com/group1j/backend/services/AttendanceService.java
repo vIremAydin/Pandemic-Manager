@@ -37,6 +37,12 @@ public class AttendanceService {
         this.studentRepository = studentRepository;
     }
 
+    /**
+     * This method accepts students who enter the attendance code correctly
+     * @param attendanceID
+     * @param studentID
+     * @return
+     */
     public Attendance addStudent(int attendanceID, int studentID) {
         Optional<Student> student = studentRepository.findById(studentID);
         Optional<Attendance> attendance = attendanceRepository.findByAttendanceID(attendanceID);

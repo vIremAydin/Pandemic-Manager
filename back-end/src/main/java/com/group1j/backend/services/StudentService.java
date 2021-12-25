@@ -19,6 +19,7 @@ import java.util.Random;
 
 @Service
 public class StudentService extends UserService implements CreateTemplate{
+    //Fields
     private StudentRepository studentRepository;
 
     //Constructor
@@ -34,6 +35,17 @@ public class StudentService extends UserService implements CreateTemplate{
         return studentRepository.findAll();
     }
 
+    /**
+     * Method to create student account
+     * @param createUserDTO
+     * @return
+     * @throws InvalidAlgorithmParameterException
+     * @throws NoSuchPaddingException
+     * @throws IllegalBlockSizeException
+     * @throws NoSuchAlgorithmException
+     * @throws BadPaddingException
+     * @throws InvalidKeyException
+     */
     @Override
     public Student create(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Student> students = studentRepository.findById(createUserDTO.getId());
@@ -94,6 +106,18 @@ public class StudentService extends UserService implements CreateTemplate{
         this.studentRepository = studentRepository;
     }
 
+    /**
+     * Method for login purpose
+     * @param id
+     * @param password
+     * @return
+     * @throws InvalidAlgorithmParameterException
+     * @throws NoSuchPaddingException
+     * @throws IllegalBlockSizeException
+     * @throws NoSuchAlgorithmException
+     * @throws BadPaddingException
+     * @throws InvalidKeyException
+     */
     public boolean loginStudent(int id, String password) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Student> student = studentRepository.findById(id);
         if (student.isPresent()){
@@ -103,6 +127,11 @@ public class StudentService extends UserService implements CreateTemplate{
         return false;
     }
 
+    /**
+     * It updates the status for needing test
+     * @param id
+     * @return
+     */
     public Student updateTestNeededStatus(int id) {
         Optional<Student> student = findByStudentid(id);
         if (student.isPresent()){
@@ -114,6 +143,11 @@ public class StudentService extends UserService implements CreateTemplate{
         return null;
     }
 
+    /**
+     * It updates the infection status of the student
+     * @param id
+     * @return
+     */
     public Student updateInfectedStatus(int id) {
         Optional<Student> student = findByStudentid(id);
         if (student.isPresent()){
@@ -125,6 +159,11 @@ public class StudentService extends UserService implements CreateTemplate{
         return null;
     }
 
+    /**
+     * It updates the contacted status
+     * @param id
+     * @return
+     */
     public Student updateContactedStatus(int id) {
         Optional<Student> student = findByStudentid(id);
         if (student.isPresent()){
@@ -136,6 +175,11 @@ public class StudentService extends UserService implements CreateTemplate{
         return null;
     }
 
+    /**
+     * It updates whether student is previously infected or not
+     * @param id
+     * @return
+     */
     public Student updatePreviouslyInfectedStatus(int id) {
         Optional<Student> student = findByStudentid(id);
         if (student.isPresent()){
@@ -147,6 +191,11 @@ public class StudentService extends UserService implements CreateTemplate{
         return null;
     }
 
+    /**
+     * It updates whether student is allowed to campus or not
+     * @param id
+     * @return
+     */
     public Student updateAllowedStatus(int id) {
         Optional<Student> student = findByStudentid(id);
         if (student.isPresent()){
@@ -158,6 +207,12 @@ public class StudentService extends UserService implements CreateTemplate{
         return null;
     }
 
+    /**
+     * It updates the test deadline of the user
+     * @param id
+     * @param testDeadline
+     * @return
+     */
     public Student updateTestDeadline(int id, String testDeadline) {
         Optional<Student> student = findByStudentid(id);
         if (student.isPresent()){
@@ -169,6 +224,12 @@ public class StudentService extends UserService implements CreateTemplate{
         return null;
     }
 
+    /**
+     * It adds symptom according to user's circumstance
+     * @param id
+     * @param symptom
+     * @return
+     */
     public Student addSymptom(int id, String symptom) {
         Optional<Student> student = findByStudentid(id);
         if (student.isPresent()){
@@ -180,6 +241,12 @@ public class StudentService extends UserService implements CreateTemplate{
         return null;
     }
 
+    /**
+     * It adds vaccination names
+     * @param id
+     * @param vaccination
+     * @return
+     */
     public Student addVaccinationName(int id, String vaccination) {
         Optional<Student> student = findByStudentid(id);
         if (student.isPresent()){
@@ -192,6 +259,12 @@ public class StudentService extends UserService implements CreateTemplate{
         return null;
     }
 
+    /**
+     * This method adds vaccination dates
+     * @param id
+     * @param date
+     * @return
+     */
     public Student addVaccinationDate(int id, String date) {
         Optional<Student> student = findByStudentid(id);
         if (student.isPresent()){
@@ -203,6 +276,10 @@ public class StudentService extends UserService implements CreateTemplate{
         return null;
     }
 
+    /**
+     * This function returns all of the students that are not allowed to be in campus
+     * @return
+     */
     public List<Student> getNotAllowedOnes() {
         List<Student> notAllowed = new ArrayList<>();
         List<Student> all = studentRepository.findAll();

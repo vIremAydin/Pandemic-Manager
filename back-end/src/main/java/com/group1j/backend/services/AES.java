@@ -14,13 +14,25 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class AES implements PasswordEncoder{
-    //Fields
 
-
+    //Constructor
     public AES() throws NoSuchAlgorithmException {
 
     }
 
+    /**
+     * Encode purposes
+     * @param password
+     * @param key
+     * @param iv
+     * @return
+     * @throws NoSuchPaddingException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidAlgorithmParameterException
+     * @throws InvalidKeyException
+     * @throws BadPaddingException
+     * @throws IllegalBlockSizeException
+     */
     @Override
     public String encode(String password,SecretKey key,IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException,
@@ -34,6 +46,19 @@ public class AES implements PasswordEncoder{
                     .encodeToString(cipherText);
     }
 
+    /**
+     * Decode purposes
+     * @param password
+     * @param key
+     * @param iv
+     * @return
+     * @throws NoSuchPaddingException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidAlgorithmParameterException
+     * @throws InvalidKeyException
+     * @throws BadPaddingException
+     * @throws IllegalBlockSizeException
+     */
     @Override
     public String decode(String password,SecretKey key,IvParameterSpec iv)throws NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException,

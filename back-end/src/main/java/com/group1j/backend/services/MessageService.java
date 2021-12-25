@@ -40,6 +40,11 @@ public class MessageService {
         this.messageRepository = messageRepository;
     }
 
+    /**
+     * Creates message.
+     * @param createMessageDTO
+     * @return
+     */
     public Message createMessage(CreateMessageDTO createMessageDTO) {
         Message m = new Message();
         m.setDate(createMessageDTO.getDate());
