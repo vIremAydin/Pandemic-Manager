@@ -6,10 +6,16 @@ import com.group1j.backend.entities.*;
 import com.group1j.backend.repositories.*;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 @Service
-public class DoctorService {
+public class DoctorService extends UserService {
     private DoctorRepository doctorRepository;
     private DoctorAppointmentRepository doctorAppointmentRepository;
     private StudentRepository studentRepository;
@@ -30,8 +36,21 @@ public class DoctorService {
         return doctorRepository.findAll();
     }
 
-    public Doctor createDoctor(CreateUserDTO createUserDTO){
-        return null;
+    public Doctor createDoctor(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        Optional<Doctor> doctors = doctorRepository.findById(createUserDTO.getId());
+        if(doctors.isPresent()){
+            throw new RuntimeException("Doctor already exists");
+        }
+
+        CovidStatus covidStatus = new CovidStatus(false,false,false,false,"",true,createUserDTO.getHesCode());
+        VaccinationStatus vaccinationStatus = new VaccinationStatus();
+        Schedule schedule = new Schedule();
+        TestRecord testRecord = new TestRecord();
+
+        Doctor doctor = new Doctor(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,"");
+        doctor.setPassword(encode(doctor.getPassword(),doctor.getPasswordNum()));
+        doctorRepository.save(doctor);
+        return doctor;
     } 
 
     public Optional<Doctor> findByDoctorid(Integer id){
@@ -46,11 +65,11 @@ public class DoctorService {
         this.doctorRepository = doctorRepository;
     }
 
-    public boolean loginDoctor(int id, String password) {
+    public boolean loginDoctor(int id, String password) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Doctor> doctor = doctorRepository.findById(id);
         if (doctor.isPresent()){
             Doctor d = doctor.get();
-            return d.getPassword().equals(password);
+            decode(d.getPassword(),d.getPasswordNum()).equals(password);
         }
         return false;
     }

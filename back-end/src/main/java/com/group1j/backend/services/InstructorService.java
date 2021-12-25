@@ -6,13 +6,19 @@ import com.group1j.backend.entities.*;
 import com.group1j.backend.repositories.*;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.File;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class InstructorService {
+public class InstructorService extends UserService {
     private InstructorRepository instructorRepository;
     private CourseRepository courseRepository;
     private StudentRepository studentRepository;
@@ -35,7 +41,7 @@ public class InstructorService {
         return instructorRepository.findAll();
     }
 
-    public Instructor createInstructor(CreateUserDTO createUserDTO){
+    public Instructor createInstructor(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Instructor> instructors = instructorRepository.findById(createUserDTO.getId());
         if(instructors.isPresent()){
             throw new RuntimeException("Instructor already exists");
@@ -49,7 +55,7 @@ public class InstructorService {
 
         Instructor instructor = new Instructor(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>());
 
-
+        instructor.setPassword(encode(instructor.getPassword(),instructor.getPasswordNum()));
         instructorRepository.save(instructor);
         return instructor;
     }
@@ -66,11 +72,11 @@ public class InstructorService {
         this.instructorRepository = instructorRepository;
     }
 
-    public boolean loginInstructor(int id, String password) {
+    public boolean loginInstructor(int id, String password) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Instructor> instructor = instructorRepository.findById(id);
         if (instructor.isPresent()){
             Instructor i = instructor.get();
-            return i.getPassword().equals(password);
+            return decode(i.getPassword(),i.getPasswordNum()).equals(password);
         }
         return false;
     }
