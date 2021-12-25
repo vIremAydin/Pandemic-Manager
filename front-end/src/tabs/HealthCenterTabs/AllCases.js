@@ -1,6 +1,7 @@
 import {makeStyles} from "@material-ui/core/styles";
 import {useState} from "react";
 import {Grid} from "@material-ui/core";
+import axios from "axios";
 
 const useStyles = makeStyles({
     header: {
@@ -25,6 +26,15 @@ const AllCases = () => {
         {name: "iremA", id: 124},
         {name: "iremAB", id: 125},]);
 
+React.useEffect(()=>{getAllCases()},[]);
+
+    async function getAllCases() {
+        axios.get("http://localhost:8080/api/student/getAll" ).then((response) => {
+            setAllCases(response.data.students);
+
+        });
+        setAllCases(allCases.filter(i => i.covidStaus.allowedToCampus));
+    }
     return (
         <div>
             <h1 className={classes.header}>All Positive and Contacted Cases in Bilkent University</h1>
