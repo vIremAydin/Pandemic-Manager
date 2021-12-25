@@ -23,8 +23,10 @@ public class UserService {
         else{
             passwordEncoder = new AES();
         }
-        key = generateKey(128);
-        iv = generateIv();
+        if(key == null && iv == null){
+            key = generateKey(128);
+            iv = generateIv();
+        }
         encoded = passwordEncoder.encode(password,key,iv);
         return encoded;
     }
