@@ -85,6 +85,8 @@ public class StudentService extends UserService implements CreateTemplate{
             covidStatus.setPreviouslyInfected(false);
         }
 
+        covidStatus.setHesCode(createUserDTO.getHesCode());
+
         VaccinationStatus vaccinationStatus = new VaccinationStatus();
         Schedule schedule = new Schedule();
         TestRecord testRecord = new TestRecord();
