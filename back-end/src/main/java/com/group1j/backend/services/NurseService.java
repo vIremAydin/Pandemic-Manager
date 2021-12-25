@@ -6,12 +6,18 @@ import com.group1j.backend.entities.*;
 import com.group1j.backend.repositories.*;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class NurseService {
+public class NurseService extends UserService {
     private NurseRepository nurseRepository;
     private TestAppointmentRepository testAppointmentRepository;
     private StudentRepository studentRepository;
@@ -47,16 +53,16 @@ public class NurseService {
         this.nurseRepository = nurseRepository;
     }
 
-    public boolean loginNurse(int id, String password) {
+    public boolean loginNurse(int id, String password) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Nurse> nurse = nurseRepository.findById(id);
         if (nurse.isPresent()){
             Nurse n = nurse.get();
-            return n.getPassword().equals(password);
+            return decode(n.getPassword(),n.getPasswordNum()).equals(password);
         }
         return false;
     }
 
-    public Nurse createNurse(CreateUserDTO createUserDTO) {
+    public Nurse createNurse(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Nurse> nurses = nurseRepository.findById(createUserDTO.getId());
         if(nurses.isPresent()){
             throw new RuntimeException("Nurse already exists");
@@ -68,6 +74,7 @@ public class NurseService {
         TestRecord testRecord = new TestRecord();
 
         Nurse nurse = new Nurse(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule);
+        nurse.setPassword(encode(nurse.getPassword(),nurse.getPasswordNum()));
         nurseRepository.save(nurse);
         return nurse;
     }

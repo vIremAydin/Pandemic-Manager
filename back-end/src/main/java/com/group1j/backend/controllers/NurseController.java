@@ -6,6 +6,12 @@ import com.group1j.backend.entities.*;
 import com.group1j.backend.services.NurseService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,12 +37,12 @@ public class NurseController {
     }
 
     @PostMapping("/create")
-    public Nurse createNurse(@RequestBody CreateUserDTO createUserDTO){
+    public Nurse createNurse(@RequestBody CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         return nurseService.createNurse(createUserDTO);
     }
 
     @GetMapping("/login/{id}/{password}")
-    public boolean loginNurse(@PathVariable int id, @PathVariable String password){
+    public boolean loginNurse(@PathVariable int id, @PathVariable String password) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         return nurseService.loginNurse(id,password);
     }
     @PutMapping("/approve/testAppointment/{nurseID}/{appointmentID}")

@@ -6,6 +6,12 @@ import com.group1j.backend.entities.*;
 import com.group1j.backend.services.DoctorService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,12 +42,12 @@ public class DoctorController {
     }
 
     @PostMapping("/create")
-    public Doctor createDoctor(@RequestBody CreateUserDTO createUserDTO){
+    public Doctor createDoctor(@RequestBody CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         return doctorService.createDoctor(createUserDTO);
     }
 
     @GetMapping("/login/{id}/{password}")
-    public boolean loginDoctor(@PathVariable int id, @PathVariable String password){
+    public boolean loginDoctor(@PathVariable int id, @PathVariable String password) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         return doctorService.loginDoctor(id,password);
     }
 
