@@ -11,10 +11,13 @@ public class Instructor extends User{
     @OneToMany(mappedBy="instructor")
     private List<Course> courses;
 
+    private String lectureNote;
+
     //Constructor
-    public Instructor(int id, String name, String email, String password, CovidStatus covidStaus, VaccinationStatus vaccinationStatus, TestRecord testRecord, Schedule schedule, List<Course> courses) {
+    public Instructor(int id, String name, String email, String password, CovidStatus covidStaus, VaccinationStatus vaccinationStatus, TestRecord testRecord, Schedule schedule, List<Course> courses, String lectureNote) {
         super(id, name, email, password, covidStaus, vaccinationStatus, testRecord, schedule);
         this.courses = courses;
+        this.lectureNote = lectureNote;
     }
 
     //Default Constructor
@@ -28,5 +31,13 @@ public class Instructor extends User{
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
+    }
+
+    public String getLectureNote() {
+        return lectureNote;
+    }
+
+    public void addLectureNotes() {
+        this.lectureNote = lectureNote;
     }
 }
