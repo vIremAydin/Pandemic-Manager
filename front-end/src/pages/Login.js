@@ -51,26 +51,19 @@ const Login = ({saveUser}) => {
     const [isSuccessful, setSuccessful] = React.useState(true);
     const [user, setUser] = React.useState(null);
 
-    async function fetch() {
-        axios.get("http://localhost:8080/api/student/get/" + id).then((response) => {
-            console.log(response.data);
-            setUser(response.data);
-        });
-    }
-
     React.useEffect(() => {
 
-    }, [isSuccessful]);
-
-    React.useEffect(() => {
-        fetch();
-    }, [])
+    }, [isSuccessful, id]);
 
     async function handleClick() {
 
         axios.get("http://localhost:8080/api/student/login/" + id + "/" + password).then((response) => {
             console.log(response.data);
+            axios.get("http://localhost:8080/api/student/get/" + id).then((response) => {
+            console.log(response.data);
+            setUser(response.data);
             saveUser(response.data);
+        });
             setSuccessful(response.data);
         }).catch((error) => {
             console.log(error);
@@ -87,7 +80,7 @@ const Login = ({saveUser}) => {
         }
             <p className={classes.title}>Welcome to Visual Pandemic</p>
             <img src={userLogo} alt=""/>
-            <TextField id="outlined-basic" label="Email" variant="outlined" className={classes.textfield}
+            <TextField id="outlined-basic" label="Bilkent ID" variant="outlined" className={classes.textfield}
                        onChange={(event) => setId(event.target.value)}/>
             <TextField id="outlined-basic" label="Password" variant="outlined" className={classes.textfield}
                        onChange={(event) => setPassword(event.target.value)}/>

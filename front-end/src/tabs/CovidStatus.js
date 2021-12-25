@@ -35,9 +35,10 @@ const CovidStatus = ({user}) => {
     const [vaccinationNames, setVaccinationNames] = useState([]);
     const [datesOfDoses, setDatesOfDoses] = useState([]);
     const [nbOfDoses, setNbOfDoses] = useState(0);
-
+ 
     async function handle() {
-        axios.get("http://localhost:8080/api/" + user.type + "/get/" + user.bilkentId).then((response) => {
+        axios.get("http://localhost:8080/api/student/get/" + user.id).then((response) => {
+            console.log(user);
         setHesCode(response.data.covidStaus.hesCode);
         setAllowed(response.data.covidStaus.allowedToCampus)
         setVaccinationNames(response.data.vaccinationStatus.vaccinationNames);
@@ -58,20 +59,30 @@ const CovidStatus = ({user}) => {
         setSelectedFile(event.target.files[0]);
         console.log(event.target.files[0]);
         setDatesOfDoses([event.target.files[0].lastModifiedDate.toString().substr(0, 15), ...datesOfDoses]);
-        
     }
+
+    React.useEffect(() => {
+
+    }, [datesOfDoses])
 
     async function handleClick() {
        console.log(selectedFile);
        datesOfDoses.map((object) => {
-            axios.post("http://localhost:8080/api/" + user.type + "/add/vaccinationDate/" + user.bilkentId, {
+            axios.post("http://localhost:8080/api/student/add/vaccinationDate/" + user.id, {
+                object
+            }).then((response) => {
+                console.log("successful");
+            })
+
+
+        })
+        vaccinationNames.map((object) => {
+            axios.post("http://localhost:8080/api/student/add/vaccinationName/" + user.id, {
                 object
             }).then((response) => {
                 console.log("successful");
             })
         })
-
-        
     }
 
     
@@ -109,9 +120,11 @@ const CovidStatus = ({user}) => {
                     </div>
                     </div>
                     <div className={classes.colItem}>
-                         <input type="file" onChange={fileSelectedHandler} name="Upload Vaccination Card"/>
+                        <TextField id="outlined-basic" label="Vaccination Name" variant="outlined" onChange={(event) => setVaccinationNames([event.target.value, ...vaccinationNames])}/>
+                        <input type="file" onChange={fileSelectedHandler} name="Upload Vaccination Card"/>
                         <Button variant="contained" style={{color:"#023047"}} onClick = {() => handleClick()}>Upload Vaccination Card</Button>
                         <div></div>
+                        {console.log(datesOfDoses)}
                         {datesOfDoses.map((object, index) => {
                             <div className={classes.box}>
                                 <p>{object}</p>
