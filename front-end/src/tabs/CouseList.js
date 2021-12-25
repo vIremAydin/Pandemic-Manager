@@ -1,9 +1,11 @@
 import {Grid} from "@material-ui/core";
 import {Link} from "react-router-dom";
-import React from "react";
+import * as React from "react";
 import {changeCourse, changeTab} from "../redux/tab-action";
 import {connect} from "react-redux";
 import {makeStyles} from "@material-ui/core/styles";
+import axios from "axios";
+
 
 
 const useStyles = makeStyles({
@@ -22,8 +24,21 @@ const useStyles = makeStyles({
         borderRadius: "10px",
     },
 });
-const CourseList =({changeCourse, changeTab}) =>{
-    const myCourses = ["CS-319", "CS-315", "CS-224", "CS-202"];
+const CourseList =({changeCourse, changeTab, user}) =>{
+    const [courses, setCourses] = React.useState([]);
+    async function handle() {
+        axios.get("http://localhost:8080/api/" + user.type + "/get/" + user.bilkentId).then((response) => {
+            setCourses(response.data.enrolledCourses);
+        });
+    }
+
+    React.useEffect(() => {
+        handle();
+    }, []);
+  
+    //const myCourses = ["CS-319", "CS-315", "CS-224", "CS-202"];
+  
+    
 const classes = useStyles();
     function handler(name) {
         changeCourse(name);
@@ -32,7 +47,7 @@ const classes = useStyles();
     return(
         <Grid container>
             {
-                myCourses.map(courseName => (
+                courses.map(courseName => (
                     <Grid xs={6}>
                         <Link to={"/main"}>
                             <button onClick={() => handler(courseName)} className={classes.course}>
@@ -58,4 +73,8 @@ const mapDispatchToProps = dispatch => ({
     changeTab: tab => dispatch(changeTab(tab)),
 });
 
-export default connect(null, mapDispatchToProps)(CourseList);
+const mapStateToProps = (state) => {
+    return {user: state.user.user};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CourseList);

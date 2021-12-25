@@ -13,7 +13,7 @@ import CovidStatus from "../tabs/CovidStatus";
 import Help from "../tabs/Help";
 import TestSchedule from "../tabs/TestSchedule";
 import Button from "@mui/material/Button";
-
+import axios from "axios";
 
 const useStyles = makeStyles({
 
@@ -46,20 +46,29 @@ const useStyles = makeStyles({
 
 });
 
-const Courses = ({activeTab, changeTab}) => {
+const Courses = ({activeTab, changeTab, user}) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-
+    const [courseCode, setCourseCode] = React.useState(0);
     const handleClickOpen = () => {
         setOpen(true);
     };
 
     const handleClose = () => {
         setOpen(false);
+        enrollCourse();
     };
 
     function goToCourse() {
         changeTab("Courses");
+    }
+
+    async function enrollCourse() {
+        axios.post("http://localhost:8080/api/course/add/student/" + courseCode + "/" + 2180).then((response) => {
+            console.log(response.status);
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
     return (
@@ -110,6 +119,7 @@ const Courses = ({activeTab, changeTab}) => {
                         type="text"
                         fullWidth
                         variant="standard"
+                        onChange={(event) => setCourseCode(event.target.value)}
                     />
                 </DialogContent>
                 <DialogActions>
@@ -130,4 +140,5 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     changeTab: tab => dispatch(changeTab(tab)),
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(Courses);

@@ -30,31 +30,35 @@ const useStyles = makeStyles({
 });
 const CovidStatus = ({user}) => {
     const classes = useStyles();
-    const [allowed, setAllowed] = useState(true);
+    const [allowed, setAllowed] = useState(false);
+    const [hesCode, setHesCode] = useState("");
+    const [vaccinationNames, setVaccinationNames] = useState([]);
+    const [datesOfDoses, setDatesOfDoses] = useState([]);
+    const [nbOfDoses, setNbOfDoses] = useState(0);
 
     async function handle() {
-        const user1 = axios.get("http://localhost:8080/api/" + user.type + "/get/" + user.bilkentId).then((response) => {
-        console.log("User is fetched");
-        console.log(user1);
-        return <p>user1.email</p>;
+        axios.get("http://localhost:8080/api/" + user.type + "/get/" + user.bilkentId).then((response) => {
+        setHesCode(response.data.covidStaus.hesCode);
+        setAllowed(response.data.covidStaus.allowedToCampus)
+        setVaccinationNames(response.data.vaccinationStatus.vaccinationNames);
+        setDatesOfDoses(response.data.vaccinationStatus.datesOfDoses);
+        setNbOfDoses(response.data.vaccinationStatus.numOfDoses);
     });
-
         
-
-        const email = user1.email;
-        console.log(email);
-        return user1.email;
     }
 
     React.useEffect(() => {
-        console.log(handle());
-    });
+        handle();
+    }, []);
+
+    
         
     
     
 
     return (
         <Grid container>
+            
             <Grid item xs={6}>
                 <div className={classes.col}>
                     <div className={classes.colItem}>
@@ -65,7 +69,7 @@ const CovidStatus = ({user}) => {
                         }</div>
                         <div className={classes.box}>
                             <p>HES CODE:</p>
-                            <handle/>
+                            <p>{hesCode}</p>
                         </div>
                     </div>
                     <div className={classes.colItem}>
