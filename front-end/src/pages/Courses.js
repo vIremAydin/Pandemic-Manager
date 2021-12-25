@@ -69,8 +69,8 @@ const Courses = ({activeTab, changeTab, user, saveUser}) => {
     }
 
     async function enrollCourse() {
-        axios.post("http://localhost:8080/api/course/add/student/" + courseCode + "/" + 2180).then((response) => {
-            console.log(response.status);
+        axios.post("http://localhost:8080/api/course/add/student/" + courseCode + "/" + user.id).then((response) => {
+            console.log("enrolled to course");
         }).catch((error) => {
             console.log(error);
         });
