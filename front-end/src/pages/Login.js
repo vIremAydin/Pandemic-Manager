@@ -49,8 +49,22 @@ const Login = ({saveUser}) => {
     const [id, setId] = React.useState(0);
     const [password, setPassword] = React.useState('');
     const [isSuccessful, setSuccessful] = React.useState(true);
-    useEffect(() => {
-    }, [isSuccessful]);
+    const [user, setUser] = React.useState(null);
+
+    async function fetch() {
+        axios.get("http://localhost:8080/api/student/get/" + id).then((response) => {
+            console.log(response.data);
+            setUser(response.data);
+        });
+    }
+
+    React.useEffect(() => {
+
+    }, [isSuccessful]); 
+
+    React.useEffect(() => {
+        fetch();
+    }, [])
 
     async function handleClick() {
 
@@ -77,13 +91,13 @@ const Login = ({saveUser}) => {
                        onChange={(event) => setId(event.target.value)}/>
             <TextField id="outlined-basic" label="Password" variant="outlined" className={classes.textfield}
                        onChange={(event) => setPassword(event.target.value)}/>
-           <Button variant="contained"
-                                                                      className={classes.loginButton}
-                                                                      onClick={() => handleClick()}>Login
-               <Link to={isSuccessful ? ("/courses") : "/login"}/>{
-               }
-            </Button>
-            <p>Forgot Password?</p>
+           
+            <Link to={isSuccessful ? "/courses" : "/courses"}/>
+                <Button variant="contained"
+                    className={classes.loginButton}
+                    onClick={() => handleClick()}>Login
+                </Button>
+                <p>Forgot Password?</p>
             <Link to={"/register"}>Don't have an account?</Link>
         </div>
 
@@ -92,4 +106,4 @@ const Login = ({saveUser}) => {
 const mapDispatchToProps = dispatch => ({
     saveUser: user => dispatch(saveUser(user)),
 });
-export default connect(mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

@@ -82,11 +82,6 @@ const Register = ({saveUser}) => {
             hesCode: hes
         }).then(function(response) {
             console.log(response.status);
-            setUserName("");
-            setEmail("");
-            setPassword(0);
-            setHes("");
-            //setId(0);
         }).catch(function(error) {
             console.log(error)
         })
