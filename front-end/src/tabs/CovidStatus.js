@@ -38,7 +38,6 @@ const CovidStatus = ({user}) => {
  
     async function handle() {
         axios.get("http://localhost:8080/api/student/get/" + user.id).then((response) => {
-            console.log(user);
         setHesCode(response.data.covidStaus.hesCode);
         setAllowed(response.data.covidStaus.allowedToCampus)
         setVaccinationNames(response.data.vaccinationStatus.vaccinationNames);
@@ -48,7 +47,6 @@ const CovidStatus = ({user}) => {
         
     }
 
-    
     React.useEffect(() => {
         handle();
     }, []);
