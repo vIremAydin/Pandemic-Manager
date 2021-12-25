@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="AllCases.js">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="Login.js" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -284,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640436620594</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Login.js">
+      <created>1640437982896</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1640437982896</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,9 +337,9 @@
     <MESSAGE value="CovidStatus.js" />
     <MESSAGE value="App.js" />
     <MESSAGE value="HCMain.js" />
-    <MESSAGE value="Login.js" />
     <MESSAGE value="AllCases.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="AllCases.js" />
+    <MESSAGE value="Login.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login.js" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
