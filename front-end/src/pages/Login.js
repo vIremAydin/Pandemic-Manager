@@ -75,9 +75,12 @@ const Login = () => {
                        onChange={(event) => setId(event.target.value)}/>
             <TextField id="outlined-basic" label="Password" variant="outlined" className={classes.textfield}
                        onChange={(event) => setPassword(event.target.value)}/>
-            <Link to={isSuccessful ? ("/courses") : "/login"}><Button variant="contained"
+           <Button variant="contained"
                                                                       className={classes.loginButton}
-                                                                      onClick={() => handleClick()}>Login</Button></Link>
+                                                                      onClick={() => handleClick()}>Login
+               <Link to={isSuccessful ? ("/courses") : "/login"}/>{
+               }
+            </Button>
             <p>Forgot Password?</p>
             <Link to={"/register"}>Don't have an account?</Link>
         </div>
