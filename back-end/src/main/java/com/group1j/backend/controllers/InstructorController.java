@@ -45,6 +45,11 @@ public class InstructorController {
         return instructorService.addCourse(instructorID,courseID);
     }
 
+    @PostMapping("/upload/{studentID}/{instructorID}")
+    public Instructor uploadLectureNotes(@PathVariable int studentID, @PathVariable int instructorID){
+        return instructorService.uploadLectureNotes(studentID,instructorID);
+    }
+
     public InstructorService getInstructorService() {
         return instructorService;
     }
