@@ -162,4 +162,17 @@ public class StudentService {
         }
         return null;
     }
+
+    public List<Student> getNotAllowedOnes() {
+        List<Student> notAllowed = new ArrayList<>();
+        List<Student> all = studentRepository.findAll();
+
+        for(int i = 0; i < all.size(); i++){
+            if(!all.get(i).getCovidStaus().isAllowedToCampus()){
+                notAllowed.add(all.get(i));
+            }
+        }
+
+        return notAllowed;
+    }
 }

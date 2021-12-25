@@ -1,7 +1,9 @@
 package com.group1j.backend.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class Student extends User {
@@ -9,6 +11,7 @@ public class Student extends User {
     @ManyToMany(mappedBy = "enrolledStudents")
     private List<Course> enrolledCourses;
 
+    private String lectureNote;
     private int startYear;
 
     //Constructor
@@ -38,4 +41,5 @@ public class Student extends User {
     public void setStartYear(int startYear) {
         this.startYear = startYear;
     }
+
 }

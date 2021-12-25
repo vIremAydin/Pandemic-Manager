@@ -29,4 +29,5 @@ public class Instructor extends User{
     public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
+
 }

@@ -14,13 +14,15 @@ import java.util.Optional;
 public class InstructorService {
     private InstructorRepository instructorRepository;
     private CourseRepository courseRepository;
+    private StudentRepository studentRepository;
 
     //Constructor
 
 
-    public InstructorService(InstructorRepository instructorRepository, CourseRepository courseRepository) {
+    public InstructorService(InstructorRepository instructorRepository, CourseRepository courseRepository, StudentRepository studentRepository) {
         this.instructorRepository = instructorRepository;
         this.courseRepository = courseRepository;
+        this.studentRepository = studentRepository;
     }
 
     /**
@@ -41,8 +43,9 @@ public class InstructorService {
         VaccinationStatus vaccinationStatus = new VaccinationStatus();
         Schedule schedule = new Schedule();
         TestRecord testRecord = new TestRecord();
+        String lectureNote = "";
 
-        Instructor instructor = new Instructor(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>());
+        Instructor instructor = new Instructor(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>(),);
         instructorRepository.save(instructor);
         return instructor;
     }
@@ -84,4 +87,5 @@ public class InstructorService {
 
         return null;
     }
+
 }
