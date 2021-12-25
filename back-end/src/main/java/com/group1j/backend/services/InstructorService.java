@@ -45,7 +45,7 @@ public class InstructorService {
         TestRecord testRecord = new TestRecord();
         String lectureNote = "";
 
-        Instructor instructor = new Instructor(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>(), lectureNote);
+        Instructor instructor = new Instructor(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>(),);
         instructorRepository.save(instructor);
         return instructor;
     }
@@ -88,20 +88,4 @@ public class InstructorService {
         return null;
     }
 
-    public Instructor uploadLectureNotes(int studentID, int instructorID) {
-        Optional<Student> student = studentRepository.findById(studentID);
-        Optional<Instructor> instructor = instructorRepository.findById(instructorID);
-        if (student.isPresent() && instructor.isPresent()){
-            Student s = student.get();
-            Instructor i = instructor.get();
-
-            if(!(s.getCovidStaus().isAllowedToCampus())){
-                i.addLectureNotes();
-            }
-            s.getLectureNote();
-            studentRepository.save(s);
-            return i;
-        }
-        return null;
-    }
 }
