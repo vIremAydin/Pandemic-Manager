@@ -29,11 +29,12 @@ const AllCases = () => {
 React.useEffect(()=>{getAllCases()},[]);
 
     async function getAllCases() {
+        let temp = [];
         axios.get("http://localhost:8080/api/student/getAll" ).then((response) => {
-            setAllCases(response.data.students);
+            temp = response.data;
 
         });
-        setAllCases(allCases.filter(i => i.covidStaus.allowedToCampus));
+        setAllCases(temp.filter(i => !i.covidStaus.allowedToCampus));
     }
     return (
         <div>

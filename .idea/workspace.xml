@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="CouseList.js">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/tabs/HealthCenterTabs/AllCases.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/tabs/HealthCenterTabs/AllCases.js" afterDir="false" />
-    </list>
+    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="AllCases.js" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -320,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640447362398</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="AllCases.js">
+      <created>1640448897584</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1640448897584</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,11 +372,11 @@
     <MESSAGE value="CovidStatus.js" />
     <MESSAGE value="App.js" />
     <MESSAGE value="HCMain.js" />
-    <MESSAGE value="AllCases.js" />
     <MESSAGE value="Courses.js" />
     <MESSAGE value="Login.js" />
     <MESSAGE value="CouseList.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="CouseList.js" />
+    <MESSAGE value="AllCases.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="AllCases.js" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
