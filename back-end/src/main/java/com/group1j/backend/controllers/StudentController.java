@@ -30,6 +30,11 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
+    @GetMapping("/get/NotAllowedOnes")
+    public List<Student> getNotAllowedOnes(){
+        return studentService.getNotAllowedOnes();
+    }
+
     @PostMapping("/create")
     public Student createStudent(@RequestBody CreateUserDTO createUserDTO){
         return studentService.createStudent(createUserDTO);
