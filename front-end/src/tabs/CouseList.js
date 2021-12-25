@@ -25,8 +25,8 @@ const useStyles = makeStyles({
         borderRadius: "10px",
     },
 });
-const CourseList =({changeCourse, changeTab, user}) =>{
-    const [courses, setCourses] = React.useState(user.courses);
+const CourseList =({changeCourse, changeTab, user, state}) =>{
+    const [courses, setCourses] = React.useState(user.enrolledCourses);
     async function handle() {
         axios.get("http://localhost:8080/api/" + user.type + "/get/" + user.bilkentId).then((response) => {
             console.log(response.data);
@@ -38,11 +38,10 @@ const CourseList =({changeCourse, changeTab, user}) =>{
         handle();
     }, []);
     React.useEffect(()=>{
-        setCourses(user.enrolledCourses)
-    },[user])
-    React.useEffect(()=>{
+        setCourses(user.enrolledCourses);
+console.log("here");
+    },[state])
 
-    },[courses])
 
     //const myCourses = ["CS-319", "CS-315", "CS-224", "CS-202"];
 
@@ -82,7 +81,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = (state) => {
-    return {user: state.user.user};
+    return {user: state.user.user,
+    state:state};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CourseList);
