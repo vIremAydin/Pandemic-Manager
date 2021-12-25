@@ -30,7 +30,7 @@ const AllCases = () => {
 
     async function getAllCases() {
         axios.get("http://localhost:8080/api/student/getAll" ).then((response) => {
-            setAllCases(response.data.filter(i => !i.covidStaus.allowedToCampus));
+            setAllCases([response.data.filter(i => !i.covidStaus.allowedToCampus), ...allCases]);
             console.log(response.data.filter(i => !i.covidStaus.allowedToCampus));
         });
         
