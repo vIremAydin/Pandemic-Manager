@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="AllCases.js" />
+    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="AllCases.js">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Courses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/redux/userReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/redux/userReducers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/tabs/CouseList.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/tabs/CouseList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/tabs/HealthCenterTabs/AllCases.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/tabs/HealthCenterTabs/AllCases.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -324,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640448897584</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="AllCases.js">
+      <created>1640449433554</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1640449433555</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
