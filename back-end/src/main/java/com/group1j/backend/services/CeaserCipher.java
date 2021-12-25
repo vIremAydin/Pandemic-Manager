@@ -1,10 +1,20 @@
 package com.group1j.backend.services;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
 public class CeaserCipher implements PasswordEncoder{
+    //Fields
     private static final int key = 8;
 
     @Override
-    public String encode(String password) {
+    public String encode(String password) throws NoSuchPaddingException, NoSuchAlgorithmException,
+            InvalidAlgorithmParameterException, InvalidKeyException,
+            BadPaddingException, IllegalBlockSizeException {
         String encrypted = "";
         char ch;
         for(int i = 0; i < password.length(); ++i){
@@ -36,7 +46,9 @@ public class CeaserCipher implements PasswordEncoder{
     }
 
     @Override
-    public String decode(String password) {
+    public String decode(String password) throws NoSuchPaddingException, NoSuchAlgorithmException,
+            InvalidAlgorithmParameterException, InvalidKeyException,
+            BadPaddingException, IllegalBlockSizeException{
         String decrypted = "";
         char ch;
         for(int i = 0; i < password.length(); ++i){
