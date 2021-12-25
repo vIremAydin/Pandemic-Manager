@@ -65,6 +65,7 @@ const CovidStatus = ({user}) => {
 
     async function handleClick() {
        console.log(selectedFile);
+       console.log(user);
        datesOfDoses.map((object) => {
             axios.post("http://localhost:8080/api/student/add/vaccinationDate/" + user.id, {
                 object
@@ -125,7 +126,7 @@ const CovidStatus = ({user}) => {
                         {console.log(datesOfDoses)}
                         {datesOfDoses.map((object, index) => {
                             <div className={classes.box}>
-                                <p>{object}</p>
+                                <p>{datesOfDoses[index]}</p>
                                 <p>{vaccinationNames[index]}</p>
                             </div>
                         })}
