@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class InstructorService extends UserService {
+public class InstructorService extends UserService implements CreateTemplate{
     private InstructorRepository instructorRepository;
     private CourseRepository courseRepository;
     private StudentRepository studentRepository;
@@ -41,7 +41,8 @@ public class InstructorService extends UserService {
         return instructorRepository.findAll();
     }
 
-    public Instructor createInstructor(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    @Override
+    public Instructor create(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Instructor> instructors = instructorRepository.findById(createUserDTO.getId());
         if(instructors.isPresent()){
             throw new RuntimeException("Instructor already exists");

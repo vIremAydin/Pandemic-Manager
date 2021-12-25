@@ -18,7 +18,7 @@ import java.util.Optional;
 import java.util.Random;
 
 @Service
-public class StudentService extends UserService {
+public class StudentService extends UserService implements CreateTemplate{
     private StudentRepository studentRepository;
 
     //Constructor
@@ -34,7 +34,8 @@ public class StudentService extends UserService {
         return studentRepository.findAll();
     }
 
-    public Student createStudent(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    @Override
+    public Student create(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Student> students = studentRepository.findById(createUserDTO.getId());
         if(students.isPresent()){
             throw new RuntimeException("Student already exists");

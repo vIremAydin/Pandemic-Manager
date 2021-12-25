@@ -43,7 +43,7 @@ public class DoctorController {
 
     @PostMapping("/create")
     public Doctor createDoctor(@RequestBody CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        return doctorService.createDoctor(createUserDTO);
+        return doctorService.create(createUserDTO);
     }
 
     @GetMapping("/login/{id}/{password}")
