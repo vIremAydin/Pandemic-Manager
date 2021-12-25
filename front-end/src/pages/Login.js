@@ -67,7 +67,6 @@ const Login = () => {
         <div className={classes.loginContainer}>{
             isSuccessful ?   (<span/>) :
                 <Alert  severity="error">Invalid email or password</Alert>
-
         }
             <p className={classes.title}>Welcome to Visual Pandemic</p>
             <img src={userLogo} alt=""/>
