@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {makeStyles} from "@material-ui/core/styles";
 import axios from "axios";
 import {saveUser} from "../redux/user.action";
+import {all_courses} from "../components/all_courses";
 
 
 
@@ -54,7 +55,7 @@ const classes = useStyles();
     return(
         <Grid container>
             {
-                courses === undefined ? <span/> : courses.map(courseName => (
+                courses === undefined ? <span/> : courses.map(courseName =>  (
                     <Grid xs={6}>
                         <Link to={"/main"}>
                             <button onClick={() => handler(courseName)} className={classes.course}>
@@ -65,12 +66,12 @@ const classes = useStyles();
                                     <p>Fall 2021-22</p>
                                 </div>
                                 <div>
-                                    <p>Instructor: Eray Tüzün</p>
+                                    <p>Instructor: {all_courses.find(itm => courseName == itm.courseID ).instructor}</p>
                                 </div>
                             </button>
                         </Link>
                     </Grid>
-                ))
+               ))
             }
         </Grid>
     )

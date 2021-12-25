@@ -1,4 +1,4 @@
-import {GET_USER,  SAVE_USER} from "./types"
+import {GET_USER, SAVE_COURSE, SAVE_USER} from "./types"
 
 const initialState = {
     user: {},
@@ -18,6 +18,11 @@ const UserReducer =(state = initialState, action) => {
             return {
                 ...state,
                 user: action.payload
+            };
+        case SAVE_COURSE:
+            return {
+                ...state,
+                enrolledCourses: action.payload
             }
 
         default: return {...state}

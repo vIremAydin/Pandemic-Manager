@@ -15,7 +15,8 @@ import TestSchedule from "../tabs/TestSchedule";
 import Participants from "../tabs/Participants";
 import Button from "@mui/material/Button";
 import axios from "axios";
-import {saveUser} from "../redux/user.action";
+import {saveUser, saveCourse} from "../redux/user.action";
+import {all_courses} from "../components/all_courses";
 
 const useStyles = makeStyles({
 
@@ -48,7 +49,8 @@ const useStyles = makeStyles({
 
 });
 
-const Courses = ({activeTab, changeTab, user, saveUser}) => {
+
+const Courses = ({activeTab, changeTab, user, saveUser, saveCourse}) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [courseCode, setCourseCode] = React.useState(0);
@@ -58,10 +60,14 @@ const Courses = ({activeTab, changeTab, user, saveUser}) => {
 
     React.useEffect(()=>{
 
-    },[user,saveUser]);
+    },[user,saveUser, saveCourse]);
 
     const handleClose = () => {
         setOpen(false);
+        const b = all_courses.findIndex(itm => (itm.courseID == courseCode));
+        console.log(b);
+        console.log(courseCode);
+        if(b !==-1 )
         enrollCourse();
     };
 
@@ -70,15 +76,17 @@ const Courses = ({activeTab, changeTab, user, saveUser}) => {
     }
 
     async function enrollCourse() {
+
         axios.post("http://localhost:8080/api/course/add/student/" + courseCode + "/" + user.user.id).then((response) => {
             console.log("enrolled to course");
         }).catch((error) => {
             console.log(user);
             console.log(error);
         });
-        const newUser ={user: user.user,
-        enrolledCourses: user.enrolledCourses.push(courseCode) } ;
-        saveUser(newUser);
+    //    const newUser ={user: user,
+      //  enrolledCourses: user.enrolledCourses.push(courseCode) } ;
+        user.enrolledCourses.push(courseCode);
+        saveCourse(user.enrolledCourses);
         console.log(user);
     }
 
@@ -135,7 +143,7 @@ const Courses = ({activeTab, changeTab, user, saveUser}) => {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Enroll</Button>
+                    <Button onClick={() =>handleClose()}>Enroll</Button>
                     <Button onClick={handleClose}>Cancel</Button>
                 </DialogActions>
             </Dialog>
@@ -153,6 +161,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     changeTab: tab => dispatch(changeTab(tab)),
     saveUser: user => dispatch(saveUser(user)),
+    saveCourse: course => dispatch(saveCourse(course)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Courses);
