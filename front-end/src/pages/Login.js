@@ -6,6 +6,8 @@ import axios from "axios";
 import * as React from "react";
 import {useEffect} from "react";
 import {Alert} from "@mui/material";
+import {saveUser} from "../redux/user.action";
+import {connect} from "react-redux";
 
 const useStyles = makeStyles({
     loginContainer: {
@@ -41,7 +43,7 @@ const useStyles = makeStyles({
 
 });
 
-const Login = () => {
+const Login = ({saveUser}) => {
     const classes = useStyles();
 
     const [id, setId] = React.useState(0);
@@ -86,4 +88,7 @@ const Login = () => {
 
     );
 }
-export default Login;
+const mapDispatchToProps = dispatch => ({
+    saveUser: user => dispatch(saveUser(user)),
+});
+export default connect(mapDispatchToProps)(Login);
