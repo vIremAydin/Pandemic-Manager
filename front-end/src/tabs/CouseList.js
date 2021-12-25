@@ -5,6 +5,7 @@ import {changeCourse, changeTab} from "../redux/tab-action";
 import {connect} from "react-redux";
 import {makeStyles} from "@material-ui/core/styles";
 import axios from "axios";
+import {saveUser} from "../redux/user.action";
 
 
 
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
     },
 });
 const CourseList =({changeCourse, changeTab, user}) =>{
-    const [courses, setCourses] = React.useState([]);
+    const [courses, setCourses] = React.useState(user.courses);
     async function handle() {
         axios.get("http://localhost:8080/api/" + user.type + "/get/" + user.bilkentId).then((response) => {
             console.log(response.data);
@@ -36,10 +37,16 @@ const CourseList =({changeCourse, changeTab, user}) =>{
     React.useEffect(() => {
         handle();
     }, []);
-  
+    React.useEffect(()=>{
+        setCourses(user.enrolledCourses)
+    },[user])
+    React.useEffect(()=>{
+
+    },[courses])
+
     //const myCourses = ["CS-319", "CS-315", "CS-224", "CS-202"];
-  
-    
+
+
 const classes = useStyles();
     function handler(name) {
         changeCourse(name);
@@ -48,7 +55,7 @@ const classes = useStyles();
     return(
         <Grid container>
             {
-                courses.map(courseName => (
+                courses === undefined ? <span/> : courses.map(courseName => (
                     <Grid xs={6}>
                         <Link to={"/main"}>
                             <button onClick={() => handler(courseName)} className={classes.course}>

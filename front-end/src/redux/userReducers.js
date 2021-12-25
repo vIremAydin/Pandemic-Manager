@@ -1,7 +1,7 @@
 import {GET_USER,  SAVE_USER} from "./types"
 
 const initialState = {
-    user: {},
+    user: {enrolledCourses: []},
 };
 
 const UserReducer =(state = initialState, action) => {

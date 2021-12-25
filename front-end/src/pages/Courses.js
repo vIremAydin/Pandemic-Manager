@@ -14,6 +14,7 @@ import Help from "../tabs/Help";
 import TestSchedule from "../tabs/TestSchedule";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import {saveUser} from "../redux/user.action";
 
 const useStyles = makeStyles({
 
@@ -46,13 +47,17 @@ const useStyles = makeStyles({
 
 });
 
-const Courses = ({activeTab, changeTab, user}) => {
+const Courses = ({activeTab, changeTab, user, saveUser}) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [courseCode, setCourseCode] = React.useState(0);
     const handleClickOpen = () => {
         setOpen(true);
     };
+
+    React.useEffect(()=>{
+
+    },[user,saveUser]);
 
     const handleClose = () => {
         setOpen(false);
@@ -69,6 +74,9 @@ const Courses = ({activeTab, changeTab, user}) => {
         }).catch((error) => {
             console.log(error);
         });
+        user.enrolledCourses.push(courseCode);
+        saveUser(user);
+        console.log(user);
     }
 
     return (
@@ -135,10 +143,12 @@ const Courses = ({activeTab, changeTab, user}) => {
     );
 }
 const mapStateToProps = (state) => {
-    return {activeTab: state.activeTab.activeTab};
+    return {activeTab: state.activeTab.activeTab,
+    user:state.user.user};
 }
 const mapDispatchToProps = dispatch => ({
     changeTab: tab => dispatch(changeTab(tab)),
+    saveUser: user => dispatch(saveUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Courses);
