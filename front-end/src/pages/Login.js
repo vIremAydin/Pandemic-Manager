@@ -60,7 +60,7 @@ const Login = ({saveUser}) => {
 
     React.useEffect(() => {
 
-    }, [isSuccessful]); 
+    }, [isSuccessful]);
 
     React.useEffect(() => {
         fetch();
@@ -91,13 +91,15 @@ const Login = ({saveUser}) => {
                        onChange={(event) => setId(event.target.value)}/>
             <TextField id="outlined-basic" label="Password" variant="outlined" className={classes.textfield}
                        onChange={(event) => setPassword(event.target.value)}/>
-           
+
             <Link to={isSuccessful ? "/courses" : "/courses"}/>
                 <Button variant="contained"
                     className={classes.loginButton}
-                    onClick={() => handleClick()}>Login
+                    onClick={() => handleClick()}>
+                    <Link to={isSuccessful ? "/courses" : "/login"}>Login</Link>
                 </Button>
                 <p>Forgot Password?</p>
+
             <Link to={"/register"}>Don't have an account?</Link>
         </div>
 

@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="Login.js">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/pages/Courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/Courses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/redux/userReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/redux/userReducers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/tabs/CouseList.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/tabs/CouseList.js" afterDir="false" />
-    </list>
+    <list default="true" id="f45f4c17-8086-477a-a74d-e08d1029f4c3" name="Default Changelist" comment="Courses.js" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -301,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640438179287</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Courses.js">
+      <created>1640444281384</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1640444281384</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +353,8 @@
     <MESSAGE value="HCMain.js" />
     <MESSAGE value="AllCases.js" />
     <MESSAGE value="Login.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login.js" />
+    <MESSAGE value="Courses.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="Courses.js" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
