@@ -37,8 +37,8 @@ public class NurseController {
     }
 
     @PostMapping("/create")
-    public Nurse createNurse(@RequestBody CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        return nurseService.createNurse(createUserDTO);
+    public Nurse create(@RequestBody CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        return nurseService.create(createUserDTO);
     }
 
     @GetMapping("/login/{id}/{password}")

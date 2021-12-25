@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class NurseService extends UserService {
+public class NurseService extends UserService implements CreateTemplate{
     private NurseRepository nurseRepository;
     private TestAppointmentRepository testAppointmentRepository;
     private StudentRepository studentRepository;
@@ -62,7 +62,8 @@ public class NurseService extends UserService {
         return false;
     }
 
-    public Nurse createNurse(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    @Override
+    public Nurse create(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Nurse> nurses = nurseRepository.findById(createUserDTO.getId());
         if(nurses.isPresent()){
             throw new RuntimeException("Nurse already exists");

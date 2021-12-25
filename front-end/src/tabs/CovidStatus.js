@@ -38,7 +38,6 @@ const CovidStatus = ({user}) => {
  
     async function handle() {
         axios.get("http://localhost:8080/api/student/get/" + user.id).then((response) => {
-            console.log(user);
         setHesCode(response.data.covidStaus.hesCode);
         setAllowed(response.data.covidStaus.allowedToCampus)
         setVaccinationNames(response.data.vaccinationStatus.vaccinationNames);
@@ -48,7 +47,6 @@ const CovidStatus = ({user}) => {
         
     }
 
-    
     React.useEffect(() => {
         handle();
     }, []);
@@ -67,6 +65,7 @@ const CovidStatus = ({user}) => {
 
     async function handleClick() {
        console.log(selectedFile);
+       console.log(user);
        datesOfDoses.map((object) => {
             axios.post("http://localhost:8080/api/student/add/vaccinationDate/" + user.id, {
                 object
@@ -127,7 +126,7 @@ const CovidStatus = ({user}) => {
                         {console.log(datesOfDoses)}
                         {datesOfDoses.map((object, index) => {
                             <div className={classes.box}>
-                                <p>{object}</p>
+                                <p>{datesOfDoses[index]}</p>
                                 <p>{vaccinationNames[index]}</p>
                             </div>
                         })}

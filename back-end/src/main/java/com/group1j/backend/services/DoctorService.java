@@ -15,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 @Service
-public class DoctorService extends UserService {
+public class DoctorService extends UserService implements CreateTemplate {
     private DoctorRepository doctorRepository;
     private DoctorAppointmentRepository doctorAppointmentRepository;
     private StudentRepository studentRepository;
@@ -35,8 +35,8 @@ public class DoctorService extends UserService {
     public List<Doctor> getAllDoctors(){
         return doctorRepository.findAll();
     }
-
-    public Doctor createDoctor(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    @Override
+    public Doctor create(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Doctor> doctors = doctorRepository.findById(createUserDTO.getId());
         if(doctors.isPresent()){
             throw new RuntimeException("Doctor already exists");

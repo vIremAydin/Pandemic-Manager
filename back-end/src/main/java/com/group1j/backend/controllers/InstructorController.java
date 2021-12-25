@@ -37,8 +37,8 @@ public class InstructorController {
     }
 
     @PostMapping("/create")
-    public Instructor createInstructor(@RequestBody CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        return instructorService.createInstructor(createUserDTO);
+    public Instructor create(@RequestBody CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        return instructorService.create(createUserDTO);
     }
 
     @GetMapping("/login/{id}/{password}")

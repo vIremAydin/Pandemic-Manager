@@ -35,10 +35,10 @@ const AttendanceStudent = ({user}) => {
     const [attendanceCode, setAttendanceCode] = React.useState(0);
 
     async function handleClick() {
-        axios.post("http://localhost:8080/api/attendance/add/student/" + attendanceCode + "/" + user.bilkentId, {
+        axios.post("http://localhost:8080/api/attendance/add/student/" + attendanceCode + "/" + user.id, {
         
         }).then(function(response) {
-            console.log(response.status);
+            console.log("student attendance code is saved in database");
         }).catch(function(error) {
             console.log(error)
         })

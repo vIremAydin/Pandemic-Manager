@@ -1,5 +1,5 @@
 import {makeStyles} from "@material-ui/core/styles";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {Grid} from "@material-ui/core";
 import axios from "axios";
 
@@ -26,15 +26,14 @@ const AllCases = () => {
         {name: "iremA", id: 124},
         {name: "iremAB", id: 125},]);
 
-React.useEffect(()=>{getAllCases()},[]);
+    useEffect(()=>{getAllCases()},[]);
 
     async function getAllCases() {
-        let temp = [];
         axios.get("http://localhost:8080/api/student/getAll" ).then((response) => {
-            temp = response.data;
-
+            setAllCases([response.data.filter(i => !i.covidStaus.allowedToCampus), ...allCases]);
+            console.log(response.data.filter(i => !i.covidStaus.allowedToCampus));
         });
-        setAllCases(temp.filter(i => !i.covidStaus.allowedToCampus));
+        
     }
     return (
         <div>

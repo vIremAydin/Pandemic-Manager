@@ -12,6 +12,7 @@ import MyButton from "../components/MyButton";
 import CovidStatus from "../tabs/CovidStatus";
 import Help from "../tabs/Help";
 import TestSchedule from "../tabs/TestSchedule";
+import Participants from "../tabs/Participants";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import {saveUser} from "../redux/user.action";
@@ -69,9 +70,10 @@ const Courses = ({activeTab, changeTab, user, saveUser}) => {
     }
 
     async function enrollCourse() {
-        axios.post("http://localhost:8080/api/course/add/student/" + courseCode + "/" + 2180).then((response) => {
-            console.log(response.status);
+        axios.post("http://localhost:8080/api/course/add/student/" + courseCode + "/" + user.id).then((response) => {
+            console.log("enrolled to course");
         }).catch((error) => {
+            console.log(user);
             console.log(error);
         });
         user.enrolledCourses.push(courseCode);
@@ -110,6 +112,7 @@ const Courses = ({activeTab, changeTab, user, saveUser}) => {
                     activeTab === "Covid19Status" ? <CovidStatus/> :
                     activeTab === "Help" ? <Help/> :
                     activeTab === "TestSchedule" ? <TestSchedule/> :
+                    activeTab === "Participants" ? <Participants/> :
                             <Edit_Profile/>}
                 </Grid>
             </Grid>
