@@ -26,7 +26,11 @@ public class TestAppointmentService {
         return testAppointmentRepository.findAll();
     }
 
-
+    /**
+     * Method to create test appointment
+     * @param createAppointmentDTO
+     * @return
+     */
     public TestAppointment createTestAppointment(CreateAppointmentDTO createAppointmentDTO){
         TestAppointment testAppointment = new TestAppointment();
         testAppointment.setPatientID(createAppointmentDTO.getPatientID());

@@ -22,10 +22,6 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    /**
-     *
-     * @return
-     */
     @GetMapping("/getAll")
     public List<Course> getAllCourses(){
         return courseService.getAllCourses();
@@ -55,6 +51,7 @@ public class CourseController {
     public Course createAttendance(@PathVariable int courseID){
         return courseService.createAttendance(courseID);
     }
+
     public CourseService getCourseService() {
         return courseService;
     }

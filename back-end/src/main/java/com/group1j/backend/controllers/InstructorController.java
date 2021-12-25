@@ -27,10 +27,6 @@ public class InstructorController {
         this.instructorService = instructorService;
     }
 
-    /**
-     *
-     * @return
-     */
     @GetMapping("/getAll")
     public List<Instructor> getAllInstructors(){
         return instructorService.getAllInstructors();

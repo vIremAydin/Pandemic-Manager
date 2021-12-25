@@ -24,6 +24,12 @@ public class CourseService {
         this.studentRepository = studentRepository;
     }
 
+    /**
+     * Method to add student to the course
+     * @param courseID
+     * @param studentID
+     * @return
+     */
     public Course addStudent(int courseID, int studentID) {
         Optional<Student> student = studentRepository.findById(studentID);
         Optional<Course> course = courseRepository.findByCourseID(courseID);
@@ -59,6 +65,11 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
+    /**
+     * Method to create course
+     * @param createCourseDTO
+     * @return
+     */
     public Course createCourse(CreateCourseDTO createCourseDTO) {
         Optional<Course> course = courseRepository.findByCourseNameAndSection(createCourseDTO.getCourseName(),createCourseDTO.getSection());
         if(course.isPresent()){
@@ -73,6 +84,12 @@ public class CourseService {
             return c;
         }
     }
+
+    /**
+     * Method to create Attendance object
+     * @param courseID
+     * @return
+     */
     public Course createAttendance(int courseID) {
         Optional<Course> course = courseRepository.findByCourseID(courseID);
         if(course.isPresent()){
@@ -90,6 +107,12 @@ public class CourseService {
 
     }
 
+    /**
+     * This method adds seating plan to a course
+     * @param courseID
+     * @param seatingPlan
+     * @return
+     */
     public Course addSeatingPlan(int courseID, List<List<Integer>> seatingPlan) {
         Optional<Course> course = courseRepository.findByCourseID(courseID);
         if(course.isPresent()){
@@ -104,6 +127,12 @@ public class CourseService {
         return null;
     }
 
+    /**
+     * This method converts multi dimensional list to string in order to store it in database
+     * id,id,id;id,id,id,id;id,id -> , represents different columns in a row ; represents that row is changed
+     * @param seatingPlan
+     * @return
+     */
     public String convertPlanToString(List<List<Integer>> seatingPlan){
         String elPlan = "";
 
@@ -119,6 +148,11 @@ public class CourseService {
         return elPlan;
     }
 
+    /**
+     * This method converts string to List<List<Integer>>
+     * @param elPlan
+     * @return
+     */
     public List<List<Integer>> convertPlanToList(String elPlan){
         int index = 0;
         int indexComma = 0; //Initial

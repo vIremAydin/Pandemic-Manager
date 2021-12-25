@@ -21,10 +21,6 @@ public class TestController {
         this.testService = testService;
     }
 
-    /**
-     *
-     * @return
-     */
     @GetMapping("/getAll")
     public List<Test> getAllTests(){
         return testService.getAllTests();
@@ -39,10 +35,6 @@ public class TestController {
     public Test announceResult(@PathVariable int testID, @RequestParam boolean result){
         return testService.announceResult(testID,result);
     }
-
-    //
-    //
-    //
     public TestService getTestService() {
         return testService;
     }

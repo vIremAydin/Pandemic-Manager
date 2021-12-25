@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Service
 public class DoctorAppointmentService {
-
+    //Fields
     private DoctorAppointmentRepository doctorAppointmentRepository;
 
     //Constructor
@@ -42,6 +42,11 @@ public class DoctorAppointmentService {
         this.doctorAppointmentRepository = doctorAppointmentRepository;
     }
 
+    /**
+     * Method for creating doctor appointment
+     * @param createAppointmentDTO
+     * @return
+     */
     public DoctorAppointment createDoctorAppointment(CreateAppointmentDTO createAppointmentDTO) {
         DoctorAppointment doctorAppointment = new DoctorAppointment();
         doctorAppointment.setPatientID(createAppointmentDTO.getPatientID());
