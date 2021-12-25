@@ -1,0 +1,26 @@
+In the following lines, you can see Visual Pandemic meeting logs from week to week:
+
+03.10.2021: Introduction meeting: 
+We talked about the features and requirements of our application. 
+
+07.10.2021: Github Day:
+We built a github repository and put a README file.
+
+27.10.2021 Requirements Analysis: 
+We prepared requirements analysis report.
+
+16.11.2021 Create Front-end Project:
+We created a front-end project by using React as a framework. 
+
+25.11.2021 Design Report:
+We prepared design report. 
+
+10.12.2021 Reviewed Version of Requirements and Design Report:
+We prepared Iteration-2 reports
+
+16.12.2021
+We started backend project
+
+25.12.2021
+We implemented the project and connected the back end to front end successfully.
+

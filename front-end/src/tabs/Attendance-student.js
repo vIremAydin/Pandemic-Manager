@@ -40,6 +40,7 @@ const AttendanceStudent = ({user}) => {
         }).then(function(response) {
             console.log("student attendance code is saved in database");
         }).catch(function(error) {
+            console.log(user);
             console.log(error)
         })
     }
