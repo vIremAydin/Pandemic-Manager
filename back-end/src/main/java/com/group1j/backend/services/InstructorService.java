@@ -45,14 +45,11 @@ public class InstructorService {
         VaccinationStatus vaccinationStatus = new VaccinationStatus();
         Schedule schedule = new Schedule();
         TestRecord testRecord = new TestRecord();
-<<<<<<< HEAD
+
 
         Instructor instructor = new Instructor(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>());
-=======
-        File lectureNote = new File(path);
 
-        Instructor instructor = new Instructor(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>(), lectureNote);
->>>>>>> 7e9c78c67b77903417045036a6440dc00b773632
+
         instructorRepository.save(instructor);
         return instructor;
     }
@@ -94,21 +91,6 @@ public class InstructorService {
 
         return null;
     }
-    public Instructor uploadLectureNotes(int studentID, int instructorID) {
-        Optional<Student> student = studentRepository.findById(studentID);
-        Optional<Instructor> instructor = instructorRepository.findById(instructorID);
-        if (student.isPresent() && instructor.isPresent()){
-            Student s = student.get();
-            Instructor i = instructor.get();
 
-            if(!(s.getCovidStaus().isAllowedToCampus())){
-                i.addLectureNotes();
-            }
-            s.getLectureNote();
-            studentRepository.save(s);
-            return i;
-        }
-        return null;
-    }
 
 }

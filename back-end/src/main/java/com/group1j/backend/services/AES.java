@@ -15,16 +15,14 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class AES implements PasswordEncoder{
     //Fields
-    SecretKey key;
-    IvParameterSpec iv;
+
 
     public AES() throws NoSuchAlgorithmException {
-        key = generateKey(128);
-        iv = generateIv();
+
     }
 
     @Override
-    public String encode(String password) throws NoSuchPaddingException, NoSuchAlgorithmException,
+    public String encode(String password,SecretKey key,IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException,
             BadPaddingException, IllegalBlockSizeException {
 
@@ -37,7 +35,7 @@ public class AES implements PasswordEncoder{
     }
 
     @Override
-    public String decode(String password)throws NoSuchPaddingException, NoSuchAlgorithmException,
+    public String decode(String password,SecretKey key,IvParameterSpec iv)throws NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException,
             BadPaddingException, IllegalBlockSizeException {
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
@@ -47,16 +45,4 @@ public class AES implements PasswordEncoder{
         return new String(plainText);
     }
 
-    public static SecretKey generateKey(int n) throws NoSuchAlgorithmException {
-        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-        keyGenerator.init(n);
-        SecretKey key = keyGenerator.generateKey();
-        return key;
-    }
-
-    public static IvParameterSpec generateIv() {
-        byte[] iv = new byte[16];
-        new SecureRandom().nextBytes(iv);
-        return new IvParameterSpec(iv);
-    }
 }

@@ -3,16 +3,18 @@ package com.group1j.backend.services;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 public class CeaserCipher implements PasswordEncoder{
     //Fields
-    private static final int key = 8;
+    private static final int ckey = 8;
 
     @Override
-    public String encode(String password) throws NoSuchPaddingException, NoSuchAlgorithmException,
+    public String encode(String password, SecretKey key, IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException,
             BadPaddingException, IllegalBlockSizeException {
         String encrypted = "";
@@ -20,7 +22,7 @@ public class CeaserCipher implements PasswordEncoder{
         for(int i = 0; i < password.length(); ++i){
             ch = password.charAt(i);
             if(ch >= 'a' && ch <= 'z'){
-                ch = (char)(ch + key);
+                ch = (char)(ch + ckey);
 
                 if(ch > 'z'){
                     ch = (char)(ch - 'z' + 'a' - 1);
@@ -29,7 +31,7 @@ public class CeaserCipher implements PasswordEncoder{
                 encrypted += ch;
             }
             else if(ch >= 'A' && ch <= 'Z'){
-                ch = (char)(ch + key);
+                ch = (char)(ch + ckey);
 
                 if(ch > 'Z'){
                     ch = (char)(ch - 'Z' + 'A' - 1);
@@ -46,7 +48,7 @@ public class CeaserCipher implements PasswordEncoder{
     }
 
     @Override
-    public String decode(String password) throws NoSuchPaddingException, NoSuchAlgorithmException,
+    public String decode(String password,SecretKey key,IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException,
             BadPaddingException, IllegalBlockSizeException{
         String decrypted = "";
@@ -54,7 +56,7 @@ public class CeaserCipher implements PasswordEncoder{
         for(int i = 0; i < password.length(); ++i){
             ch = password.charAt(i);
             if(ch >= 'a' && ch <= 'z'){
-                ch = (char)(ch - key);
+                ch = (char)(ch - ckey);
 
                 if(ch < 'a'){
                     ch = (char)(ch + 'z' - 'a' + 1);
@@ -63,7 +65,7 @@ public class CeaserCipher implements PasswordEncoder{
                 decrypted += ch;
             }
             else if(ch >= 'A' && ch <= 'Z'){
-                ch = (char)(ch - key);
+                ch = (char)(ch - ckey);
 
                 if(ch < 'A'){
                     ch = (char)(ch + 'Z' - 'A' + 1);
