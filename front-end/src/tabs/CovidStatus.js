@@ -61,7 +61,7 @@ const CovidStatus = ({user}) => {
         
     }
 
-    const handleClick = () => {
+    async function handleClick() {
        console.log(selectedFile);
        datesOfDoses.map((object) => {
             axios.post("http://localhost:8080/api/" + user.type + "/add/vaccinationDate/" + user.bilkentId, {
@@ -70,6 +70,8 @@ const CovidStatus = ({user}) => {
                 console.log("successful");
             })
         })
+
+        
     }
 
     
@@ -107,17 +109,15 @@ const CovidStatus = ({user}) => {
                     </div>
                     </div>
                     <div className={classes.colItem}>
-                        {nbOfDoses ? datesOfDoses.map((object, index) => {
-                            <div className={classes.box}>
-                                {<p>{object}</p>}
-                                <p>{vaccinationNames[index]}</p>
-                            </div>
-                        }):
-                        <div>
                          <input type="file" onChange={fileSelectedHandler} name="Upload Vaccination Card"/>
                         <Button variant="contained" style={{color:"#023047"}} onClick = {() => handleClick()}>Upload Vaccination Card</Button>
-                        </div>
-                        }
+                        <div></div>
+                        {datesOfDoses.map((object, index) => {
+                            <div className={classes.box}>
+                                <p>{object}</p>
+                                <p>{vaccinationNames[index]}</p>
+                            </div>
+                        })}
                
                     
                 </div>

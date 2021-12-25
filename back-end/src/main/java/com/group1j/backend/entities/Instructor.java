@@ -14,10 +14,9 @@ public class Instructor extends User{
 
     private File lectureNote;
     //Constructor
-    public Instructor(int id, String name, String email, String password, CovidStatus covidStaus, VaccinationStatus vaccinationStatus, TestRecord testRecord, Schedule schedule, List<Course> courses, File lectureNote) {
+    public Instructor(int id, String name, String email, String password, CovidStatus covidStaus, VaccinationStatus vaccinationStatus, TestRecord testRecord, Schedule schedule, List<Course> courses) {
         super(id, name, email, password, covidStaus, vaccinationStatus, testRecord, schedule);
         this.courses = courses;
-        this.lectureNote = lectureNote;
     }
 
     //Default Constructor

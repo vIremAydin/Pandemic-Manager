@@ -6,12 +6,18 @@ import com.group1j.backend.entities.*;
 import com.group1j.backend.repositories.*;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StudentService {
+public class StudentService extends UserService {
     private StudentRepository studentRepository;
 
     //Constructor
@@ -27,7 +33,7 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public Student createStudent(CreateUserDTO createUserDTO){
+    public Student createStudent(CreateUserDTO createUserDTO) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Student> students = studentRepository.findById(createUserDTO.getId());
         if(students.isPresent()){
             throw new RuntimeException("Student already exists");
@@ -38,6 +44,7 @@ public class StudentService {
         Schedule schedule = new Schedule();
         TestRecord testRecord = new TestRecord();
         Student student = new Student(createUserDTO.getId(),createUserDTO.getName(),createUserDTO.getEmail(),createUserDTO.getPassword(),covidStatus,vaccinationStatus,testRecord,schedule,new ArrayList<>(),2020);
+        student.setPassword(encode(student.getPassword(),student.getPasswordNum()));
         studentRepository.save(student);
         return student;
     }
@@ -54,11 +61,11 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public boolean loginStudent(int id, String password) {
+    public boolean loginStudent(int id, String password) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Optional<Student> student = studentRepository.findById(id);
         if (student.isPresent()){
             Student s = student.get();
-            return s.getPassword().equals(password);
+            return decode(s.getPassword(),s.getPasswordNum()).equals(password);
         }
         return false;
     }

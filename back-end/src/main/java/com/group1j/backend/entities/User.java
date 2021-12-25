@@ -1,6 +1,7 @@
 package com.group1j.backend.entities;
 
 import javax.persistence.*;
+import java.util.Random;
 
 @MappedSuperclass
 public class User {
@@ -18,6 +19,7 @@ public class User {
     private TestRecord testRecord;
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Schedule schedule;
+    private int passwordNum;
 
     //Constructor
     public User(int id, String name, String email, String password, CovidStatus covidStaus, VaccinationStatus vaccinationStatus, TestRecord testRecord, Schedule schedule) {
@@ -29,6 +31,8 @@ public class User {
         this.vaccinationStatus = vaccinationStatus;
         this.testRecord = testRecord;
         this.schedule = schedule;
+        Random rand = new Random();
+        passwordNum = rand.nextInt() % 2;
     }
     //Default Constructor
     public User() {
@@ -97,5 +101,13 @@ public class User {
 
     public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
+    }
+
+    public int getPasswordNum() {
+        return passwordNum;
+    }
+
+    public void setPasswordNum(int passwordNum) {
+        this.passwordNum = passwordNum;
     }
 }

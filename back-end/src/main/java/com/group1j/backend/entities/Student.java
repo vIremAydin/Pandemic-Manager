@@ -19,11 +19,11 @@ public class Student extends User {
     private int startYear;
 
     //Constructor
-    public Student(int id, String name, String email, String password, CovidStatus covidStaus, VaccinationStatus vaccinationStatus, TestRecord testRecord, Schedule schedule, List<Course> enrolledCourses, int startYear, File lectureNote) {
+    public Student(int id, String name, String email, String password, CovidStatus covidStaus, VaccinationStatus vaccinationStatus, TestRecord testRecord, Schedule schedule, List<Course> enrolledCourses, int startYear) {
         super(id, name, email, password, covidStaus, vaccinationStatus, testRecord, schedule);
         this.enrolledCourses = enrolledCourses;
         this.startYear = startYear;
-        this.lectureNote = getLectureNote();
+
     }
 
     //Default Constructor
@@ -47,8 +47,5 @@ public class Student extends User {
         this.startYear = startYear;
     }
 
-    public File getLectureNote() {
-        return instructor.getLectureNote();
-    }
 
 }
