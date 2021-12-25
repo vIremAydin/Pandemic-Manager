@@ -1,6 +1,7 @@
 package com.group1j.backend.entities;
 
 import javax.persistence.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -11,14 +12,18 @@ public class Student extends User {
     @ManyToMany(mappedBy = "enrolledStudents")
     private List<Course> enrolledCourses;
 
-    private String lectureNote;
+    @ManyToOne
+    private Instructor instructor;
+
+    private File lectureNote;
     private int startYear;
 
     //Constructor
-    public Student(int id, String name, String email, String password, CovidStatus covidStaus, VaccinationStatus vaccinationStatus, TestRecord testRecord, Schedule schedule, List<Course> enrolledCourses, int startYear) {
+    public Student(int id, String name, String email, String password, CovidStatus covidStaus, VaccinationStatus vaccinationStatus, TestRecord testRecord, Schedule schedule, List<Course> enrolledCourses, int startYear, File lectureNote) {
         super(id, name, email, password, covidStaus, vaccinationStatus, testRecord, schedule);
         this.enrolledCourses = enrolledCourses;
         this.startYear = startYear;
+        this.lectureNote = getLectureNote();
     }
 
     //Default Constructor
@@ -40,6 +45,10 @@ public class Student extends User {
 
     public void setStartYear(int startYear) {
         this.startYear = startYear;
+    }
+
+    public File getLectureNote() {
+        return instructor.getLectureNote();
     }
 
 }

@@ -6,6 +6,8 @@ import axios from "axios";
 import * as React from "react";
 import {useEffect} from "react";
 import {Alert} from "@mui/material";
+import {saveUser} from "../redux/user.action";
+import {connect} from "react-redux";
 
 const useStyles = makeStyles({
     loginContainer: {
@@ -41,7 +43,7 @@ const useStyles = makeStyles({
 
 });
 
-const Login = () => {
+const Login = ({saveUser}) => {
     const classes = useStyles();
 
     const [id, setId] = React.useState(0);
@@ -54,6 +56,7 @@ const Login = () => {
 
         axios.get("http://localhost:8080/api/student/login/" + id + "/" + password).then((response) => {
             console.log(response.data);
+            saveUser(response.data);
             setSuccessful(response.data);
         }).catch((error) => {
             console.log(error);
@@ -67,7 +70,6 @@ const Login = () => {
         <div className={classes.loginContainer}>{
             isSuccessful ?   (<span/>) :
                 <Alert  severity="error">Invalid email or password</Alert>
-
         }
             <p className={classes.title}>Welcome to Visual Pandemic</p>
             <img src={userLogo} alt=""/>
@@ -87,4 +89,7 @@ const Login = () => {
 
     );
 }
-export default Login;
+const mapDispatchToProps = dispatch => ({
+    saveUser: user => dispatch(saveUser(user)),
+});
+export default connect(mapDispatchToProps)(Login);
