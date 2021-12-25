@@ -15,6 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class StudentService extends UserService {
@@ -39,7 +40,38 @@ public class StudentService extends UserService {
             throw new RuntimeException("Student already exists");
         }
 
-        CovidStatus covidStatus = new CovidStatus(false,false,false,false,"",true,createUserDTO.getHesCode());
+        CovidStatus covidStatus = new CovidStatus();
+        Random rand = new Random();
+        int boolIndicator1 = rand.nextInt() % 2;
+        int boolIndicator2 = rand.nextInt() % 2;
+        int boolIndicator3 = rand.nextInt() % 2;
+
+        if(boolIndicator1 == 1){
+            covidStatus.setInfected(true);
+            covidStatus.setAllowedToCampus(false);
+        }
+
+        else{
+            covidStatus.setInfected(false);
+            covidStatus.setAllowedToCampus(true);
+        }
+
+        if(boolIndicator2 == 1){
+            covidStatus.setContacted(true);
+        }
+
+        else{
+            covidStatus.setContacted(false);
+        }
+
+        if(boolIndicator3 == 1){
+            covidStatus.setPreviouslyInfected(true);
+        }
+
+        else{
+            covidStatus.setPreviouslyInfected(false);
+        }
+
         VaccinationStatus vaccinationStatus = new VaccinationStatus();
         Schedule schedule = new Schedule();
         TestRecord testRecord = new TestRecord();
