@@ -69,6 +69,7 @@ const CovidStatus = ({user}) => {
 
     async function handleClick() {
        console.log(selectedFile);
+       alert("vaccination card was added to database");
        console.log(user);
        datesOfDoses.map((object) => {
             axios.post("http://localhost:8080/api/student/add/vaccinationDate/" + user.id, {
@@ -80,7 +81,7 @@ const CovidStatus = ({user}) => {
 
         })
         vaccinationNames.map((object) => {
-            axios.post("http://localhost:8080/api/student/add/vaccinationName/" + user.user.id, {
+            axios.post("http://localhost:8080/api/student/add/vaccinationName/" + user.id, {
                 object
             }).then((response) => {
                 console.log("successful");

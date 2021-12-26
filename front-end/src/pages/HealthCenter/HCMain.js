@@ -11,6 +11,7 @@ import CovidStatus from "../../tabs/CovidStatus";
 import Help from "../../tabs/Help"
 import TestSchedule from "../../tabs/TestSchedule";
 import AllCases from "../../tabs/HealthCenterTabs/AllCases";
+import Schedule from "../../tabs/HealthCenterTabs/Schedule";
 
 
 const useStyles = makeStyles({
@@ -42,6 +43,7 @@ const HCMainPage = ({activeTab}) => {
                             activeTab.activeTab === "Help" ? <Help/> :
                                 activeTab.activeTab === "TestSchedule" ? <TestSchedule/> :
                                     activeTab.activeTab === "EditProfile" ? <Edit_Profile/> :
+                                    activeTab.activeTab === "Schedule" ? <Schedule/> :
                                         <AllCases/>}
                 </Grid>
             </Grid>
