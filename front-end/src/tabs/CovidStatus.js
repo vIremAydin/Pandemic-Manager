@@ -37,9 +37,13 @@ const CovidStatus = ({user}) => {
     const [nbOfDoses, setNbOfDoses] = useState(0);
  
     async function handle() {
+        console.log(user);
         axios.get("http://localhost:8080/api/student/get/" + user.id).then((response) => {
+        console.log(response.data);
         setHesCode(response.data.covidStaus.hesCode);
-        setAllowed(response.data.covidStaus.allowedToCampus)
+        console.log(response.data.covidStaus.hesCode);
+        setAllowed(response.data.covidStaus.allowedToCampus);
+        console.log(response.data.covidStaus.allowedToCampus);
         setVaccinationNames(response.data.vaccinationStatus.vaccinationNames);
         setDatesOfDoses(response.data.vaccinationStatus.datesOfDoses);
         setNbOfDoses(response.data.vaccinationStatus.numOfDoses);
@@ -76,7 +80,7 @@ const CovidStatus = ({user}) => {
 
         })
         vaccinationNames.map((object) => {
-            axios.post("http://localhost:8080/api/student/add/vaccinationName/" + user.id, {
+            axios.post("http://localhost:8080/api/student/add/vaccinationName/" + user.user.id, {
                 object
             }).then((response) => {
                 console.log("successful");

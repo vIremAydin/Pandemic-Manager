@@ -1,6 +1,6 @@
 import {makeStyles} from "@material-ui/core/styles";
 import userLogo from "../images/userLogo.png";
-import {Button, TextField} from "@material-ui/core";
+import {Button, MenuItem, TextField} from "@material-ui/core";
 import {Link} from "react-router-dom"
 import axios from "axios";
 import * as React from "react";
@@ -48,18 +48,28 @@ const Login = ({saveUser}) => {
 
     const [id, setId] = React.useState(0);
     const [password, setPassword] = React.useState('');
+    const [userType, setUserType] = React.useState('');
     const [isSuccessful, setSuccessful] = React.useState(true);
     const [user, setUser] = React.useState(null);
+
+    const userTypes = [{value: "student"},
+    {value: "instructor"},
+    {value: "doctor"},
+    {value: "nurse"}];
 
     React.useEffect(() => {
 
     }, [isSuccessful, id]);
 
+    const handleChange = (event) => {
+        setUserType(event.target.value);
+    };
+
     async function handleClick() {
 
-        axios.get("http://localhost:8080/api/student/login/" + id + "/" + password).then((response) => {
+        axios.get("http://localhost:8080/api/" + userType + "/login/" + id + "/" + password).then((response) => {
             console.log(response.data);
-            axios.get("http://localhost:8080/api/student/get/" + id).then((response) => {
+            axios.get("http://localhost:8080/api/" + userType + "/get/" + id).then((response) => {
             console.log(response.data);
             setUser(response.data);
             saveUser(response.data);
@@ -84,6 +94,21 @@ const Login = ({saveUser}) => {
                        onChange={(event) => setId(event.target.value)}/>
             <TextField id="outlined-basic" label="Password" variant="outlined" className={classes.textfield}
                        onChange={(event) => setPassword(event.target.value)}/>
+             <TextField
+                id="outlined-select-currency"
+                select
+                label="User Type"
+                value={userType}
+                onChange={handleChange}
+                helperText="Please select your user type"
+                className={classes.textfield}
+            >
+                {userTypes.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                        {option.value}
+                    </MenuItem>
+                ))}
+            </TextField>
 
             <Link to={isSuccessful ? "/courses" : "/courses"}/>
                 <Button variant="contained"
