@@ -47,7 +47,7 @@ const Schedule = ({user}) => {
             <h1 className={classes.header}>All Test Requests in Bilkent University</h1>
             <Grid container direction={"column"}>{
                 allTests.map(itm => (<Grid item><div className={ classes.box}>
-                    <span>Name: {itm.date}</span>
+                    <span>Date: {itm.date}</span>
                      <span> ID: {itm.patientID}</span>
                 </div>  <Button variant="contained" onClick = {() => handleClick(itm.testID, itm.patientID)}>Approve Test Appointment</Button></Grid>))
             }

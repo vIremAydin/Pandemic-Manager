@@ -66,7 +66,6 @@ const Login = ({saveUser}) => {
     };
 
     async function handleClick() {
-
         axios.get("http://localhost:8080/api/" + userType + "/login/" + id + "/" + password).then((response) => {
             console.log(response.data);
             axios.get("http://localhost:8080/api/" + userType + "/get/" + id).then((response) => {
